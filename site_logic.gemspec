@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -837,6 +837,7 @@ Gem::Specification.new do |s|
     "script/rails",
     "site_logic.gemspec",
     "spec/blueprints.rb",
+    "spec/controllers/admin/pages_controller.rb",
     "spec/controllers/admin/sites_controller.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
@@ -856,6 +857,7 @@ Gem::Specification.new do |s|
   s.summary = %q{An engine for search-engine-optimized content management.}
   s.test_files = [
     "spec/blueprints.rb",
+    "spec/controllers/admin/pages_controller.rb",
     "spec/controllers/admin/sites_controller.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
