@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".bundle/config",
     ".document",
+    ".rspec",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
@@ -27,6 +28,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "app/controllers/admin/sites_controller.rb",
     "app/controllers/application_controller.rb",
     "app/controllers/pages_controller.rb",
     "app/controllers/sites_controller.rb",
@@ -66,7 +68,9 @@ Gem::Specification.new do |s|
     "db/seeds.rb",
     "doc/README_FOR_APP",
     "doc/TODO",
+    "init.rb",
     "lib/site_logic.rb",
+    "lib/site_logic/railtie.rb",
     "log/development.log",
     "log/production.log",
     "log/server.log",
@@ -822,6 +826,8 @@ Gem::Specification.new do |s|
     "public/stylesheets/csshover3.htc",
     "script/rails",
     "site_logic.gemspec",
+    "spec/blueprints.rb",
+    "spec/controllers/admin/sites_controller.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
     "spec/models/page_spec.rb",
@@ -829,6 +835,7 @@ Gem::Specification.new do |s|
     "spec/site_logic_spec.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb",
+    "tasks/site_logic.rake",
     "test/performance/browsing_test.rb",
     "test/test_helper.rb",
     "vendor/plugins/.gitkeep"
@@ -838,6 +845,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{An engine for search-engine-optimized content management.}
   s.test_files = [
+    "spec/blueprints.rb",
+    "spec/controllers/admin/sites_controller.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
     "spec/models/page_spec.rb",
