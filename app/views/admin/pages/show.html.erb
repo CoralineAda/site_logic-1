@@ -1,0 +1,35 @@
+<%- set_title 'Page Details' -%>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Page' -%>
+
+  <div class="form_column">
+    <%= faux_field 'Page Title', @page.page_title %>
+    <%= faux_field 'Window Title', @page.window_title %>
+    <%= faux_field 'URL', @page.humanize_path %>
+  </div>
+  <div class="form_column">
+    <%= faux_field 'Status', @page.status %>
+    <%= faux_field 'Include in Sitemap?', @page.sitemap? ? "Yes" : "No" %>
+    <%= faux_field 'Allow Search Engine Indexing', @page.noindex? ? "No" : "Yes" -%>
+  </div>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Meta Content' -%>
+  <div class="form_column">
+    <%= faux_field 'Meta Description', @page.meta_description %>
+  </div>
+  <div class="form_column">
+    <%= faux_field 'Meta Keywords', @page.meta_keywords %>
+  </div>
+</fieldset>
+
+<fieldset class="form_container">
+  <%= legend_tag 'Content&nbsp;' -%>
+  <%= faux_field '', @page.content.html_safe %>
+</fieldset>
+
+<%= link_to 'Edit', edit_admin_site_page_path(@site, @page), :class => 'button' -%>
+<%= link_to 'Preview', "/", :class => 'button', :target => '_new' -%>
+<%= link_to 'Back', admin_site_path(@site), :class => 'button' -%>

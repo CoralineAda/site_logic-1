@@ -1,7 +1,7 @@
 class Page
 
   include Mongoid::Document
-#  include Mongoid::Tree
+  include Mongoid::Tree
   include Mongoid::Timestamps
   include SiteLogic::Base
 
@@ -44,13 +44,13 @@ class Page
     def validate_each(object, attribute, value)
       if object.desired_slug.nil? && object.slug.nil?
         object.errors[attribute] << (options[:message] || "cannot be blank.")
-      elsif object.site && object.site.pages.map{|p| p.slug}.include?(object.desired_slug)
+      elsif object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
         object.errors[attribute] << (options[:message] || "must be unique.")
       end
     end
   end
   
-#  validates :desired_slug, :desired_slug_presence_and_uniqueness => true
+  validates :desired_slug, :desired_slug_presence_and_uniqueness => true
   validates_presence_of :page_title
   validates_presence_of :content
   
@@ -61,7 +61,11 @@ class Page
   def draft?
     self.state == 'draft' || self.state.nil?
   end
-  
+
+  def humanize_path
+    "/#{self.slug}/"
+  end
+    
   def publish!
     self.update_attributes(:state => 'published', :publication_date => Time.zone.now)
   end
@@ -72,6 +76,18 @@ class Page
   
   def unpublish!
     self.update_attributes(:state => 'draft', :publication_date => nil)
+  end
+  
+  def sitemap
+    self[:sitemap] || true
+  end
+  
+  def status
+    self.state ? self.state.capitalize : 'Draft'
+  end
+  
+  def window_title
+    self[:window_title] || self.page_title
   end
   
 end

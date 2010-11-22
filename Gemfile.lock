@@ -6,15 +6,15 @@ GIT
 
 GIT
   remote: git@github.com:Bantik/site_logic.git
-  revision: 2d85441
+  revision: 8046f35
   specs:
-    site_logic (0.0.4)
+    site_logic (0.0.6)
       bson_ext
       mongoid (>= 2.0.0.beta.17)
       mongoid-tree
       rails (= 3.0.1)
       scaffold_logic
-      site_logic (>= 0.0.0)
+      site_logic
       tiny_mce
 
 GEM

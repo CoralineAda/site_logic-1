@@ -5,7 +5,14 @@ class Admin::SitesController < ApplicationController
   end
   
   def show
+    params[:labels] = {
+      :updated_at => 'Last Updated',
+      :humanize_path => 'URL'
+    }
     @site = Site.find(params[:id])
+    params[:by] ||= 'humanize_path'; params[:dir] ||= 'ASC'
+    @pages = @site.pages.sort{|a,b| a.send(params[:by]) <=> b.send(params[:by])}
+    @pages.reverse! if params[:dir] == 'DESC'
   end
   
   def new

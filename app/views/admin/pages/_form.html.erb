@@ -1,0 +1,47 @@
+
+  <%= include_tiny_mce_if_needed %>
+
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2>Please correct the following errors::</h2>
+      <% @page.errors.to_a.in_groups(2, false).each do |group| %>
+      <ul>
+        <% group.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <br style="clear: both;" />
+      <% end %>
+      <br style="clear: both;" />
+    </div>
+    <br style="clear: both;" />
+  <% end %>
+
+  <fieldset class="form_container">
+    <%= legend_tag 'Page Details' -%>
+    <div class="form_column">
+      <%= f.text_field :page_title -%>
+      <%= f.text_field :window_title -%>
+      <%= f.text_field :desired_slug, :value => @page.slug -%>
+      <%= f.select :state, Page::STATES.map{|s| s.capitalize}, :value => @page.status -%>
+      <%= f.check_box :sitemap, :label => false, :inline_label => 'Include in Sitemap' -%>
+      <%= f.check_box :noindex, :label => false, :inline_label => 'Disable Indexing' -%>
+    </div>
+    <div class="form_column">
+      <%= f.text_area :meta_description -%>
+      <%= f.text_area :meta_keywords -%>
+    </div>
+  </fieldset>
+
+  <fieldset class="form_container">
+    <%= legend_tag 'Content&nbsp;' -%>
+    <div class="form_column">
+      <%= f.text_area :content, :label => false, :class => 'mceCustom' -%>
+    </div>
+    <div class="form_column">
+    </div>
+  </fieldset>
+
+  <%= f.submit 'Save', :class => 'button' -%>
+  <%= link_to 'Cancel', site_path(@site), :class => 'button' -%>
+  <br style="clear: both;" />
