@@ -1,6 +1,7 @@
 class Page
 
   include Mongoid::Document
+#  include Mongoid::Tree
   include Mongoid::Timestamps
   include SiteLogic::Base
 
@@ -14,10 +15,11 @@ class Page
   field :page_title  
   field :window_title  
   field :content  
-  field :state  
+  field :state
+  field :publication_date, :type => DateTime
   
   # Indices ========================================================================================
-  index :slug, :unique => true
+  index :slug, :unique => false
   index :state, :unique => false
 
   # Constants ======================================================================================
@@ -38,25 +40,38 @@ class Page
 
   # Validations ====================================================================================
 
-  class DesiredSlugPresenceValidator < ActiveModel::EachValidator
+  class DesiredSlugPresenceAndUniquenessValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
-      unless object.desired_slug || object.slug
+      if object.desired_slug.nil? && object.slug.nil?
         object.errors[attribute] << (options[:message] || "cannot be blank.")
+      elsif object.site && object.site.pages.map{|p| p.slug}.include?(object.desired_slug)
+        object.errors[attribute] << (options[:message] || "must be unique.")
       end
     end
   end
   
-  validates :desired_slug, :desired_slug_presence => true
+#  validates :desired_slug, :desired_slug_presence_and_uniqueness => true
   validates_presence_of :page_title
-  validates_uniqueness_of :page_title
   validates_presence_of :content
   
   # Class methods ==================================================================================
 
   # Instance methods ===============================================================================
 
+  def draft?
+    self.state == 'draft' || self.state.nil?
+  end
+  
   def publish!
     self.update_attributes(:state => 'published', :publication_date => Time.zone.now)
+  end
+  
+  def published?
+    self.state == 'published'
+  end
+  
+  def unpublish!
+    self.update_attributes(:state => 'draft', :publication_date => nil)
   end
   
 end

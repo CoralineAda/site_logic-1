@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -13,8 +13,6 @@ Gem::Specification.new do |s|
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
-    "LICENSE",
-    "README",
     "README.rdoc"
   ]
   s.files = [
@@ -23,8 +21,6 @@ Gem::Specification.new do |s|
     ".rspec",
     "Gemfile",
     "Gemfile.lock",
-    "LICENSE",
-    "README",
     "README.rdoc",
     "Rakefile",
     "VERSION",
@@ -36,6 +32,11 @@ Gem::Specification.new do |s|
     "app/helpers/layout_helper.rb",
     "app/models/page.rb",
     "app/models/site.rb",
+    "app/views/admin/sites/_form.html.erb",
+    "app/views/admin/sites/edit.html.erb",
+    "app/views/admin/sites/index.html.erb",
+    "app/views/admin/sites/new.html.erb",
+    "app/views/admin/sites/show.html.erb",
     "app/views/layouts/application.html.erb",
     "app/views/pages/_form.html.erb",
     "app/views/pages/edit.html.erb",
@@ -57,6 +58,7 @@ Gem::Specification.new do |s|
     "config/environments/production.rb",
     "config/environments/test.rb",
     "config/initializers/backtrace_silencers.rb",
+    "config/initializers/formats.rb",
     "config/initializers/inflections.rb",
     "config/initializers/mime_types.rb",
     "config/initializers/secret_token.rb",
@@ -68,6 +70,11 @@ Gem::Specification.new do |s|
     "db/seeds.rb",
     "doc/README_FOR_APP",
     "doc/TODO",
+    "features/manage_sites.feature",
+    "features/step_definitions/site_steps.rb",
+    "features/step_definitions/web_steps.rb",
+    "features/support/env.rb",
+    "features/support/paths.rb",
     "init.rb",
     "lib/site_logic.rb",
     "lib/site_logic/railtie.rb",
@@ -119,7 +126,6 @@ Gem::Specification.new do |s|
     "public/images/layout/th_bg.png",
     "public/images/layout/th_bg_selected.png",
     "public/images/rails.png",
-    "public/index.html",
     "public/javascripts/application.js",
     "public/javascripts/controls.js",
     "public/javascripts/dragdrop.js",
@@ -863,7 +869,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
-      s.add_runtime_dependency(%q<site_logic>, [">= 0.0.0"])
+      s.add_runtime_dependency(%q<site_logic>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, ["= 3.0.1"])
@@ -884,7 +890,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
       s.add_dependency(%q<bson_ext>, [">= 0"])
-      s.add_dependency(%q<site_logic>, [">= 0.0.0"])
+      s.add_dependency(%q<site_logic>, [">= 0"])
       s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, ["= 3.0.1"])
@@ -906,7 +912,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<bson_ext>, [">= 0"])
-    s.add_dependency(%q<site_logic>, [">= 0.0.0"])
+    s.add_dependency(%q<site_logic>, [">= 0"])
     s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, ["= 3.0.1"])
