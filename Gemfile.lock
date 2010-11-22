@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: git@github.com:Bantik/site_logic.git
-  revision: 8046f35
+  revision: 92f8944
   specs:
-    site_logic (0.0.6)
+    site_logic (0.1.0)
       bson_ext
       mongoid (>= 2.0.0.beta.17)
       mongoid-tree

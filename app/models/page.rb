@@ -1,7 +1,6 @@
 class Page
 
   include Mongoid::Document
-  include Mongoid::Tree
   include Mongoid::Timestamps
   include SiteLogic::Base
 

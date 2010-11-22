@@ -28,17 +28,17 @@ module SiteLogic
       elsif self.slug
         text = self.slug      
       elsif self.respond_to?(:page_title)
-        text = self.headline.to_s.downcase
+        text = self.page_title.to_s.downcase
       elsif self.respond_to?(:name)
         text = self.name.to_s.downcase
       end
 
       # Translation borrowed from permalink_fu      
       text = text.to_s
-      text.gsub!(/[^\x00-\x7F]+/, '-') # Remove anything non-ASCII entirely (e.g. diacritics).
-      text.gsub!(/[^\/\w_ \-]+/i,   '-') # Remove unwanted chars.
-      text.gsub!(/[ \-]+/i,      '-')  # No more than one of the separator in a row.
-      text.gsub!(/^\-|\-$/i,      '')  # Remove leading/trailing separator.
+      text.gsub!(/[^\x00-\x7F]+/, '-')    # Remove anything non-ASCII entirely (e.g. diacritics).
+      text.gsub!(/[^\/\w_ \-]+/i,   '-')  # Remove unwanted chars.
+      text.gsub!(/[ \-]+/i,      '-')     # No more than one of the separator in a row.
+      text.gsub!(/^\-|\-$/i,      '')     # Remove leading/trailing separator.
       text.downcase!
       self.slug = text
       
