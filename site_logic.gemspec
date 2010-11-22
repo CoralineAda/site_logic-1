@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.0.6"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "app/controllers/admin/pages_controller.rb",
     "app/controllers/admin/sites_controller.rb",
     "app/controllers/application_controller.rb",
     "app/controllers/pages_controller.rb",
@@ -32,6 +33,11 @@ Gem::Specification.new do |s|
     "app/helpers/layout_helper.rb",
     "app/models/page.rb",
     "app/models/site.rb",
+    "app/views/admin/pages/_form.html.erb",
+    "app/views/admin/pages/_index.html.erb",
+    "app/views/admin/pages/edit.html.erb",
+    "app/views/admin/pages/new.html.erb",
+    "app/views/admin/pages/show.html.erb",
     "app/views/admin/sites/_form.html.erb",
     "app/views/admin/sites/edit.html.erb",
     "app/views/admin/sites/index.html.erb",
@@ -78,10 +84,8 @@ Gem::Specification.new do |s|
     "init.rb",
     "lib/site_logic.rb",
     "lib/site_logic/railtie.rb",
-    "log/development.log",
     "log/production.log",
     "log/server.log",
-    "log/test.log",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
     "misc/images/src/legend_bg.psd",
