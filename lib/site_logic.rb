@@ -3,8 +3,6 @@ module SiteLogic
   require 'mongoid'
   require 'site_logic/railtie.rb' if defined?(Rails)
 
-#  mattr_accessor :referring_text
-  
   def self.setup
     yield self
   end
