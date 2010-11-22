@@ -16,7 +16,7 @@ class Admin::SitesController < ApplicationController
     @site = Site.new(params[:site])
     if @site.save
       flash[:notice] = "Successfully created site."
-      redirect_to @site
+      redirect_to admin_site_path(@site)
     else
       render :action => 'new'
     end
@@ -30,7 +30,7 @@ class Admin::SitesController < ApplicationController
     @site = Site.find(params[:id])
     if @site.update_attributes(params[:site])
       flash[:notice] = "Successfully updated site."
-      redirect_to @site
+      redirect_to admin_site_path(@site)
     else
       render :action => 'edit'
     end
@@ -40,7 +40,7 @@ class Admin::SitesController < ApplicationController
     @site = Site.find(params[:id])
     @site.destroy
     flash[:notice] = "Successfully destroyed site."
-    redirect_to sites_url
+    redirect_to admin_sites_url
   end
 
 end

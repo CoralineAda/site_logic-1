@@ -1,0 +1,40 @@
+<%= form_for @site, :url => admin_sites_url do |f| %>
+  <% if @site.errors.any? %>
+    <div id="error_explanation">
+      <h2>Please correct the following errors::</h2>
+      <% @site.errors.to_a.in_groups(2, false).each do |group| %>
+      <ul>
+        <% group.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <br style="clear: both;" />
+      <% end %>
+      <br style="clear: both;" />
+    </div>
+    <br style="clear: both;" />
+  <% end %>
+
+  <fieldset class="form_container">
+    <%= legend_tag 'About This Site' -%>
+
+    <div class="form_column">
+      <%= f.text_field :domain -%>
+      <%= f.text_field :name -%>
+      <%= f.text_field :state -%>
+      <%= f.text_field :redirect_to -%>
+      <%= f.text_field :google_profile_id -%>
+    </div>
+    <div class="form_column">
+      <%= f.text_field :google_webmaster_code -%>
+      <%= f.text_field :yahoo_webmaster_code -%>
+      <%= f.text_field :bing_webmaster_code -%>
+      <%= f.text_field :netinsert_code -%>
+    </div>
+
+  </fieldset>
+
+  <%= f.submit 'Save', :class => 'button' -%>
+  <%= link_to 'Cancel', admin_sites_path, :class => 'button' -%>
+  <br style="clear: both;" />
+<%- end -%>

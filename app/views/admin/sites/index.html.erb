@@ -1,0 +1,29 @@
+<%- set_title 'Sites' -%>
+
+<%- if @sites.empty? -%>
+  <p><em>No sites have been created yet.</em></p>
+<%- else -%>
+  <table class="standard">
+    <tr>
+      <th><%= sort_link('sites', 'domain', params) -%></th>
+      <th><%= sort_link('sites', 'name', params) -%></th>
+      <th><%= sort_link('sites', 'state', params) -%></th>
+      <th><%= sort_link('sites', 'redirect_to', params) -%></th>
+      <th> </th>
+    </tr>
+
+  <%- @sites.each do |site| -%>
+    <tr class="<%= cycle('odd', 'even') -%>">
+      <td><%= link_to site.domain, admin_site_path(site) -%></td>
+      <td><%= site.name -%></td>
+      <td><%= site.state -%></td>
+      <td><%= site.redirect_to -%></td>
+      <td class="crud_links"><%= crud_links_for_admin(site, 'site', [:show, :edit, :delete]) -%></td>
+    </tr>
+  <%- end -%>
+  </table>
+<%- end -%>
+
+<br />
+
+<%= link_to 'New Site', new_admin_site_path, :class => 'button' -%>

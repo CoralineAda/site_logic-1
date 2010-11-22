@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'bson_ext'
-gem 'site_logic', '>= 0.0.0', :git => 'git@github.com:Bantik/site_logic.git'
+gem 'site_logic', :git => 'git@github.com:Bantik/site_logic.git'
 gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '3.0.1'

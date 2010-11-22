@@ -1,0 +1,22 @@
+<%- set_title 'Site Details' -%>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Site' -%>
+
+  <div class="form_column">
+    <%= faux_field 'Domain', @site.domain %>
+    <%= faux_field 'Name', @site.name %>
+    <%= faux_field 'State', @site.state %>
+    <%= faux_field 'Redirect To', @site.redirect_to %>
+  </div>
+  <div class="form_column">
+    <%= faux_field 'Google Profile', @site.google_profile_id %>
+    <%= faux_field 'Google Webmaster Code', @site.google_webmaster_code %>
+    <%= faux_field 'Yahoo Webmaster Code', @site.yahoo_webmaster_code %>
+    <%= faux_field 'Bing Webmaster Code', @site.bing_webmaster_code %>
+    <%= faux_field 'Netinsert Code', @site.netinsert_code %>
+  </div>
+</fieldset>
+
+<%= link_to 'Edit', edit_admin_site_path(@site), :class => 'button' -%>
+<%= link_to 'Back', admin_sites_path, :class => 'button' -%>

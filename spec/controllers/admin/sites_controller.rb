@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe Admin::SitesController do
   render_views
@@ -14,7 +14,7 @@ describe Admin::SitesController do
   end
   
   it "show action should render show template" do
-    get :show, :id => Site.first
+    get :show, :id => Site.first.id
     response.should render_template(:show)
   end
   
@@ -32,30 +32,30 @@ describe Admin::SitesController do
   it "create action should redirect when model is valid" do
     Site.any_instance.stubs(:valid?).returns(true)
     post :create
-    response.should redirect_to(site_url(assigns[:site]))
+    response.should redirect_to(admin_site_url(assigns[:site]))
   end
   
   it "edit action should render edit template" do
-    get :edit, :id => Site.first
+    get :edit, :id => Site.first.id
     response.should render_template(:edit)
   end
   
   it "update action should render edit template when model is invalid" do
     Site.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Site.first
+    put :update, :id => Site.first.id
     response.should render_template(:edit)
   end
 
   it "update action should redirect when model is valid" do
     Site.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Site.first
-    response.should redirect_to(site_url(assigns[:site]))
+    put :update, :id => Site.first.id
+    response.should redirect_to(admin_site_url(assigns[:site]))
   end
   
   it "destroy action should destroy model and redirect to index action" do
     site = Site.first
-    delete :destroy, :id => site
-    response.should redirect_to(sites_url)
-    Site.exists?(site.id).should be_false
+    delete :destroy, :id => site.id
+    response.should redirect_to(admin_sites_url)
+    Site.where(:id => site.id).first.should be_nil
   end
 end
