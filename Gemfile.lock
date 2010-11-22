@@ -1,8 +1,19 @@
 GIT
   remote: git@github.com:Bantik/ScaffoldLogic.git
-  revision: b050895
+  revision: 33845b2
   specs:
-    scaffold_logic (0.4.1)
+    scaffold_logic (0.5.5)
+
+GIT
+  remote: git@github.com:Bantik/site_logic.git
+  revision: fc567ec
+  specs:
+    site_logic (0.0.0)
+      bson_ext
+      mongoid (>= 2.0.0.beta.17)
+      rails (= 3.0.1)
+      scaffold_logic
+      tiny_mce
 
 GEM
   remote: http://rubygems.org/
@@ -102,6 +113,8 @@ GEM
       mongo (~> 1.1)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
+    mongoid-tree (0.4.0)
+      mongoid (>= 2.0.0.beta.20)
     nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -166,8 +179,10 @@ DEPENDENCIES
   machinist_mongo
   mocha
   mongoid (>= 2.0.0.beta.17)
+  mongoid-tree
   rails (= 3.0.1)
   rspec-rails
   scaffold_logic!
+  site_logic (>= 0.0.0)!
   spork
   tiny_mce

@@ -1,0 +1,39 @@
+<%= form_for @page do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2>Please correct the following errors::</h2>
+      <% @page.errors.to_a.in_groups(2, false).each do |group| %>
+      <ul>
+        <% group.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <% end %>
+      <br style="clear: both;" />
+    </div>
+    <br style="clear: both;" />
+  <% end %>
+
+  <fieldset class="form_container">
+    <%= legend_tag 'About This Page' -%>
+
+    <div class="form_column">
+      <%= f.text_field :slug -%>
+      <%= f.check_box :sitemap, :inline_label => 'Yes' -%>
+      <%= f.check_box :noindex, :inline_label => 'Yes' -%>
+      <%= f.text_field :meta_description -%>
+      <%= f.text_field :meta_keywords -%>
+    </div>
+    <div class="form_column">
+      <%= f.text_field :page_title -%>
+      <%= f.text_field :window_title -%>
+      <%= f.text_area :content -%>
+      <%= f.text_field :state -%>
+    </div>
+
+  </fieldset>
+
+  <%= f.submit 'Save', :class => 'button' -%>
+  <%= link_to 'Cancel', pages_path, :class => 'button' -%>
+  <br style="clear: both;" />
+<%- end -%>

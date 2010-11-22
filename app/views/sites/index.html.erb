@@ -1,0 +1,39 @@
+<%- set_title 'Sites' -%>
+
+<%- if @sites.empty? -%>
+  <p><em>No sites have been created yet.</em></p>
+<%- else -%>
+  <table class="standard">
+    <tr>
+      <th><%= sort_link('sites', 'domain', params) -%></th>
+      <th><%= sort_link('sites', 'name', params) -%></th>
+      <th><%= sort_link('sites', 'state', params) -%></th>
+      <th><%= sort_link('sites', 'redirect_to', params) -%></th>
+      <th><%= sort_link('sites', 'google_profile_id', params) -%></th>
+      <th><%= sort_link('sites', 'google_webmaster_code', params) -%></th>
+      <th><%= sort_link('sites', 'yahoo_webmaster_code', params) -%></th>
+      <th><%= sort_link('sites', 'bing_webmaster_code', params) -%></th>
+      <th><%= sort_link('sites', 'netinsert_code', params) -%></th>
+      <th> </th>
+    </tr>
+
+  <%- @sites.each do |site| -%>
+    <tr class="<%= cycle('odd', 'even') -%>">
+      <td><%= site.domain -%></td>
+      <td><%= site.name -%></td>
+      <td><%= site.state -%></td>
+      <td><%= site.redirect_to -%></td>
+      <td><%= site.google_profile_id -%></td>
+      <td><%= site.google_webmaster_code -%></td>
+      <td><%= site.yahoo_webmaster_code -%></td>
+      <td><%= site.bing_webmaster_code -%></td>
+      <td><%= site.netinsert_code -%></td>
+      <td class="crud_links"><%= crud_links(site, 'site', [:show, :edit, :delete]) -%></td>
+    </tr>
+  <%- end -%>
+  </table>
+<%- end -%>
+
+<br />
+
+<%= link_to 'New Site', new_site_path, :class => 'button' -%>

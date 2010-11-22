@@ -1,0 +1,39 @@
+<%- set_title 'Pages' -%>
+
+<%- if @pages.empty? -%>
+  <p><em>No pages have been created yet.</em></p>
+<%- else -%>
+  <table class="standard">
+    <tr>
+      <th><%= sort_link('pages', 'slug', params) -%></th>
+      <th><%= sort_link('pages', 'sitemap', params) -%></th>
+      <th><%= sort_link('pages', 'noindex', params) -%></th>
+      <th><%= sort_link('pages', 'meta_description', params) -%></th>
+      <th><%= sort_link('pages', 'meta_keywords', params) -%></th>
+      <th><%= sort_link('pages', 'page_title', params) -%></th>
+      <th><%= sort_link('pages', 'window_title', params) -%></th>
+      <th><%= sort_link('pages', 'content', params) -%></th>
+      <th><%= sort_link('pages', 'state', params) -%></th>
+      <th> </th>
+    </tr>
+
+  <%- @pages.each do |page| -%>
+    <tr class="<%= cycle('odd', 'even') -%>">
+      <td><%= page.slug -%></td>
+      <td><%= page.sitemap -%></td>
+      <td><%= page.noindex -%></td>
+      <td><%= page.meta_description -%></td>
+      <td><%= page.meta_keywords -%></td>
+      <td><%= page.page_title -%></td>
+      <td><%= page.window_title -%></td>
+      <td><%= page.content -%></td>
+      <td><%= page.state -%></td>
+      <td class="crud_links"><%= crud_links(page, 'page', [:show, :edit, :delete]) -%></td>
+    </tr>
+  <%- end -%>
+  </table>
+<%- end -%>
+
+<br />
+
+<%= link_to 'New Page', new_page_path, :class => 'button' -%>

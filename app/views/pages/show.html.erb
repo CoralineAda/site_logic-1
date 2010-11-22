@@ -1,0 +1,22 @@
+<%- set_title 'Page Details' -%>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Page' -%>
+
+  <div class="form_column">
+    <%= faux_field 'Slug', @page.slug %>
+    <%= faux_field 'Sitemap', @page.sitemap %>
+    <%= faux_field 'Noindex', @page.noindex %>
+    <%= faux_field 'Meta Description', @page.meta_description %>
+    <%= faux_field 'Meta Keywords', @page.meta_keywords %>
+  </div>
+  <div class="form_column">
+    <%= faux_field 'Page Title', @page.page_title %>
+    <%= faux_field 'Window Title', @page.window_title %>
+    <%= faux_field 'Content', @page.content %>
+    <%= faux_field 'State', @page.state %>
+  </div>
+</fieldset>
+
+<%= link_to 'Edit', edit_page_path(@page), :class => 'button' -%>
+<%= link_to 'Back', pages_path, :class => 'button' -%>
