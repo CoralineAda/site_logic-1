@@ -63,7 +63,11 @@ class Page
   end
 
   def humanize_path
-    "/#{self.slug}/"
+    if self.slug == ''
+      "/"
+    else
+      "/#{self.slug}/"
+    end
   end
     
   def publish!
