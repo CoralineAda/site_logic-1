@@ -6,13 +6,15 @@ GIT
 
 GIT
   remote: git@github.com:Bantik/site_logic.git
-  revision: fc567ec
+  revision: 57030e6
   specs:
-    site_logic (0.0.0)
+    site_logic (0.0.1)
       bson_ext
       mongoid (>= 2.0.0.beta.17)
+      mongoid-tree
       rails (= 3.0.1)
       scaffold_logic
+      site_logic (>= 0.0.0)
       tiny_mce
 
 GEM
@@ -154,7 +156,7 @@ GEM
       rubyzip
     spork (0.8.4)
     term-ansicolor (1.0.5)
-    thor (0.14.4)
+    thor (0.14.6)
     tiny_mce (0.1.4)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
