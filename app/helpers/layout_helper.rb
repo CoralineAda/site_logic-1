@@ -43,21 +43,18 @@ module LayoutHelper
   def crud_links(model, instance_name, actions, args={})
     _html = ''
     _path = args.delete(:path) || model
-    _edit_path = args.delete(:edit_path) || eval("edit_#{instance_name}_path(model)") if actions.include?(:edit)
+    _new_path = args.delete(:new_path) || eval("new_#{instance_name}_path(model)")
+    _edit_path = args.delete(:edit_path) || eval("edit_#{instance_name}_path(model)")
+    _delete_path = args.delete(:delete_path) || eval("delete_#{instance_name}_path(model)")
+    _view_path = args.delete(:view_path) || eval("#{instance_name}_path(model)")
     _options = args.empty? ? '' : ", #{args.map{|k,v| ":#{k} => #{v}"}}"
 
-    if use_crud_icons
-      _html << link_to(image_tag('icons/view.png', :class => 'crud_icon', :width => 14, :height => 14), _path, :title => "View#{_options}") if actions.include?(:show)
-      _html << link_to(image_tag('icons/edit.png', :class => 'crud_icon', :width => 14, :height => 14), _edit_path, :title => "Edit#{_options}") if actions.include?(:edit)
-      _html << link_to(image_tag('icons/delete.png', :class => 'crud_icon', :width => 14, :height => 14), _path, :confirm => 'Are you sure? This action cannot be undone.', :method => :delete, :title => "Delete#{_options}") if actions.include?(:delete)
-    else
-      _html << link_to('View', _path, :title => 'View', :class => "crud_link#{_options}") if actions.include?(:show)
-      _html << link_to('Edit', _edit_path, :title => 'Edit', :class => "crud_link#{_options}") if actions.include?(:edit)
-      _html << link_to('Delete', _path, :confirm => 'Are you sure? This action cannot be undone.', :method => :delete, :title => 'Delete', :class => "crud_link#{_options}") if actions.include?(:delete)
-    end
-
+    _html << link_to(image_tag('icons/view.png', :class => 'crud_icon', :width => 14, :height => 14), _view_path, :title => "View#{_options}") if actions.include?(:show)
+    _html << link_to(image_tag('icons/edit.png', :class => 'crud_icon', :width => 14, :height => 14), _edit_path, :title => "Edit#{_options}") if actions.include?(:edit)
+    _html << link_to(image_tag('icons/delete.png', :class => 'crud_icon', :width => 14, :height => 14), _delete_path, :confirm => 'Are you sure? This action cannot be undone.', :method => :delete, :title => "Delete#{_options}") if actions.include?(:delete)
     _html.html_safe
   end
+
 
   # Display CRUD icons or links, according to setting in use_crud_icons method.
   # This method works with nested resources.
@@ -196,10 +193,10 @@ module LayoutHelper
   
   def set_title(title = nil)
     if title.nil?
-      content_for(:title) { 'RemarkIT' }
+      content_for(:title) { 'SiteLogic' }
       content_for(:page_title) {  }
     else
-      content_for(:title) { title + ' - RemarkIT' }
+      content_for(:title) { title + ' - SiteLogic' }
       content_for(:page_title) { title }
     end
   end

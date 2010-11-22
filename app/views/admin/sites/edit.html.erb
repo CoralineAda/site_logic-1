@@ -1,3 +1,5 @@
 <% set_title "Edit a Site" %>
 
-<%= render 'form' %>
+<%= form_for @site, :url => admin_site_url(@site) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f}  %>
+<%- end -%>

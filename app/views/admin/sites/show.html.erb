@@ -4,17 +4,18 @@
   <%= legend_tag 'About This Site' -%>
 
   <div class="form_column">
-    <%= faux_field 'Domain', @site.domain %>
     <%= faux_field 'Name', @site.name %>
-    <%= faux_field 'State', @site.state %>
-    <%= faux_field 'Redirect To', @site.redirect_to %>
+    <%= faux_field 'Domain', @site.domain %>
+    <%= faux_field 'Status', @site.status %>
+    <%= faux_field 'Activation Date', @site.activation_date.to_s(:concise) if @site.active? %>
+    <%= faux_field 'Redirect To', @site.redirect_to unless @site.redirect_to.blank? %>
   </div>
   <div class="form_column">
-    <%= faux_field 'Google Profile', @site.google_profile_id %>
-    <%= faux_field 'Google Webmaster Code', @site.google_webmaster_code %>
-    <%= faux_field 'Yahoo Webmaster Code', @site.yahoo_webmaster_code %>
-    <%= faux_field 'Bing Webmaster Code', @site.bing_webmaster_code %>
-    <%= faux_field 'Netinsert Code', @site.netinsert_code %>
+    <%= faux_field 'Google Profile', @site.google_profile_id unless @site.google_profile_id.blank? %>
+    <%= faux_field 'Google Webmaster Code', @site.google_webmaster_code unless @site.google_webmaster_code.blank? %>
+    <%= faux_field 'Yahoo Webmaster Code', @site.yahoo_webmaster_code unless @site.yahoo_webmaster_code.blank? %>
+    <%= faux_field 'Bing Webmaster Code', @site.bing_webmaster_code unless @site.bing_webmaster_code.blank? %>
+    <%= faux_field 'Netinsert Code', @site.netinsert_code unless @site.netinsert_code.blank? %>
   </div>
 </fieldset>
 

@@ -15,6 +15,7 @@ class Admin::SitesController < ApplicationController
   def create
     @site = Site.new(params[:site])
     if @site.save
+      @site.activate! if params[:site][:state] == 'Active'
       flash[:notice] = "Successfully created site."
       redirect_to admin_site_path(@site)
     else
@@ -29,6 +30,8 @@ class Admin::SitesController < ApplicationController
   def update
     @site = Site.find(params[:id])
     if @site.update_attributes(params[:site])
+      @site.activate! if params[:site][:state] == 'Active'
+      @site.deactivate! if params[:site][:state] == 'Inactive'
       flash[:notice] = "Successfully updated site."
       redirect_to admin_site_path(@site)
     else

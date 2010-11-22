@@ -32,7 +32,8 @@ class Site
   embeds_many :pages
   
   # Behavior =======================================================================================
-
+  attr_accessor :status
+  
   # Callbacks ======================================================================================
 
   # Validations ====================================================================================
@@ -61,4 +62,12 @@ class Site
     self.state != "active"
   end
 
+  def state
+    self[:state] || 'inactive'
+  end
+  
+  def status
+    self.state.capitalize
+  end
+  
 end
