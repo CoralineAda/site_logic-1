@@ -1,14 +1,16 @@
-<ul>
-  <%- @site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |link| -%>
-    <li>
-      <%= link_to link.link_text, link.url, :title => link.link_title -%>   
-      <%- unless link.children.blank? -%>
-        <ul class="subnav" id="link_<%= link.id -%>">
-        <%- link.children.each do |child| -%>
-          <li><%= link_to child.link_text, child.url, :title => child.link_title -%></li>
+<%- if @current_site -%>
+  <ul>
+    <%- @current_site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |link| -%>
+      <li>
+        <%= link_to link.link_text, link.url, :title => link.link_title -%>   
+        <%- unless link.children.blank? -%>
+          <ul class="subnav" id="link_<%= link.id -%>">
+          <%- link.children.each do |child| -%>
+            <li><%= link_to child.link_text, child.url, :title => child.link_title -%></li>
+          <%- end -%>
+          </ul>
         <%- end -%>
-        </ul>
-      <%- end -%>
-    </li>
-  <%- end -%>
-</ul>
+      </li>
+    <%- end -%>
+  </ul>
+<%- end -%>
