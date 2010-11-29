@@ -14,12 +14,10 @@
   <tbody id="content_list">
   <%- @nav_items.each do |nav_item| -%>
     <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= nav_item.id -%>">
-      <td><%= nav_item.link_text -%></td>
+      <td><%= link_to nav_item.link_text, admin_site_nav_item_path(@site, nav_item) -%></td>
       <td><%= nav_item.link_title -%></td>
       <td><%= nav_item.url -%></td>
       <td class="crud_links">
-        <%= link_to image_tag('/images/icons/view.png'), admin_site_nav_item_path(@site, nav_item) -%>
-        <%= link_to image_tag('/images/icons/edit.png'), edit_admin_site_nav_item_path(@site, nav_item) -%>
         <%= link_to image_tag('/images/icons/delete.png'), admin_site_nav_item_path(@site, nav_item), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
       </td>
       <td style="width: 19px; cursor: move; " id="content_<%= nav_item.id -%>">

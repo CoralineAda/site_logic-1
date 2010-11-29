@@ -1,5 +1,14 @@
 <ul>
   <%- @site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |link| -%>
-    <%= tab_for( link.url, link.link_text, link.link_text.to_sym.to_s ).html_safe -%>
+    <li>
+      <%= link_to link.link_text, link.url, :title => link.link_title -%>   
+      <%- unless link.children.blank? -%>
+        <ul class="subnav" id="link_<%= link.id -%>">
+        <%- link.children.each do |child| -%>
+          <li><%= link_to child.link_text, child.url, :title => child.link_title -%></li>
+        <%- end -%>
+        </ul>
+      <%- end -%>
+    </li>
   <%- end -%>
 </ul>
