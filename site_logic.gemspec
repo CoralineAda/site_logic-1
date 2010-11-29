@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.3.0"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "app/controllers/admin/nav_items_controller.rb",
     "app/controllers/admin/pages_controller.rb",
     "app/controllers/admin/sites_controller.rb",
     "app/controllers/application_controller.rb",
@@ -34,9 +35,15 @@ Gem::Specification.new do |s|
     "app/models/ckeditor/asset.rb",
     "app/models/ckeditor/attachment_file.rb",
     "app/models/ckeditor/picture.rb",
+    "app/models/nav_item.rb",
     "app/models/page.rb",
     "app/models/site.rb",
     "app/uploaders/image_uploader.rb",
+    "app/views/admin/nav_items/_form.html.erb",
+    "app/views/admin/nav_items/edit.html.erb",
+    "app/views/admin/nav_items/index.html.erb",
+    "app/views/admin/nav_items/new.html.erb",
+    "app/views/admin/nav_items/show.html.erb",
     "app/views/admin/pages/_form.html.erb",
     "app/views/admin/pages/_index.html.erb",
     "app/views/admin/pages/edit.html.erb",
@@ -48,6 +55,7 @@ Gem::Specification.new do |s|
     "app/views/admin/sites/new.html.erb",
     "app/views/admin/sites/show.html.erb",
     "app/views/layouts/application.html.erb",
+    "app/views/nav_items/_navigation.html.erb",
     "app/views/pages/show.html.erb",
     "app/views/shared/_nav_tabs.html.erb",
     "config.ru",
@@ -68,7 +76,6 @@ Gem::Specification.new do |s|
     "config/locales/en.yml",
     "config/mongoid.yml",
     "config/routes.rb",
-    "config/tiny_mce.yml",
     "db/seeds.rb",
     "doc/README_FOR_APP",
     "doc/TODO",
@@ -79,6 +86,7 @@ Gem::Specification.new do |s|
     "features/support/paths.rb",
     "init.rb",
     "lib/site_logic.rb",
+    "lib/site_logic/engine.rb",
     "lib/site_logic/railtie.rb",
     "log/production.log",
     "log/server.log",
@@ -779,8 +787,10 @@ Gem::Specification.new do |s|
     "spec/blueprints.rb",
     "spec/controllers/admin/pages_controller_spec.rb",
     "spec/controllers/admin/sites_controller_spec.rb",
+    "spec/controllers/nav_items_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
+    "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
     "spec/models/site_spec.rb",
     "spec/site_logic_spec.rb",
@@ -799,8 +809,10 @@ Gem::Specification.new do |s|
     "spec/blueprints.rb",
     "spec/controllers/admin/pages_controller_spec.rb",
     "spec/controllers/admin/sites_controller_spec.rb",
+    "spec/controllers/nav_items_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
+    "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
     "spec/models/site_spec.rb",
     "spec/site_logic_spec.rb",
