@@ -1,4 +1,4 @@
-SiteLogic::Application.routes.draw do
+Rails.application.routes.draw do
 
   class SiteConstraint
     def initialize; end
