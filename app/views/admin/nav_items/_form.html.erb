@@ -1,0 +1,32 @@
+  <% if @nav_item.errors.any? %>
+    <div id="error_explanation">
+      <h2>Please correct the following errors::</h2>
+      <% @nav_item.errors.to_a.in_groups(2, false).each do |group| %>
+      <ul>
+        <% group.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <% end %>
+      <br style="clear: both;" />
+    </div>
+    <br style="clear: both;" />
+  <% end %>
+
+  <fieldset class="form_container">
+    <%= legend_tag 'Navigation Link Details' -%>
+
+    <div class="form_column">
+      <%= f.text_field :link_text -%>
+      <%= f.text_field :link_title -%>
+    </div>
+    <div class="form_column">
+      <%= f.text_field :url, :label => 'URL' -%>
+      <%= f.select :parent_id, @root_links.map{|l| [l.link_title, l.id]} unless @root_links.blank? -%>
+    </div>
+
+  </fieldset>
+
+  <%= f.submit 'Save', :class => 'button' -%>
+  <%= link_to 'Cancel', admin_site_nav_items_path(@site), :class => 'button' -%>
+  <br style="clear: both;" />

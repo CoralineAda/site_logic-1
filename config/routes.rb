@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   class SiteConstraint
     def initialize; end
     def matches?(request)
-      ! Site.where(:domain => request.domain).first.nil?
+      ! Site.where(:domain => request.domain).first.nil? && request.subdomain != 'admin'
     end
   end
 
@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    root :to => "site_logic/admin/sites#index"
+    match 'sites/:site_id/nav_items/reorder', :to => 'nav_items#reorder', :as => 'site_reorder_nav_items'
     resources :sites do
+      resources :nav_items
       resources :pages
     end
   end

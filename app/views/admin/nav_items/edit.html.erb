@@ -1,0 +1,5 @@
+<% set_title "Edit a Navigation Linl" %>
+
+<%= form_for @nav_item, :url => admin_site_nav_item_url(:site_id => @site.id, :id => @nav_item) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f}  %>
+<%- end -%>

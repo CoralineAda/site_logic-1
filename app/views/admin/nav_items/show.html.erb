@@ -1,0 +1,18 @@
+<%- set_title 'Nav Item Details' -%>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Nav Item' -%>
+
+  <div class="form_column">
+    <%= faux_field 'Title', @nav_item.title %>
+    <%= faux_field 'Link Text', @nav_item.link_text %>
+    <%= faux_field 'Url', @nav_item.url %>
+  </div>
+  <div class="form_column">
+    <%= faux_field 'Parent', @nav_item.parent_id %>
+    <%= faux_field 'Position', @nav_item.position %>
+  </div>
+</fieldset>
+
+<%= link_to 'Edit', edit_nav_item_path(@nav_item), :class => 'button' -%>
+<%= link_to 'Back', nav_items_path, :class => 'button' -%>

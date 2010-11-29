@@ -1,0 +1,5 @@
+<ul>
+  <%- @site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |link| -%>
+    <%= tab_for( link.url, link.link_text, link.link_text.to_sym.to_s ).html_safe -%>
+  <%- end -%>
+</ul>

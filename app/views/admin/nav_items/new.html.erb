@@ -1,0 +1,5 @@
+<% set_title "Create a Navigation Link" %>
+
+<%= form_for @nav_item, :url => admin_site_nav_items_url(@site) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f}  %>
+<%- end -%>

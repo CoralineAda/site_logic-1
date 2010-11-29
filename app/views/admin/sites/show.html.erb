@@ -14,7 +14,8 @@
   </div>
 </fieldset>
 
-<%= link_to 'Edit', edit_admin_site_path(@site), :class => 'button' -%>
+<%= link_to 'Edit Site', edit_admin_site_path(@site), :class => 'button' -%>
+<%= link_to 'Edit Navigation', admin_site_nav_items_path(@site), :class => 'button' -%>
 <%= link_to 'Back', admin_sites_path, :class => 'button' -%>
 <br style="clear: both;" />
 
