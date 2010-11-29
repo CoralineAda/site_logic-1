@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.4.0"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
     "app/models/site.rb",
     "app/uploaders/image_uploader.rb",
     "app/views/admin/nav_items/_form.html.erb",
+    "app/views/admin/nav_items/_index.html.erb",
     "app/views/admin/nav_items/edit.html.erb",
     "app/views/admin/nav_items/index.html.erb",
     "app/views/admin/nav_items/new.html.erb",
