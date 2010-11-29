@@ -6,6 +6,10 @@ module SiteLogic
   def self.setup
     yield self
   end
+
+  class Engine < Rails::Engine
+    engine_name :site_logic
+  end
   
   # FIXME move to a gem!
   module Base
