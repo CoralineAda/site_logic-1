@@ -6,7 +6,8 @@ gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '3.0.1'
 gem 'scaffold_logic', :git => 'git@github.com:Bantik/ScaffoldLogic.git'
-gem 'tiny_mce'
+gem 'ckeditor', :git => 'git@github.com:Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
+gem 'paperclip'
 
 group :development, :test do
   gem 'be_valid_asset'

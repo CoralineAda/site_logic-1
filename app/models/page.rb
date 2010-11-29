@@ -65,7 +65,7 @@ class Page
     if self.slug == ''
       "/"
     else
-      "/#{self.slug}/"
+      "/#{self.slug}/".gsub(/\/\//,'/')
     end
   end
     

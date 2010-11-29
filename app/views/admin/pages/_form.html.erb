@@ -22,13 +22,21 @@
     <div class="form_column">
       <%= f.text_field :page_title -%>
       <%= f.text_field :window_title -%>
-      <%= f.text_field :desired_slug, :value => @page.slug -%>
-      <%= f.select :state, Page::STATES.map{|s| s.capitalize}, :value => @page.status -%>
-      <%= f.check_box :sitemap, :label => false, :inline_label => 'Include in Sitemap' -%>
-      <%= f.check_box :noindex, :label => false, :inline_label => 'Disable Indexing' -%>
+      <%= f.text_field :desired_slug, :label => 'Permalink', :value => @page.slug -%>
     </div>
     <div class="form_column">
+      <%= f.select :state, Page::STATES.map{|s| s.capitalize}, :value => @page.status, :label => 'Status' -%>
+      <%= f.check_box :sitemap, :label => 'Sitemap', :help => 'Include this page in the XML sitemap for search engine spiders?', :inline_label => 'Include in Sitemap' -%><br />
+      <%= f.check_box :noindex, :label => 'Spidering Directive', :help => 'Allow search engine spiders to index this page?', :inline_label => 'Disable Indexing' -%>
+    </div>
+  </fieldset>
+
+  <fieldset class="form_container">
+    <%= legend_tag 'Meta Content&nbsp;' -%>
+    <div class="form_column">
       <%= f.text_area :meta_description -%>
+    </div>
+    <div class="form_column">
       <%= f.text_area :meta_keywords -%>
     </div>
   </fieldset>
@@ -43,5 +51,6 @@
   </fieldset>
 
   <%= f.submit 'Save', :class => 'button' -%>
+  <%= f.submit 'Preview', :class => 'button' -%>
   <%= link_to 'Cancel', site_path(@site), :class => 'button' -%>
   <br style="clear: both;" />
