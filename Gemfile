@@ -1,13 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'paperclip'
 gem 'bson_ext'
-gem 'site_logic', :git => 'git@github.com:Bantik/site_logic.git'
+gem 'carrierwave'
+gem 'ckeditor', :git => 'git@github.com:Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
 gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '3.0.1'
+gem 'rmagick'
 gem 'scaffold_logic', :git => 'git@github.com:Bantik/ScaffoldLogic.git'
-gem 'ckeditor', :git => 'git@github.com:Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
+gem 'site_logic', :git => 'git@github.com:Bantik/site_logic.git'
 
 group :development, :test do
   gem 'be_valid_asset'

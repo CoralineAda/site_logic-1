@@ -1,9 +1,11 @@
 require 'mime/types'
+require 'carrierwave/orm/mongoid'
 
 class Ckeditor::Asset
 
   include Mongoid::Document
-  
+
+  field :data
   field :data_file_name
   field :data_content_type
   field :data_file_size, :type => Integer
@@ -13,6 +15,8 @@ class Ckeditor::Asset
   field :guid
   field :locale, :default => 0, :type => Integer
 
+  mount_uploader :data, ImageUploader
+  
   before_validation :make_content_type
   before_create :make_dimensions
 
