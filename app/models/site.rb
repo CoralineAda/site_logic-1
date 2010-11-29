@@ -66,7 +66,7 @@ class Site
   end
 
   def home_page
-    self.pages.where(:slug => '').first
+    self.pages.where(:slug => '/').first
   end
   
   def inactive?

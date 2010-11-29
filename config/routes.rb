@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   class SiteConstraint
     def initialize; end
     def matches?(request)
-      ! Site.where(:domain => request.domain).blank?
+      ! Site.where(:domain => request.domain).first.nil?
     end
   end
 
@@ -13,10 +13,6 @@ Rails.application.routes.draw do
     match ':page_slug(/:nested_slug)/', :to => 'site_logic/pages#show'
   end
   
-  resources :sites do
-    resources :pages
-  end
-
   namespace :admin do
     root :to => "site_logic/admin/sites#index"
     resources :sites do

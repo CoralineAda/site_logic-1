@@ -41,11 +41,16 @@ class Page
 
   class DesiredSlugPresenceAndUniquenessValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
-      if object.desired_slug.nil? && object.slug.nil?
-        object.errors[attribute] << (options[:message] || "cannot be blank.")
-      elsif object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
+      return unless object.desired_slug
+      if object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
         object.errors[attribute] << (options[:message] || "must be unique.")
       end
+
+#       if object.desired_slug.nil? && object.slug.nil?
+#         object.errors[attribute] << (options[:message] || "cannot be blank.")
+#       elsif object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
+#         object.errors[attribute] << (options[:message] || "must be unique.")
+#       end
     end
   end
   
@@ -65,7 +70,7 @@ class Page
     if self.slug == ''
       "/"
     else
-      "/#{self.slug}/".gsub(/\/\//,'/')
+      "/#{self.slug}/".gsub(/\/\//,'/').gsub(/\/\//,'/')
     end
   end
     

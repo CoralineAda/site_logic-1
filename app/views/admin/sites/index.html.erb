@@ -9,7 +9,6 @@
       <th><%= sort_link('sites', 'name', params) -%></th>
       <th><%= sort_link('sites', 'state', params) -%></th>
       <th><%= sort_link('sites', 'redirect_to', params) -%></th>
-      <th> </th>
     </tr>
 
   <%- @sites.each do |site| -%>
@@ -18,7 +17,6 @@
       <td><%= site.name -%></td>
       <td><%= site.state -%></td>
       <td><%= site.redirect_to -%></td>
-      <td class="crud_links"><%= crud_links_for_admin(site, 'site', [:show, :edit, :delete]) -%></td>
     </tr>
   <%- end -%>
   </table>
