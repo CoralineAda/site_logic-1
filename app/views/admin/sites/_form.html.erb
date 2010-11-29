@@ -20,6 +20,7 @@
     <div class="form_column">
       <%= f.text_field :name -%>
       <%= f.text_field :domain -%>
+      <%= f.select :layout, Site.layouts, :selected => @site.layout -%>
       <%= f.select :state, Site::STATES.map{|s| s.capitalize}, :selected => @site.state.capitalize, :label => 'Status' -%>
       <div id="redirect_field" style="<%= @site.inactive? ? "display: block;" : "display: none;" -%>"><%= f.text_field :redirect_to -%></div>
     </div>

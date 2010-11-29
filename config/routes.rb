@@ -8,19 +8,17 @@ SiteLogic::Application.routes.draw do
   end
 
   constraints(SiteConstraint.new) do
+    root :to => "pages#show"
     match ':page_slug/', :to => 'pages#show'
+    match ':page_slug(/:nested_slug)/', :to => 'pages#show'
   end
   
   namespace :admin do
+    root :to => "admin/sites#index"
     resources :sites do
       resources :pages
     end
   end
 
-  resources :sites, :only => :show do
-    resources :pages, :only => :show
-  end
   
-  root :to => "admin/sites#index"
-
 end

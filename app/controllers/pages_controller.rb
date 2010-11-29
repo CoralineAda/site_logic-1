@@ -1,44 +1,16 @@
 class PagesController < ApplicationController
-  def index
-    @pages = Page.all
-  end
-  
+
   def show
-    @page = Page.find(params[:id])
-  end
-  
-  def new
-    @page = Page.new
-  end
-  
-  def create
-    @page = Page.new(params[:page])
-    if @page.save
-      flash[:notice] = "Successfully created page."
-      redirect_to @page
+    Rails.logger.info("!!! => #{request.domain}")
+    @site = Site.where(:domain => request.domain).first
+    if params[:nested_slug]
+      @page = @site.pages.where(:slug => "/#{params[:page_slug]}/#{params[:nested_slug]}").first
+    elsif params[:page_slug]
+      @page = @site.pages.where(:slug => params[:page_slug]).first
     else
-      render :action => 'new'
+      @page = @site.home_page
     end
+    render :layout => @site.layout
   end
   
-  def edit
-    @page = Page.find(params[:id])
-  end
-  
-  def update
-    @page = Page.find(params[:id])
-    if @page.update_attributes(params[:page])
-      flash[:notice] = "Successfully updated page."
-      redirect_to @page
-    else
-      render :action => 'edit'
-    end
-  end
-  
-  def destroy
-    @page = Page.find(params[:id])
-    @page.destroy
-    flash[:notice] = "Successfully destroyed page."
-    redirect_to pages_url
-  end
 end

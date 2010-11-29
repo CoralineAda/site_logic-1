@@ -8,6 +8,7 @@ class Site
 
   field :domain  
   field :name  
+  field :layout
   field :state  
   field :redirect_to  
   field :google_profile_id  
@@ -44,6 +45,12 @@ class Site
 
   # Class methods ==================================================================================
 
+  def self.layouts
+    basedir = "#{RAILS_ROOT}/app/views/layouts/"
+    files = Dir.glob("#{RAILS_ROOT}/app/views/layouts/*.html.erb")
+    files.map{|f| f.gsub(/.+layouts\/(.+)\.html.erb/, '\1')}
+  end
+  
   # Instance methods ===============================================================================
 
   def active?
@@ -58,6 +65,10 @@ class Site
     self.update_attributes(:state => 'inactive', :activation_date => nil)
   end
 
+  def home_page
+    self.pages.where(:slug => '').first
+  end
+  
   def inactive?
     self.state != "active"
   end
