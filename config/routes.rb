@@ -13,12 +13,15 @@ Rails.application.routes.draw do
     match ':page_slug(/:nested_slug)/', :to => 'site_logic/pages#show'
   end
   
+  resources :sites do
+    resources :pages
+  end
+
   namespace :admin do
     root :to => "site_logic/admin/sites#index"
     resources :sites do
       resources :pages
     end
   end
-
   
 end
