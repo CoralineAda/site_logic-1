@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
     "app/controllers/admin/sites_controller.rb",
     "app/controllers/application_controller.rb",
     "app/controllers/pages_controller.rb",
-    "app/controllers/sites_controller.rb",
     "app/helpers/application_helper.rb",
     "app/helpers/layout_helper.rb",
     "app/helpers/remote_link_renderer.rb",
@@ -37,6 +36,7 @@ Gem::Specification.new do |s|
     "app/models/ckeditor/picture.rb",
     "app/models/page.rb",
     "app/models/site.rb",
+    "app/uploaders/image_uploader.rb",
     "app/views/admin/pages/_form.html.erb",
     "app/views/admin/pages/_index.html.erb",
     "app/views/admin/pages/edit.html.erb",
@@ -48,17 +48,8 @@ Gem::Specification.new do |s|
     "app/views/admin/sites/new.html.erb",
     "app/views/admin/sites/show.html.erb",
     "app/views/layouts/application.html.erb",
-    "app/views/pages/_form.html.erb",
-    "app/views/pages/edit.html.erb",
-    "app/views/pages/index.html.erb",
-    "app/views/pages/new.html.erb",
     "app/views/pages/show.html.erb",
     "app/views/shared/_nav_tabs.html.erb",
-    "app/views/sites/_form.html.erb",
-    "app/views/sites/edit.html.erb",
-    "app/views/sites/index.html.erb",
-    "app/views/sites/new.html.erb",
-    "app/views/sites/show.html.erb",
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
@@ -72,7 +63,6 @@ Gem::Specification.new do |s|
     "config/initializers/formats.rb",
     "config/initializers/inflections.rb",
     "config/initializers/mime_types.rb",
-    "config/initializers/paperclip.rb",
     "config/initializers/secret_token.rb",
     "config/initializers/session_store.rb",
     "config/locales/en.yml",
@@ -135,8 +125,6 @@ Gem::Specification.new do |s|
     "public/images/layout/text_field_error_bg.png",
     "public/images/layout/th_bg.png",
     "public/images/layout/th_bg_selected.png",
-    "public/images/rails.png",
-    "public/images/tiny_mce/spinner.gif",
     "public/javascripts/application.js",
     "public/javascripts/ckeditor/.htaccess",
     "public/javascripts/ckeditor/CHANGES.html",
@@ -827,13 +815,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
-      s.add_runtime_dependency(%q<site_logic>, [">= 0"])
+      s.add_runtime_dependency(%q<carrierwave>, [">= 0"])
+      s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, ["= 3.0.1"])
+      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
-      s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
-      s.add_runtime_dependency(%q<paperclip>, [">= 0"])
+      s.add_runtime_dependency(%q<site_logic>, [">= 0"])
       s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_development_dependency(%q<capybara>, [">= 0"])
       s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
@@ -849,13 +838,14 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
       s.add_dependency(%q<bson_ext>, [">= 0"])
-      s.add_dependency(%q<site_logic>, [">= 0"])
+      s.add_dependency(%q<carrierwave>, [">= 0"])
+      s.add_dependency(%q<ckeditor>, [">= 0"])
       s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, ["= 3.0.1"])
+      s.add_dependency(%q<rmagick>, [">= 0"])
       s.add_dependency(%q<scaffold_logic>, [">= 0"])
-      s.add_dependency(%q<ckeditor>, [">= 0"])
-      s.add_dependency(%q<paperclip>, [">= 0"])
+      s.add_dependency(%q<site_logic>, [">= 0"])
       s.add_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_dependency(%q<capybara>, [">= 0"])
       s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -872,13 +862,14 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<bson_ext>, [">= 0"])
-    s.add_dependency(%q<site_logic>, [">= 0"])
+    s.add_dependency(%q<carrierwave>, [">= 0"])
+    s.add_dependency(%q<ckeditor>, [">= 0"])
     s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, ["= 3.0.1"])
+    s.add_dependency(%q<rmagick>, [">= 0"])
     s.add_dependency(%q<scaffold_logic>, [">= 0"])
-    s.add_dependency(%q<ckeditor>, [">= 0"])
-    s.add_dependency(%q<paperclip>, [">= 0"])
+    s.add_dependency(%q<site_logic>, [">= 0"])
     s.add_dependency(%q<be_valid_asset>, [">= 0"])
     s.add_dependency(%q<capybara>, [">= 0"])
     s.add_dependency(%q<cucumber-rails>, [">= 0"])
