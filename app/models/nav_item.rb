@@ -15,7 +15,6 @@ class NavItem
   # Indices ========================================================================================
 
   # Scopes =========================================================================================
-
   scope :roots, :where => {:parent_id => nil}
 
   # Relationships ==================================================================================
@@ -35,5 +34,25 @@ class NavItem
   # Class methods ==================================================================================
   
   # Instance methods ===============================================================================
+
+  def children
+    self.site.nav_items.where(:parent_id => self.id).sort{|a,b| a.position.to_i <=> b.position.to_i}
+  end
+  
+  def parent
+    self.site.nav_items.where(:id => self.parent_id).first
+  end
+  
+  def root?
+    self.parent_id.nil?
+  end
+  
+  def siblings
+    self.parent.children.reject{|c| c == self}
+  end
+  
+  def sub_nav_item?
+    self.parent_id
+  end
 
 end

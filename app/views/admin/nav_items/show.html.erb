@@ -1,18 +1,26 @@
-<%- set_title 'Nav Item Details' -%>
+<%- set_title 'Navigation Link Details' -%>
 
 <fieldset class="form_container">
-  <%= legend_tag 'About This Nav Item' -%>
-
+  <%= legend_tag 'Navigation Link Details' -%>
   <div class="form_column">
-    <%= faux_field 'Title', @nav_item.title %>
     <%= faux_field 'Link Text', @nav_item.link_text %>
-    <%= faux_field 'Url', @nav_item.url %>
-  </div>
-  <div class="form_column">
-    <%= faux_field 'Parent', @nav_item.parent_id %>
-    <%= faux_field 'Position', @nav_item.position %>
+    <%= faux_field 'Link Title', @nav_item.link_title %>
+    <%= faux_field 'URL', @nav_item.url %>
   </div>
 </fieldset>
 
-<%= link_to 'Edit', edit_nav_item_path(@nav_item), :class => 'button' -%>
-<%= link_to 'Back', nav_items_path, :class => 'button' -%>
+<%= link_to 'Edit', edit_admin_site_nav_item_path(@site, @nav_item), :class => 'button' -%>
+<%= link_to 'Back', admin_site_nav_items_path(@site), :class => 'button' -%>
+<br style="clear: both;" />
+
+<fieldset class="form_container">
+  <%= legend_tag 'Sub-Navigation' -%>
+  <%- if @nav_item.children -%>
+    <%- @nav_items = @nav_item.children -%>
+    <%= render 'index' -%>
+  <%- else -%>
+    <p>No sub-navigation links have been created for this navigation item.</p>
+  <%- end -%>
+</fieldset>
+
+<%= link_to 'New Sub-Navigation Link', new_admin_site_nav_item_path(@site, :parent_id => @nav_item.id), :class => 'button' -%>

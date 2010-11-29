@@ -1,0 +1,33 @@
+<p>To reorder the navigation links, drag and drop the rows below using the drag icon on the right hand side of the table.</p>
+
+<table class="standard">
+  <thead>
+    <tr>
+      <th><%= sort_link('nav_items', 'link_text', params) -%></th>
+      <th><%= sort_link('nav_items', 'link_title', params) -%></th>
+      <th><%= sort_link('nav_items', 'url', params) -%></th>
+      <th> </th>
+      <th><%= image_tag '/images/icons/move_white.png' -%></th>
+    </tr>
+  </thead>
+  
+  <tbody id="content_list">
+  <%- @nav_items.each do |nav_item| -%>
+    <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= nav_item.id -%>">
+      <td><%= nav_item.link_text -%></td>
+      <td><%= nav_item.link_title -%></td>
+      <td><%= nav_item.url -%></td>
+      <td class="crud_links">
+        <%= link_to image_tag('/images/icons/view.png'), admin_site_nav_item_path(@site, nav_item) -%>
+        <%= link_to image_tag('/images/icons/edit.png'), edit_admin_site_nav_item_path(@site, nav_item) -%>
+        <%= link_to image_tag('/images/icons/delete.png'), admin_site_nav_item_path(@site, nav_item), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
+      </td>
+      <td style="width: 19px; cursor: move; " id="content_<%= nav_item.id -%>">
+        <img src="/images/icons/drag.png" alt="Move" width="19" height="19" class="move_icon" />
+      </td>
+    </tr>
+  <%- end -%>
+  </tbody>
+</table>
+
+<%= sortable_element 'content_list', :update => nil, :url => admin_site_reorder_nav_items_path(@site), :method => :put, :tag => 'tr' -%>
