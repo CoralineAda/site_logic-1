@@ -19,8 +19,8 @@ class Admin::NavItemsController < ApplicationController
     @nav_item = @site.nav_items.create(params[:nav_item])
     if @nav_item.valid?
       flash[:notice] = "Successfully created the navigation link."
-      if @nav_item.parent
-        redirect_to admin_site_nav_item_path(@site, @nav_item.parent)
+      if @nav_item.parent_id
+        redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
       else
         redirect_to admin_site_nav_items_path(@site)
       end

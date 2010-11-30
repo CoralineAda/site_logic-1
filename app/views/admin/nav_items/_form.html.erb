@@ -17,6 +17,7 @@
     <%= legend_tag 'Navigation Link Details' -%>
 
     <div class="form_column">
+      <%= f.hidden_field :parent_id, :value => params[:parent_id] unless params[:parent_id].blank? -%>
       <%= f.text_field :link_text -%>
       <%= f.text_field :link_title -%>
     </div>
