@@ -22,7 +22,6 @@
     </div>
     <div class="form_column">
       <%= f.text_field :url, :label => 'URL' -%>
-      <%= f.select :parent_id, @root_links.map{|l| [l.link_title, l.id]}, :include_blank => 'Select...' unless @root_links.blank? -%>
     </div>
 
   </fieldset>
