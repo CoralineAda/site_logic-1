@@ -9,7 +9,11 @@ class PagesController < ApplicationController
     else
       @page = @site.home_page
     end
-    render :layout => @site.layout
+    if @page
+      render :layout => @site.layout
+    else
+      redirect_to '/404'
+    end
   end
   
 end
