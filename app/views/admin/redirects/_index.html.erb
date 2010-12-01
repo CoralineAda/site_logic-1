@@ -1,0 +1,30 @@
+<%- if @redirects.blank? -%> 
+  <p><em>No redirects have been created yet.</em></p>
+<%- else -%>  
+  <table class="standard">
+    <thead>
+      <tr>
+        <th><%= sort_link('redirects', 'source_url', params) -%></th>
+        <th><%= sort_link('redirects', 'destination_url', params) -%></th>
+        <th> </th>
+      </tr>
+    </thead>
+    
+    <tbody>
+    <%- @redirects.each do |redirect| -%>
+      <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= redirect.id -%>">
+        <td><%= link_to redirect.source_url, admin_site_redirect_path(@site, redirect) -%></td>
+        <td><%= redirect.destination_url -%></td>
+        <td class="crud_links">
+          <%= link_to image_tag('/images/icons/view.png'), admin_site_redirect_path(@site, redirect) -%>
+          <%= link_to image_tag('/images/icons/edit.png'), edit_admin_site_redirect_path(@site, redirect) -%>
+          <%= link_to image_tag('/images/icons/delete.png'), admin_site_redirect_path(@site, redirect), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
+        </td>
+      </tr>
+    <%- end -%>
+    </tbody>
+  </table>
+<%- end -%>
+
+<%= link_to 'New Redirect', new_admin_site_redirect_path(@site), :class => 'button' -%>
+<%= link_to 'Import Redirects', '#', :class => 'button' -%>

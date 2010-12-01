@@ -1,34 +1,32 @@
-<fieldset class="form_container">
-  <%= legend_tag 'Pages' -%>
-  <%- if @pages.empty? -%>
-    <p><em>No pages have been created yet.</em></p>
-  <%- else -%>
-    <table class="standard">
-      <tr>
-        <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'humanize_path', params) -%></th>
-        <th style="width: 30%;"><%= sort_link("admin/sites/#{@site.id}/", 'page_title', params) -%></th>
-        <th style="width: 30%;"><%= sort_link("admin/sites/#{@site.id}/", 'window_title', params) -%></th>
-        <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'state', params) -%></th>
-        <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'updated_at', params) -%></th>
-        <th> </th>
-      </tr>
-  
-    <%- @pages.each do |page| -%>
-      <tr class="<%= cycle('odd', 'even') -%>">
-        <td><%= page.humanize_path -%></td>
-        <td><%= page.page_title -%></td>
-        <td><%= page.window_title -%></td>
-        <td><%= page.status -%></td>
-        <td><%= page.updated_at.to_s(:concise) -%></td>
-        <td class="crud_links">
-          <%= link_to image_tag('/images/icons/view.png'), admin_site_page_path(@site, page) -%>
-          <%= link_to image_tag('/images/icons/edit.png'), edit_admin_site_page_path(@site, page) -%>
-          <%= link_to image_tag('/images/icons/delete.png'), admin_site_page_path(@site, page), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
-        </td>
-      </tr>
-    <%- end -%>
-    </table>
+<%- if @pages.empty? -%>
+  <p><em>No pages have been created yet.</em></p>
+<%- else -%>
+  <table class="standard">
+    <tr>
+      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'humanize_path', params) -%></th>
+      <th style="width: 30%;"><%= sort_link("admin/sites/#{@site.id}/", 'page_title', params) -%></th>
+      <th style="width: 30%;"><%= sort_link("admin/sites/#{@site.id}/", 'window_title', params) -%></th>
+      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'state', params) -%></th>
+      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'updated_at', params) -%></th>
+      <th> </th>
+    </tr>
+
+  <%- @pages.each do |page| -%>
+    <tr class="<%= cycle('odd', 'even') -%>">
+      <td><%= page.humanize_path -%></td>
+      <td><%= page.page_title -%></td>
+      <td><%= page.window_title -%></td>
+      <td><%= page.status -%></td>
+      <td><%= page.updated_at.to_s(:concise) -%></td>
+      <td class="crud_links">
+        <%= link_to image_tag('/images/icons/view.png'), admin_site_page_path(@site, page) -%>
+        <%= link_to image_tag('/images/icons/edit.png'), edit_admin_site_page_path(@site, page) -%>
+        <%= link_to image_tag('/images/icons/delete.png'), admin_site_page_path(@site, page), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
+      </td>
+    </tr>
   <%- end -%>
-</fieldset>
+  </table>
+<%- end -%>
 
 <%= link_to 'New Page', new_admin_site_page_path(@site), :class => 'button' -%>
+

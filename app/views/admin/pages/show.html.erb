@@ -32,4 +32,8 @@
 
 <%= link_to 'Edit', edit_admin_site_page_path(@site, @page), :class => 'button' -%>
 <%= link_to 'Preview', "/", :class => 'button', :target => '_new' -%>
-<%= link_to 'Back', admin_site_path(@site), :class => 'button' -%>
+<%- if @current_site -%>
+  <%= link_to 'Back', root_path, :class => 'button' -%>
+<%- else -%>
+  <%= link_to 'Back', admin_site_path(@site), :class => 'button' -%>
+<%- end -%>

@@ -13,6 +13,8 @@ class Admin::SitesController < ApplicationController
     params[:by] ||= 'humanize_path'; params[:dir] ||= 'ASC'
     @pages = @site.pages.sort{|a,b| a.send(params[:by]) <=> b.send(params[:by])}
     @pages.reverse! if params[:dir] == 'DESC'
+    @redirects = @site.redirects
+    @nav_items = @site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
   
   def new

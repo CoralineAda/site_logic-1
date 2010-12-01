@@ -1,23 +1,25 @@
-<%- set_title 'Site Details' -%>
+<%- set_title 'Site Configuration' -%>
 
 <fieldset class="form_container">
-  <%= legend_tag 'About This Site' -%>
+  <%= legend_tag 'Site Configuration' -%>
 
   <div class="form_column">
     <%= faux_field 'Name', @site.name %>
     <%= faux_field 'Domain', @site.domain %>
+    <%= faux_field 'Layout', @site.layout %>
   </div>
   <div class="form_column">
     <%= faux_field 'Status', @site.status %>
-    <%= faux_field 'Activation Date', @site.activation_date.to_s(:concise) if @site.active? %>
+    <%= faux_field 'Live Date', @site.activation_date.to_s(:concise) if @site.active? %>
     <%= faux_field 'Redirect To', @site.redirect_to unless @site.redirect_to.blank? %>
   </div>
 </fieldset>
 
 <%= link_to 'Edit Site', edit_admin_site_path(@site), :class => 'button' -%>
-<%= link_to 'Edit Navigation', admin_site_nav_items_path(@site), :class => 'button' -%>
-<%= link_to 'Manage Redirects', admin_site_redirects_path(@site), :class => 'button' -%>
-<%= link_to 'Back', admin_sites_path, :class => 'button' -%>
+<%- if Site.count == 1 -%>
+  <%= link_to 'Back', root_path, :class => 'button' -%>
+<%- else -%>
+  <%= link_to 'Back', admin_sites_path, :class => 'button' -%>
+<%- end -%>
 <br style="clear: both;" />
 
-<%= render 'admin/pages/index' -%>

@@ -3,6 +3,16 @@ class Admin::PagesController < ApplicationController
   before_filter :scope_site
   before_filter :scope_page, :only => [:edit, :update, :destroy, :show]
   
+  def index
+    params[:labels] = {
+      :humanize_path => 'URL',
+      :state         => 'Status',
+      :updated_at    => 'Last Modified'
+    }
+    
+    @pages = @site.pages.all
+  end
+  
   def show
   end
   
