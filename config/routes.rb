@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   class SiteConstraint
     def initialize; end
     def matches?(request)
@@ -7,6 +8,19 @@ Rails.application.routes.draw do
     end
   end
 
+  class RedirectConstraint
+    def initialize; end
+    def matches?(request)
+      return false if request.subdomain == 'admin'
+      site = Site.where(:domain => request.domain).first
+      site && ! site.redirects.where(:source_url => "/#{request.path}").first
+    end
+  end
+
+  constraints(RedirectConstraint.new) do
+    match ':source_url', :to => 'site_logic/redirects#show'
+  end
+  
   constraints(SiteConstraint.new) do
     root :to => "site_logic/pages#show"
     match ':page_slug/', :to => 'site_logic/pages#show'
@@ -18,6 +32,7 @@ Rails.application.routes.draw do
     resources :sites do
       resources :nav_items
       resources :pages
+      resources :redirects
     end
   end
   

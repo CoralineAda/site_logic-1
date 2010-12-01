@@ -1,0 +1,5 @@
+<% set_title "Create a Redirect" %>
+
+<%= form_for @redirect, :url => admin_site_redirects_url(@site) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f}  %>
+<%- end -%>

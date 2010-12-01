@@ -1,0 +1,28 @@
+<% if @redirect.errors.any? %>
+  <div id="error_explanation">
+    <h2>Please correct the following errors::</h2>
+    <% @redirect.errors.to_a.in_groups(2, false).each do |group| %>
+    <ul>
+      <% group.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+    <br style="clear: both;" />
+  </div>
+  <br style="clear: both;" />
+<% end %>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Redirect' -%>
+  <div class="form_column">
+    <%= f.text_field :source_url, :label => 'Source URL (e.g. /foo/bar/)' -%>
+  </div>
+  <div class="form_column">
+    <%= f.text_field :destination_url -%>
+  </div>
+</fieldset>
+
+<%= f.submit 'Save', :class => 'button' -%>
+<%= link_to 'Cancel', admin_site_redirects_path(@site), :class => 'button' -%>
+<br style="clear: both;" />

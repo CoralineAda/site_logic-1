@@ -32,6 +32,7 @@ class Site
   # Relationships ==================================================================================
   embeds_many :pages
   embeds_many :nav_items
+  embeds_many :redirects
   
   # Behavior =======================================================================================
   attr_accessor :status

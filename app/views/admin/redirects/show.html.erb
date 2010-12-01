@@ -1,0 +1,15 @@
+<%- set_title 'Redirect Details' -%>
+
+<fieldset class="form_container">
+  <%= legend_tag 'About This Redirect' -%>
+
+  <div class="form_column">
+    <%= faux_field 'Source Url', @redirect.source_url %>
+  </div>
+  <div class="form_column">
+    <%= faux_field 'Destination Url', @redirect.destination_url %>
+  </div>
+</fieldset>
+
+<%= link_to 'Edit', edit_redirect_path(@redirect), :class => 'button' -%>
+<%= link_to 'Back', redirects_path, :class => 'button' -%>
