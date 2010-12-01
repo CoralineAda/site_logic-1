@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.5.1"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2010-11-29}
+  s.date = %q{2010-12-01}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -26,9 +26,11 @@ Gem::Specification.new do |s|
     "VERSION",
     "app/controllers/admin/nav_items_controller.rb",
     "app/controllers/admin/pages_controller.rb",
+    "app/controllers/admin/redirects_controller.rb",
     "app/controllers/admin/sites_controller.rb",
     "app/controllers/application_controller.rb",
     "app/controllers/pages_controller.rb",
+    "app/controllers/redirects_controller.rb",
     "app/helpers/application_helper.rb",
     "app/helpers/layout_helper.rb",
     "app/helpers/remote_link_renderer.rb",
@@ -37,6 +39,7 @@ Gem::Specification.new do |s|
     "app/models/ckeditor/picture.rb",
     "app/models/nav_item.rb",
     "app/models/page.rb",
+    "app/models/redirect.rb",
     "app/models/site.rb",
     "app/uploaders/image_uploader.rb",
     "app/views/admin/nav_items/_form.html.erb",
@@ -50,6 +53,11 @@ Gem::Specification.new do |s|
     "app/views/admin/pages/edit.html.erb",
     "app/views/admin/pages/new.html.erb",
     "app/views/admin/pages/show.html.erb",
+    "app/views/admin/redirects/_form.html.erb",
+    "app/views/admin/redirects/edit.html.erb",
+    "app/views/admin/redirects/index.html.erb",
+    "app/views/admin/redirects/new.html.erb",
+    "app/views/admin/redirects/show.html.erb",
     "app/views/admin/sites/_form.html.erb",
     "app/views/admin/sites/edit.html.erb",
     "app/views/admin/sites/index.html.erb",
@@ -790,9 +798,11 @@ Gem::Specification.new do |s|
     "spec/controllers/admin/sites_controller_spec.rb",
     "spec/controllers/nav_items_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
+    "spec/controllers/redirects_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
     "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
+    "spec/models/redirect_spec.rb",
     "spec/models/site_spec.rb",
     "spec/site_logic_spec.rb",
     "spec/spec.opts",
@@ -812,9 +822,11 @@ Gem::Specification.new do |s|
     "spec/controllers/admin/sites_controller_spec.rb",
     "spec/controllers/nav_items_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
+    "spec/controllers/redirects_controller_spec.rb",
     "spec/controllers/sites_controller_spec.rb",
     "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
+    "spec/models/redirect_spec.rb",
     "spec/models/site_spec.rb",
     "spec/site_logic_spec.rb",
     "spec/spec_helper.rb",
