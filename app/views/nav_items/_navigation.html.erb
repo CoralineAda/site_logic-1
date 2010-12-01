@@ -2,7 +2,7 @@
   <ul>
     <%- @current_site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |link| -%>
       <li>
-        <%= link_to link.link_text, link.url, :title => link.link_title -%>   
+        <%= link_to link.link_text, link.url, :title => link.link_title, :class => :top_level -%>   
         <%- unless link.children.blank? -%>
           <ul class="subnav" id="link_<%= link.id -%>">
           <%- link.children.each do |child| -%>
