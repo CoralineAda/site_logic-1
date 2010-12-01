@@ -25,9 +25,12 @@ class Page
   STATES = ['draft', 'published']
 
   # Scopes ===================================================================================
-  scope :drafts,    :where => {:state => 'draft'}
-  scope :published, :where => {:state => 'published'}
-
+  scope :drafts,      :where => {:state => 'draft'}
+  scope :published,   :where => {:state => 'published'}
+  scope :noindex,     :where => {:noindex => true}
+  scope :indexed,     :where => {:noindex => false}
+  scope :for_sitemap, :where => {:sitemap => true}
+  
   # Relationships ==================================================================================
   embedded_in :site, :inverse_of => :pages
   
