@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     match 'sites/:site_id/nav_items/reorder', :to => 'nav_items#reorder', :as => 'site_reorder_nav_items'
     resources :sites do
       resources :nav_items
-      resources :pages
+      resources :pages do
+        match 'preview', :to => 'pages#preview', :as => 'preview_admin_site_page'
+      end
       resources :redirects
     end
   end

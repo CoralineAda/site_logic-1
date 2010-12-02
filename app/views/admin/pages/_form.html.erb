@@ -51,5 +51,9 @@
 
   <%= f.submit 'Save', :class => 'button' -%>
   <%= f.submit 'Preview', :class => 'button' -%>
-  <%= link_to 'Cancel', admin_site_page_path(@site, @page), :class => 'button' -%>
+  <%- if @page.new_record? -%>
+    <%= link_to 'Cancel', admin_site_pages_path(@site), :class => 'button' -%>
+  <%- else -%>
+    <%= link_to 'Cancel', admin_site_page_path(@site, @page), :class => 'button' -%>
+  <%- end -%>
   <br style="clear: both;" />

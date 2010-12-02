@@ -13,7 +13,7 @@
 
   <%- @pages.each do |page| -%>
     <tr class="<%= cycle('odd', 'even') -%>">
-      <td><%= page.humanize_path -%></td>
+      <td><%= link_to page.humanize_path, admin_site_page_path(@site, page) -%></td>
       <td><%= page.page_title -%></td>
       <td><%= page.window_title -%></td>
       <td><%= page.status -%></td>

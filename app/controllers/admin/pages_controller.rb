@@ -21,13 +21,17 @@ class Admin::PagesController < ApplicationController
   end
   
   def create
-    @page = @site.pages.create(params[:page])
-    if @page.valid?
-      @page.publish! if params[:page][:state] == 'Published'
-      flash[:notice] = "Successfully created the page."
-      redirect_to admin_site_path(@site)
+    if params[:commit] == 'Preview'
+    
     else
-      render :action => 'new'
+      @page = @site.pages.create(params[:page])
+      if @page.valid?
+        @page.publish! if params[:page][:state] == 'Published'
+        flash[:notice] = "Successfully created the page."
+        redirect_to admin_site_path(@site)
+      else
+        render :action => 'new'
+      end
     end
   end
   
@@ -35,13 +39,17 @@ class Admin::PagesController < ApplicationController
   end
   
   def update
-    if @page.update_attributes(params[:page])
-      @page.publish! if params[:page][:state] == 'Published'
-      @page.unpublish! if params[:page][:state] == 'Draft'
-      flash[:notice] = "Successfully updated the page."
-      redirect_to admin_site_path(@site)
+    if params[:commit] == 'Preview'
+      render :action => 'preview', :layout => @page.site.layout
     else
-      render :action => 'edit'
+      if @page.update_attributes(params[:page])
+        @page.publish! if params[:page][:state] == 'Published'
+        @page.unpublish! if params[:page][:state] == 'Draft'
+        flash[:notice] = "Successfully updated the page."
+        redirect_to admin_site_path(@site)
+      else
+        render :action => 'edit'
+      end
     end
   end
   
@@ -51,6 +59,10 @@ class Admin::PagesController < ApplicationController
     redirect_to admin_site_path(@site)
   end
 
+  def preview
+    render :layout => @page.site.layout
+  end
+  
   private
   
   def scope_site
