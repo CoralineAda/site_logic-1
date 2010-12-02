@@ -1,8 +1,12 @@
 class RedirectsController < ApplicationController
 
   def show
-    @redirect = @current_site.redirects.where(:source_url => "/#{params[:source_url]}").first
-    redirect_to @redirect.destination_url
+    Rails.logger.info request.path
+    if @redirect = @current_site.redirects.where(:source_url => "#{request.path}").first
+      redirect_to @redirect.destination_url
+    else
+      redirect_to '/404'
+    end
   end
 
 end
