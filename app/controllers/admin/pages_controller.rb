@@ -22,13 +22,13 @@ class Admin::PagesController < ApplicationController
   
   def create
     if params[:commit] == 'Preview'
-    
+      render :action => 'preview', :layout => @page.site.layout
     else
       @page = @site.pages.create(params[:page])
       if @page.valid?
         @page.publish! if params[:page][:state] == 'Published'
         flash[:notice] = "Successfully created the page."
-        redirect_to admin_site_path(@site)
+        redirect_to admin_site_pages_path(@site)
       else
         render :action => 'new'
       end
@@ -46,7 +46,7 @@ class Admin::PagesController < ApplicationController
         @page.publish! if params[:page][:state] == 'Published'
         @page.unpublish! if params[:page][:state] == 'Draft'
         flash[:notice] = "Successfully updated the page."
-        redirect_to admin_site_path(@site)
+        redirect_to admin_site_pages_path(@site)
       else
         render :action => 'edit'
       end
