@@ -28,7 +28,7 @@ describe Admin::PagesController do
   it "create action should redirect when model is valid" do
     Page.any_instance.stubs(:valid?).returns(true)
     post :create, :site_id => @site.id, :page => {:page_title => 'Foo', :content => 'Bar'}
-    response.should redirect_to(admin_site_url(@site))
+    response.should redirect_to(admin_site_pages_url(@site))
   end
   
   it "edit action should render edit template" do
@@ -43,12 +43,12 @@ describe Admin::PagesController do
 
   it "update action should redirect when model is valid" do
     put :update, :id => @page.id, :site_id => @site.id.to_s, :page => {:desired_slug => 'foozball'}
-    response.should redirect_to(admin_site_url(@site))
+    response.should redirect_to(admin_site_pages_url(@site))
   end
   
   it "destroy action should destroy model and redirect to index action" do
     delete :destroy, :id => @page.id, :site_id => @site.id.to_s
-    response.should redirect_to(admin_site_url(@site))
+    response.should redirect_to(admin_site_pages_url(@site))
     Page.where(:id => @page.id).first.should be_nil
   end
 

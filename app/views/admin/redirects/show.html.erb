@@ -11,5 +11,5 @@
   </div>
 </fieldset>
 
-<%= link_to 'Edit', edit_redirect_path(@redirect), :class => 'button' -%>
-<%= link_to 'Back', redirects_path, :class => 'button' -%>
+<%= link_to 'Edit', edit_admin_site_redirect_path(@site, @redirect), :class => 'button' -%>
+<%= link_to 'Back', admin_site_redirects_path(@site), :class => 'button' -%>
