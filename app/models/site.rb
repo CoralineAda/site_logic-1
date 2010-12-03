@@ -48,8 +48,8 @@ class Site
   # Class methods ==================================================================================
 
   def self.layouts
-    basedir = "#{RAILS_ROOT}/app/views/layouts/"
-    files = Dir.glob("#{RAILS_ROOT}/app/views/layouts/*.html.erb")
+    basedir = "#{Rails.root.to_s}/app/views/layouts/"
+    files = Dir.glob("#{Rails.root.to_s}/app/views/layouts/*.html.erb")
     files.map{|f| f.gsub(/.+layouts\/(.+)\.html.erb/, '\1')}
   end
   

@@ -3,8 +3,14 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe PagesController do
   render_views
 
+  before :all do
+    Site.destroy_all
+    @site = Site.make
+    @page = @site.pages.create(:page_title => 'Vampire Bunnies', :desired_slug => 'bunnicula', :content => 'Scary monsters.')
+  end
+
   it "show action should render show template" do
-    get :show, :id => Page.first
+    get :show, :page_slug => '/bunnicula'
     response.should render_template(:show)
   end
   
