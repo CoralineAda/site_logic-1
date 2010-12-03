@@ -56,7 +56,7 @@ class Admin::PagesController < ApplicationController
   def destroy
     @page.destroy
     flash[:notice] = "Successfully destroyed the page."
-    redirect_to admin_site_path(@site)
+    redirect_to admin_site_pages_path(@site)
   end
 
   def preview
