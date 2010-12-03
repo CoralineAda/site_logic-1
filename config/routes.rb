@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     def matches?(request)
       return false if request.subdomain == 'admin'
       site = Site.where(:domain => request.domain).first
-      site && ! site.redirects.where(:source_url => "/#{request.path}").first
+      site && site.redirects.where(:source_url => "#{request.path}").first
     end
   end
 

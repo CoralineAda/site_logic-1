@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @page = @site.pages.where(:slug => "#{params[:page_slug]}/#{params[:nested_slug]}").first
     elsif params[:page_slug]
       @page = @site.pages.where(:slug => params[:page_slug]).first
+      @page = @site.pages.where(:slug => "/#{params[:page_slug]}").first unless @page
     else
       @page = @site.home_page
     end

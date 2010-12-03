@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe RedirectsController do
+describe Admin::RedirectsController do
   render_views
 
   it "index action should render index template" do
