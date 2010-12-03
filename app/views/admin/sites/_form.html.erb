@@ -35,7 +35,11 @@
   </fieldset>
 
   <%= f.submit 'Save', :class => 'button' -%>
-  <%= link_to 'Cancel', admin_site_path(@site), :class => 'button' -%>
+  <%- if Site.count == 1 -%>
+    <%= link_to 'Cancel', admin_site_path(@site), :class => 'button' -%>
+  <%- else -%>
+    <%= link_to 'Cancel', admin_sites_path, :class => 'button' -%>
+  <%- end -%>
   <br style="clear: both;" />
 
   <script type="text/javascript">

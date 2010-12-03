@@ -5,7 +5,8 @@ describe Admin::SitesController do
 
   before :all do
     Site.destroy_all
-    @site = Site.make
+    @site_1 = Site.make
+    @site_2 = Site.make
   end
 
   it "index action should render index template" do
@@ -31,7 +32,8 @@ describe Admin::SitesController do
 
   it "create action should redirect when model is valid" do
     Site.any_instance.stubs(:valid?).returns(true)
-    post :create
+    Site.any_instance.stubs(:activate!).returns(true)
+    post :create, :site => {:state => nil}
     response.should redirect_to(admin_site_url(assigns[:site]))
   end
   
@@ -48,7 +50,7 @@ describe Admin::SitesController do
 
   it "update action should redirect when model is valid" do
     Site.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Site.first.id
+    put :update, :id => Site.first.id, :site => {:state => nil}
     response.should redirect_to(admin_site_url(assigns[:site]))
   end
   
