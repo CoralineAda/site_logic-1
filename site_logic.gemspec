@@ -844,7 +844,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_runtime_dependency(%q<rails>, ["= 3.0.1"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
       s.add_runtime_dependency(%q<rmagick>, [">= 0"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_runtime_dependency(%q<site_logic>, [">= 0"])
