@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2010-12-01}
+  s.date = %q{2011-01-05}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
-    "Gemfile.lock",
     "README.rdoc",
     "Rakefile",
     "VERSION",
@@ -34,6 +33,7 @@ Gem::Specification.new do |s|
     "app/helpers/application_helper.rb",
     "app/helpers/layout_helper.rb",
     "app/helpers/remote_link_renderer.rb",
+    "app/helpers/site_logic_helper.rb",
     "app/models/ckeditor/asset.rb",
     "app/models/ckeditor/attachment_file.rb",
     "app/models/ckeditor/picture.rb",
@@ -51,9 +51,12 @@ Gem::Specification.new do |s|
     "app/views/admin/pages/_form.html.erb",
     "app/views/admin/pages/_index.html.erb",
     "app/views/admin/pages/edit.html.erb",
+    "app/views/admin/pages/index.html.erb",
     "app/views/admin/pages/new.html.erb",
+    "app/views/admin/pages/preview.html.erb",
     "app/views/admin/pages/show.html.erb",
     "app/views/admin/redirects/_form.html.erb",
+    "app/views/admin/redirects/_index.html.erb",
     "app/views/admin/redirects/edit.html.erb",
     "app/views/admin/redirects/index.html.erb",
     "app/views/admin/redirects/new.html.erb",
@@ -795,11 +798,10 @@ Gem::Specification.new do |s|
     "site_logic.gemspec",
     "spec/blueprints.rb",
     "spec/controllers/admin/pages_controller_spec.rb",
+    "spec/controllers/admin/redirects_controller_spec.rb",
     "spec/controllers/admin/sites_controller_spec.rb",
-    "spec/controllers/nav_items_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/redirects_controller_spec.rb",
-    "spec/controllers/sites_controller_spec.rb",
     "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
     "spec/models/redirect_spec.rb",
@@ -819,11 +821,10 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/blueprints.rb",
     "spec/controllers/admin/pages_controller_spec.rb",
+    "spec/controllers/admin/redirects_controller_spec.rb",
     "spec/controllers/admin/sites_controller_spec.rb",
-    "spec/controllers/nav_items_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
     "spec/controllers/redirects_controller_spec.rb",
-    "spec/controllers/sites_controller_spec.rb",
     "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
     "spec/models/redirect_spec.rb",
@@ -844,9 +845,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_runtime_dependency(%q<rails>, ["= 3.0.1"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
       s.add_runtime_dependency(%q<rmagick>, [">= 0"])
-      s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_runtime_dependency(%q<site_logic>, [">= 0"])
       s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_development_dependency(%q<capybara>, [">= 0"])
@@ -859,6 +859,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<machinist_mongo>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0"])
       s.add_development_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_development_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_development_dependency(%q<spork>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
@@ -867,9 +868,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<ckeditor>, [">= 0"])
       s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_dependency(%q<rails>, ["= 3.0.1"])
+      s.add_dependency(%q<rails>, [">= 3.0.1"])
       s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<site_logic>, [">= 0"])
       s.add_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_dependency(%q<capybara>, [">= 0"])
@@ -882,6 +882,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<machinist_mongo>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
       s.add_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<spork>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
@@ -891,9 +892,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<ckeditor>, [">= 0"])
     s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
-    s.add_dependency(%q<rails>, ["= 3.0.1"])
+    s.add_dependency(%q<rails>, [">= 3.0.1"])
     s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<site_logic>, [">= 0"])
     s.add_dependency(%q<be_valid_asset>, [">= 0"])
     s.add_dependency(%q<capybara>, [">= 0"])
@@ -906,6 +906,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<machinist_mongo>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
     s.add_dependency(%q<rspec-rails>, [">= 0"])
+    s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<spork>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end

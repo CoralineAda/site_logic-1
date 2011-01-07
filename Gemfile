@@ -5,10 +5,9 @@ gem 'carrierwave'
 gem 'ckeditor', :git => 'git@github.com:Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
 gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
-gem 'rails', '3.0.1'
+gem 'rails', '>= 3.0.1'
 gem 'rmagick'
-gem 'scaffold_logic', :git => 'git@github.com:Bantik/ScaffoldLogic.git'
-gem 'site_logic', :git => 'git@github.com:Bantik/site_logic.git'
+gem 'site_logic', :path => '~/Documents/projects/site_logic'
 
 group :development, :test do
   gem 'be_valid_asset'
@@ -22,5 +21,6 @@ group :development, :test do
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'mocha'
   gem 'rspec-rails'
+  gem 'scaffold_logic', :git => 'git@github.com:Bantik/ScaffoldLogic.git'
   gem 'spork'
 end

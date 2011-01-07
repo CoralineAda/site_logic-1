@@ -15,6 +15,7 @@ tmtags
 
 ## PROJECT::GENERAL
 coverage
+Gemfile.lock
 rdoc
 pkg
 log
