@@ -67,6 +67,10 @@ class Site
     self.update_attributes(:state => 'inactive', :activation_date => nil)
   end
 
+  def footer_navigation
+    self.nav_items.footer(:order => :position)
+  end
+  
   def home_page
     self.pages.where(:slug => '/').first
   end
@@ -75,6 +79,14 @@ class Site
     self.state != "active"
   end
 
+  def primary_navigation
+    self.nav_items.primary(:order => :position)
+  end
+  
+  def secondary_navigation
+    self.nav_items.secondary(:order => :position)
+  end
+  
   def state
     self[:state] || 'inactive'
   end

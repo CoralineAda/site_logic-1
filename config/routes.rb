@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   class SiteConstraint
     def initialize; end
     def matches?(request)

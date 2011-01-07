@@ -19,19 +19,19 @@
   <fieldset class="form_container">
     <%= legend_tag 'Page Details' -%>
     <div class="form_column">
-      <%= f.text_field :page_title -%>
-      <%= f.text_field :window_title -%>
-      <%= f.text_field :desired_slug, :label => 'Permalink', :value => @page.slug || '/'-%>
+      <%= f.text_field :page_title, :help => 'This title will appear on the page before any content, and is used by search engines to identify the main idea of the page.' -%>
+      <%= f.text_field :window_title, :help => 'This title appears at the top of the browser window and is used by search engine spiders to uniquely identify a given page.' -%>
+      <%= f.text_field :desired_slug, :help => "The permalink forms part of the URL for this page. For example, entering my-page will create the URL 'http://www.#{@site.domain}/my-page/'.", :label => 'Permalink', :value => @page.slug || '/'-%>
     </div>
     <div class="form_column">
-      <%= f.select :state, Page::STATES.map{|s| s.capitalize}, :selected => @page.status, :label => 'Status' -%>
+      <%= f.select :state, Page::STATES.map{|s| s.capitalize}, :selected => @page.status, :label => 'Status', :help => 'Content may either be in a published or draft state. Draft content can be previewed but will not appear on the public-facing web site.' -%>
       <%= f.check_box :sitemap, :label => 'Sitemap Inclusion', :help => 'Include this page in the XML sitemap for search engine spiders?', :inline_label => 'Include in Sitemap' -%><br />
       <%= f.check_box :noindex, :label => 'Search Engine Visibility', :help => 'Allow search engine spiders to index this page?', :inline_label => 'Disable Indexing' -%>
     </div>
   </fieldset>
 
   <fieldset class="form_container">
-    <%= legend_tag 'Meta Content' -%>
+    <%= legend_tag 'Meta Content', :help => 'The meta description should provide a brief overview of the content of this page, up to 255 characters. This description may be displayed with the page title on search engine results pages.' -%>
     <div class="form_column">
       <fieldset>
         <label for="page_meta_description">Meta Description (<span id="meta_counter">255</span> characters remaining)</label><br />

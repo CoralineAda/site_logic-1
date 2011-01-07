@@ -5,22 +5,30 @@
   <div class="form_column">
     <%= faux_field 'Link Text', @nav_item.link_text %>
     <%= faux_field 'Link Title', @nav_item.link_title %>
+  </div>
+  <div class="form_column">
     <%= faux_field 'URL', @nav_item.url %>
+    <%= faux_field 'Position', "#{@nav_item.kind} Navigation" %>
+  </div>
+  <br style="clear: both;" />
+  <div class="link_block">
+    <%= link_to 'Edit', edit_admin_site_nav_item_path(@site, @nav_item), :class => 'link_button' -%>
+    <%= link_to 'Back', admin_site_nav_items_path(@site), :class => 'link_button' -%>
   </div>
 </fieldset>
 
-<%= link_to 'Edit', edit_admin_site_nav_item_path(@site, @nav_item), :class => 'button' -%>
-<%= link_to 'Back', admin_site_nav_items_path(@site), :class => 'button' -%>
 <br style="clear: both;" />
 
 <fieldset class="form_container">
   <%= legend_tag 'Sub-Navigation' -%>
-  <%- if @nav_item.children -%>
-    <%- @nav_items = @nav_item.children -%>
-    <%= render 'index' -%>
+  <%- unless @nav_item.children.empty? -%>
+    <%= render :partial => 'index', :locals => {:nav_items => @nav_item.children} -%>
   <%- else -%>
     <p>No sub-navigation links have been created for this navigation item.</p>
   <%- end -%>
+  <br style="clear: both;" />
+  <div class="link_block">
+    <%= link_to 'New Sub-Navigation Link', new_admin_site_nav_item_path(@site, :parent_id => @nav_item.id), :class => 'link_button' -%>
+  </div>
 </fieldset>
 
-<%= link_to 'New Sub-Navigation Link', new_admin_site_nav_item_path(@site, :parent_id => @nav_item.id), :class => 'button' -%>

@@ -4,7 +4,7 @@ class Admin::NavItemsController < ApplicationController
   before_filter :scope_nav_item, :except => [:index, :new]
 
   def index
-    @nav_items = @root_links.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    @primary_nav_items = @root_links.primary.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
   
   def new

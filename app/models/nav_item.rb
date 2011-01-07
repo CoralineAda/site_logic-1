@@ -11,18 +11,26 @@ class NavItem
   field :url
   field :parent_id  
   field :position, :type => Integer
+  field :kind
   
   # Indices ========================================================================================
 
   # Scopes =========================================================================================
-  scope :roots, :where => {:parent_id => nil}
-
+  scope :roots,     :where => {:parent_id => nil}
+  scope :primary,   :where => {:kind => 'Main'}
+  scope :secondary, :where => {:kind => 'Secondary'}
+  scope :footer,    :where => {:kind => 'Footer'}
+  
   # Relationships ==================================================================================
   embedded_in :site, :inverse_of => :nav_items
   
   # Behavior =======================================================================================
   attr_accessor :status
   
+  # Constants ======================================================================================
+  
+  KINDS = ["Main", "Secondary", "Footer"]
+
   # Callbacks ======================================================================================
 
   # Validations ====================================================================================
