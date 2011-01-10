@@ -1,4 +1,5 @@
 class Admin::SitesController < ApplicationController
+  before_filter :authenticate_user! if Object.const_defined?('Devise')
 
   def index
     @sites = Site.all
