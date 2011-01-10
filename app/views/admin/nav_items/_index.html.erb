@@ -1,3 +1,4 @@
+<%- if ! nav_items.blank? -%>
 <p>To reorder the navigation links, drag and drop the rows below using the drag icon on the right hand side of the table.</p>
 
 <table class="standard">
@@ -29,3 +30,7 @@
 </table>
 
 <%= sortable_element "content_list_#{navitem_type}", :update => nil, :url => admin_site_reorder_nav_items_path(@site, :kind => navitem_type), :method => :put, :tag => 'tr' -%>
+
+<%- else -%>
+  <p><em>No <%= navitem_type -%> navigation items have been created yet.</em></p>
+<%- end -%>

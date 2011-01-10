@@ -192,6 +192,7 @@ module LayoutHelper
   end
   
   def set_title(title = nil, window_title = nil)
+    app_name ||= 'SEO Logic'
     window_title ||= title
     if title.nil?
       content_for(:title) { app_name }
@@ -371,8 +372,7 @@ module LayoutHelper
   #   <%= tab_tag :id => 'ppc_ads', :label => 'PPC Ads', :state => 'active' %>
   #
   def tab_tag(args, *css_class)
-    %{<li id="show_#{args[:id]}" class="tab_control #{args[:state]}" onclick="window.location='##{args[:id]}'; activate_tab('#{args[:id]}');">#{args[:label] || args[:id].to_s.titleize}</li>
-    <li>|</li>}.html_safe
+    %{<li id="show_#{args[:id]}" class="tab_control #{args[:state]}" onclick="window.location='##{args[:id]}'; activate_tab('#{args[:id]}');">#{args[:label] || args[:id].to_s.titleize}</li>}.html_safe
   end
 
   # Create a set of tags for displaying a field label with inline help.
