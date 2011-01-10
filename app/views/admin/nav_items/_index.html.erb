@@ -1,18 +1,19 @@
+<%- if ! nav_items.blank? -%>
 <p>To reorder the navigation links, drag and drop the rows below using the drag icon on the right hand side of the table.</p>
 
 <table class="standard">
   <thead>
     <tr>
-      <th><%= sort_link('nav_items', 'link_text', params) -%></th>
-      <th><%= sort_link('nav_items', 'link_title', params) -%></th>
-      <th><%= sort_link('nav_items', 'url', params) -%></th>
+      <th>Link Text</th>
+      <th>Link Title</th>
+      <th>URL</th>
       <th> </th>
       <th><%= image_tag '/images/icons/move_white.png' -%></th>
     </tr>
   </thead>
   
-  <tbody id="content_list">
-  <%- nav_items.each do |nav_item| -%>
+  <tbody id="content_list_<%= navitem_type -%>">
+  <%- nav_items.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |nav_item| -%>
     <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= nav_item.id -%>">
       <td><%= link_to nav_item.link_text, admin_site_nav_item_path(@site, nav_item) -%></td>
       <td><%= nav_item.link_title -%></td>
@@ -28,4 +29,8 @@
   </tbody>
 </table>
 
-<%= sortable_element 'content_list', :update => nil, :url => admin_site_reorder_nav_items_path(@site), :method => :put, :tag => 'tr' -%>
+<%= sortable_element "content_list_#{navitem_type}", :update => nil, :url => admin_site_reorder_nav_items_path(@site, :kind => navitem_type), :method => :put, :tag => 'tr' -%>
+
+<%- else -%>
+  <p><em>No <%= navitem_type -%> navigation items have been created yet.</em></p>
+<%- end -%>
