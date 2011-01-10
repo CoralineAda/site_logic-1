@@ -8,10 +8,11 @@ class Admin::NavItemsController < ApplicationController
   end
   
   def new
+    kind = params[:kind] || 'Primary'
     if params[:parent_id]
-      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id])
+      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :kind => kind)
     else
-      @nav_item = @site.nav_items.new
+      @nav_item = @site.nav_items.new(:kind => kind)
     end
   end
   
@@ -22,7 +23,7 @@ class Admin::NavItemsController < ApplicationController
       if @nav_item.parent_id
         redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
       else
-        redirect_to admin_site_nav_items_path(@site)
+        redirect_to admin_site_nav_items_path(@site, :anchor => "#{@nav_item.kind.downcase}_nav")
       end
     else
       render :action => 'new'
@@ -38,7 +39,7 @@ class Admin::NavItemsController < ApplicationController
   def update
     if @nav_item.update_attributes(params[:nav_item])
       flash[:notice] = "Successfully updated the navigation link."
-      redirect_to admin_site_nav_items_path(@site)
+      redirect_to admin_site_nav_items_path(@site, :anchor => "#{@nav_item.kind.downcase}_nav")
     else
       render :action => 'edit'
     end
@@ -47,7 +48,7 @@ class Admin::NavItemsController < ApplicationController
   def destroy
     @nav_item.destroy
     flash[:notice] = "Successfully destroyed the navigation link."
-      redirect_to admin_site_nav_items_path(@site)
+      redirect_to admin_site_nav_items_path(@site, :anchor => "#{@nav_item.kind.downcase}_nav")
   end
 
 	def reorder

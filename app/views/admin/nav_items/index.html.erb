@@ -18,7 +18,7 @@
   <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.secondary.roots, :navitem_type => 'secondary'} -%>
   <br style="clear: both;" />
   <div class="link_block">
-    <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>
+    <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site, :kind => 'Secondary'), :class => 'link_button' -%>
   </div>
 <%- end -%>
 
@@ -26,6 +26,6 @@
   <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.footer.roots, :navitem_type => 'footer'} -%>
   <br style="clear: both;" />
   <div class="link_block">
-    <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>
+    <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site, :kind => 'Footer'), :class => 'link_button' -%>
   </div>
 <%- end -%>
