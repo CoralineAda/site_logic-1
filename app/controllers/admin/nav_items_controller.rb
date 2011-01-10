@@ -1,5 +1,5 @@
 class Admin::NavItemsController < ApplicationController
-
+  before_filter :authenticate_user! if Object.const_defined?('Devise')
   before_filter :scope_site
   before_filter :scope_nav_item, :except => [:index, :new, :create, :reorder]
 
