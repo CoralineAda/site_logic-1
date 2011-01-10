@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   class SiteConstraint
     def initialize; end
     def matches?(request)
-      ! Site.where(:domain => request.domain).first.nil? && request.subdomain != 'admin'
+      ! Site.where(:domain => request.host).first.nil? && request.subdomain != 'admin'
     end
   end
 

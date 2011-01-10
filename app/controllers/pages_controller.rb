@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def show
-    @site = Site.where(:domain => request.domain).first
+    @site = Site.where(:domain => request.host).first
     if ! params[:nested_slug].blank?
       @page = @site.pages.where(:slug => "#{params[:page_slug]}/#{params[:nested_slug]}").first
     elsif params[:page_slug]

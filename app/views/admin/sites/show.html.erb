@@ -10,7 +10,7 @@
   </div>
   <div class="form_column">
     <%= faux_field 'Status', @site.status %>
-    <%= faux_field 'Live Date', @site.activation_date.to_s(:concise) if @site.active? %>
+    <%= faux_field 'Live Date', @site.activation_date.to_s(:concise) if @site.active? && @site.activation_date %>
     <%= faux_field 'Redirect To', @site.redirect_to unless @site.redirect_to.blank? %>
   </div>
 </fieldset>
