@@ -1,7 +1,7 @@
 class Admin::NavItemsController < ApplicationController
 
   before_filter :scope_site
-  before_filter :scope_nav_item, :except => [:index, :new]
+  before_filter :scope_nav_item, :except => [:index, :new, :reorder]
 
   def index
     @primary_nav_items = @root_links.primary.sort{|a,b| a.position.to_i <=> b.position.to_i}
@@ -51,7 +51,9 @@ class Admin::NavItemsController < ApplicationController
   end
 
 	def reorder
-		order = params[:content_list]
+		order = params[:content_list_primary] if params[:kind] == 'primary'
+		order = params[:content_list_secondary] if params[:kind] == 'secondary'
+		order = params[:content_list_footer] if params[:kind] == 'footer'
 		order.each_with_index do |id, sort_order|
 		  item = @site.nav_items.find(id)
 			item.update_attributes(:position => sort_order + 1)

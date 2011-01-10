@@ -11,7 +11,7 @@
   <%- end -%>
   
   <%= tab_body :id => 'primary_nav', :display => 'block' do -%>
-    <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.primary.roots} -%>
+    <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.primary.roots, :navitem_type => 'primary'} -%>
     <br style="clear: both;" />
     <div class="link_block">
       <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>
@@ -19,7 +19,7 @@
   <%- end -%>
 
   <%= tab_body :id => 'secondary_nav', :display => 'none' do -%>
-    <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.secondary.roots} -%>
+    <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.secondary.roots, :navitem_type => 'secondary'} -%>
     <br style="clear: both;" />
     <div class="link_block">
       <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>
@@ -27,7 +27,7 @@
   <%- end -%>
 
   <%= tab_body :id => 'footer_nav', :display => 'none' do -%>
-    <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.footer.roots} -%>
+    <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.footer.roots, :navitem_type => 'footer'} -%>
     <br style="clear: both;" />
     <div class="link_block">
       <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>

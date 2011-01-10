@@ -191,12 +191,13 @@ module LayoutHelper
     %{<a href="#{url}" onclick="window.open(this.href);return false;" title="#{link_title}">#{link_text}&nbsp;<img src="/images/icons/link_icon.png" alt="" width="14" height="12" /></a>}
   end
   
-  def set_title(title = nil)
+  def set_title(title = nil, window_title = nil)
+    window_title ||= title
     if title.nil?
-      content_for(:title) { 'SiteLogic' }
+      content_for(:title) { app_name }
       content_for(:page_title) {  }
     else
-      content_for(:title) { title + ' - SiteLogic' }
+      content_for(:title) { window_title + " - #{app_name}" }
       content_for(:page_title) { title }
     end
   end
