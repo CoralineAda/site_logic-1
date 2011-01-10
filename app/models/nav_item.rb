@@ -37,7 +37,6 @@ class NavItem
   validates_presence_of :link_text
   validates_presence_of :link_title
   validates_presence_of :url
-  validates_uniqueness_of :url
 
   # Class methods ==================================================================================
   
