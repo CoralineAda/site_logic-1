@@ -3,11 +3,11 @@
 <%- else -%>
   <table class="standard">
     <tr>
-      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'humanize_path', params) -%></th>
-      <th style="width: 30%;"><%= sort_link("admin/sites/#{@site.id}/", 'page_title', params) -%></th>
-      <th style="width: 30%;"><%= sort_link("admin/sites/#{@site.id}/", 'window_title', params) -%></th>
-      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'state', params) -%></th>
-      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/", 'updated_at', params) -%></th>
+      <th style="width: 25%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'humanize_path', params) -%></th>
+      <th style="width: 25%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'page_title', params) -%></th>
+      <th style="width: 20%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'window_title', params) -%></th>
+      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'state', params) -%></th>
+      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'updated_at', params) -%></th>
       <th> </th>
     </tr>
 
@@ -25,8 +25,13 @@
       </td>
     </tr>
   <%- end -%>
+    <tr>
+      <td colspan="6">
+        <div class="link_block">
+          <%= link_to 'New Page...', new_admin_site_page_path(@site), :class => 'link_button' -%>
+        </div>
+      </td>
+    </tr>
+  
   </table>
 <%- end -%>
-
-<%= link_to 'New Page', new_admin_site_page_path(@site), :class => 'button' -%>
-

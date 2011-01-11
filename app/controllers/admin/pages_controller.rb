@@ -9,8 +9,9 @@ class Admin::PagesController < ApplicationController
       :state         => 'Status',
       :updated_at    => 'Last Modified'
     }
-    
-    @pages = @site.pages.all
+    params[:by] ||= 'humanize_path'; params[:dir] ||= 'ASC'
+    @pages = @site.pages.sort{|a,b| a.send(params[:by]) <=> b.send(params[:by])}
+    @pages.reverse! if params[:dir] == 'DESC'
   end
   
   def show

@@ -51,13 +51,14 @@
     </div>
     <div class="form_column">
     </div>
+    <div class="link_block">
+      <%= f.submit 'Save', :class => 'link_button' -%>
+      <%= f.submit 'Preview', :class => 'link_button' -%>
+      <%- if @page.new_record? -%>
+        <%= link_to 'Cancel', admin_site_pages_path(@site), :class => 'link_button' -%>
+      <%- else -%>
+        <%= link_to 'Cancel', admin_site_page_path(@site, @page), :class => 'link_button' -%>
+      <%- end -%>
+    </div>
   </fieldset>
 
-  <%= f.submit 'Save', :class => 'button' -%>
-  <%= f.submit 'Preview', :class => 'button' -%>
-  <%- if @page.new_record? -%>
-    <%= link_to 'Cancel', admin_site_pages_path(@site), :class => 'button' -%>
-  <%- else -%>
-    <%= link_to 'Cancel', admin_site_page_path(@site, @page), :class => 'button' -%>
-  <%- end -%>
-  <br style="clear: both;" />

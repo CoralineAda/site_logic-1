@@ -28,7 +28,12 @@
 <fieldset class="form_container">
   <%= legend_tag 'Content&nbsp;' -%>
   <iframe src="http://www.<%= @site.domain -%>:3000<%= @page.humanize_path -%>" width="100%" height="400px" style="background-color: #ffffff;"></iframe>
+
+  <div class="link_block">
+    <%= link_to 'Edit', edit_admin_site_page_path(@site, @page), :class => 'link_button' -%>
+    <%= link_to 'Back', admin_site_pages_path(@site), :class => 'link_button' -%>
+  </div>
+
 </fieldset>
 
-<%= link_to 'Edit', edit_admin_site_page_path(@site, @page), :class => 'button' -%>
-<%= link_to 'Back', admin_site_pages_path(@site), :class => 'button' -%>
+

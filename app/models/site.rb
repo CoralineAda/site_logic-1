@@ -68,7 +68,7 @@ class Site
   end
 
   def footer_navigation
-    self.nav_items.footer.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    self.nav_items.roots.footer.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
   
   def home_page
@@ -80,11 +80,11 @@ class Site
   end
 
   def primary_navigation
-    self.nav_items.primary.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    self.nav_items.roots.primary.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
   
   def secondary_navigation
-    self.nav_items.secondary.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    self.nav_items.roots.secondary.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
   
   def state

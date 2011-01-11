@@ -1,5 +1,11 @@
 <%- if @redirects.blank? -%> 
-  <p><em>No redirects have been created yet.</em></p>
+  <div class="form_container">
+    <p><em>No redirects have been created yet.</em></p>
+    <div class="link_block">
+      <%= link_to 'New Redirect', new_admin_site_redirect_path(@site), :class => 'link_button' -%>
+      <%= link_to 'Import Redirects', '#', :class => 'link_button' -%>
+    </div>
+  </div>
 <%- else -%>  
   <table class="standard">
     <thead>
@@ -22,9 +28,13 @@
         </td>
       </tr>
     <%- end -%>
+      <tr>
+        <td colspan="4" class="link_block">
+          <%= link_to 'New Redirect', new_admin_site_redirect_path(@site), :class => 'link_button' -%>
+          <%= link_to 'Import Redirects', '#', :class => 'link_button' -%>
+        </td>
+      </tr>
     </tbody>
   </table>
 <%- end -%>
 
-<%= link_to 'New Redirect', new_admin_site_redirect_path(@site), :class => 'button' -%>
-<%= link_to 'Import Redirects', '#', :class => 'button' -%>

@@ -19,9 +19,11 @@
       <td><%= site.redirect_to -%></td>
     </tr>
   <%- end -%>
+  <tr>
+    <td class="link_buttons" colspan="4">
+      <%= link_to 'New Site', new_admin_site_path, :class => 'link_button' -%>
+    </td>
   </table>
 <%- end -%>
 
 <br />
-
-<%= link_to 'New Site', new_admin_site_path, :class => 'button' -%>
