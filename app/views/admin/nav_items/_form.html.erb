@@ -23,7 +23,11 @@
     </div>
     <div class="form_column">
       <%= f.text_field :url, :label => 'URL' -%>
-      <%= f.select :kind, NavItem::KINDS, :label => 'Navigation Item Position' -%>
+      <%- if @nav_item.parent_id -%>
+        <%= f.hidden :kind, @nav_item.parent.kind -%>    
+      <%- else -%>
+        <%= f.select :kind, NavItem::KINDS, :label => 'Navigation Item Position' unless @nav_item.parent_id -%>
+      <%- end -%>
     </div>
 
     <br style="clear: both;" />
