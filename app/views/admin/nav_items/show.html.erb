@@ -22,7 +22,7 @@
 <fieldset class="form_container">
   <%= legend_tag 'Sub-Navigation' -%>
   <%- unless @nav_item.children.empty? -%>
-    <%= render :partial => 'index', :locals => {:nav_items => @nav_item.children} -%>
+    <%= render :partial => 'index', :locals => {:navitem_type => 'children', :nav_items => @nav_item.children} -%>
   <%- else -%>
     <p>No sub-navigation links have been created for this navigation item.</p>
   <%- end -%>
