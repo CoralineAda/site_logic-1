@@ -15,7 +15,7 @@ class SiteLogic::Ckeditor::Asset
   field :guid
   field :locale, :default => 0, :type => Integer
 
-  mount_uploader :data, ImageUploader
+  mount_uploader :data, SiteLogic::ImageUploader
   
   before_validation :make_content_type
   before_create :make_dimensions
