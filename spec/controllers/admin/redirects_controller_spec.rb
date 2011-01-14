@@ -26,13 +26,13 @@ describe SiteLogic::Admin::RedirectsController do
   end
   
   it "create action should render new template when model is invalid" do
-    Redirect.any_instance.stubs(:valid?).returns(false)
+    SiteLogic::Redirect.any_instance.stubs(:valid?).returns(false)
     post :create, :site_id => @site.id.to_s
     response.should render_template(:new)
   end
 
   it "create action should redirect when model is valid" do
-    Redirect.any_instance.stubs(:valid?).returns(true)
+    SiteLogic::Redirect.any_instance.stubs(:valid?).returns(true)
     post :create, :site_id => @site.id.to_s
     response.should redirect_to(admin_site_redirects_url(@site))
   end
@@ -43,13 +43,13 @@ describe SiteLogic::Admin::RedirectsController do
   end
   
   it "update action should render edit template when model is invalid" do
-    Redirect.any_instance.stubs(:valid?).returns(false)
+    SiteLogic::Redirect.any_instance.stubs(:valid?).returns(false)
     put :update, :id => @redirect.id, :site_id => @site.id.to_s
     response.should render_template(:edit)
   end
 
   it "update action should redirect when model is valid" do
-    Redirect.any_instance.stubs(:valid?).returns(true)
+    SiteLogic::Redirect.any_instance.stubs(:valid?).returns(true)
     put :update, :id => @redirect.id, :site_id => @site.id.to_s
     response.should redirect_to(admin_site_redirects_url(@site))
   end
