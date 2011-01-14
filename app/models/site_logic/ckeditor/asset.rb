@@ -1,7 +1,7 @@
 require 'mime/types'
 require 'carrierwave/orm/mongoid'
 
-class Ckeditor::Asset
+class SiteLogic::Ckeditor::Asset
 
   include Mongoid::Document
 

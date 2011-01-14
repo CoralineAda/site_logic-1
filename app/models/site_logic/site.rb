@@ -1,4 +1,4 @@
-class Site
+class SiteLogic::Site
 
   include Mongoid::Document
   include Mongoid::Timestamps

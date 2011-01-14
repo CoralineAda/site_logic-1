@@ -34,42 +34,42 @@ Gem::Specification.new do |s|
     "app/helpers/layout_helper.rb",
     "app/helpers/remote_link_renderer.rb",
     "app/helpers/site_logic_helper.rb",
-    "app/models/ckeditor/asset.rb",
-    "app/models/ckeditor/attachment_file.rb",
-    "app/models/ckeditor/picture.rb",
-    "app/models/nav_item.rb",
-    "app/models/page.rb",
-    "app/models/redirect.rb",
-    "app/models/site.rb",
-    "app/uploaders/image_uploader.rb",
-    "app/views/admin/nav_items/_form.html.erb",
-    "app/views/admin/nav_items/_index.html.erb",
-    "app/views/admin/nav_items/edit.html.erb",
-    "app/views/admin/nav_items/index.html.erb",
-    "app/views/admin/nav_items/new.html.erb",
-    "app/views/admin/nav_items/show.html.erb",
-    "app/views/admin/pages/_form.html.erb",
-    "app/views/admin/pages/_index.html.erb",
-    "app/views/admin/pages/edit.html.erb",
-    "app/views/admin/pages/index.html.erb",
-    "app/views/admin/pages/new.html.erb",
-    "app/views/admin/pages/preview.html.erb",
-    "app/views/admin/pages/show.html.erb",
-    "app/views/admin/redirects/_form.html.erb",
-    "app/views/admin/redirects/_index.html.erb",
-    "app/views/admin/redirects/edit.html.erb",
-    "app/views/admin/redirects/index.html.erb",
-    "app/views/admin/redirects/new.html.erb",
-    "app/views/admin/redirects/show.html.erb",
-    "app/views/admin/sites/_form.html.erb",
-    "app/views/admin/sites/edit.html.erb",
-    "app/views/admin/sites/index.html.erb",
-    "app/views/admin/sites/new.html.erb",
-    "app/views/admin/sites/show.html.erb",
-    "app/views/layouts/application.html.erb",
-    "app/views/nav_items/_navigation.html.erb",
-    "app/views/pages/show.html.erb",
-    "app/views/shared/_nav_tabs.html.erb",
+    "app/models/site_logic/ckeditor/asset.rb",
+    "app/models/site_logic/ckeditor/attachment_file.rb",
+    "app/models/site_logic/ckeditor/picture.rb",
+    "app/models/site_logic/nav_item.rb",
+    "app/models/site_logic/page.rb",
+    "app/models/site_logic/redirect.rb",
+    "app/models/site_logic/site.rb",
+    "app/uploaders/site_logic/image_uploader.rb",
+    "app/views/site_logic/admin/nav_items/_form.html.erb",
+    "app/views/site_logic/admin/nav_items/_index.html.erb",
+    "app/views/site_logic/admin/nav_items/edit.html.erb",
+    "app/views/site_logic/admin/nav_items/index.html.erb",
+    "app/views/site_logic/admin/nav_items/new.html.erb",
+    "app/views/site_logic/admin/nav_items/show.html.erb",
+    "app/views/site_logic/admin/pages/_form.html.erb",
+    "app/views/site_logic/admin/pages/_index.html.erb",
+    "app/views/site_logic/admin/pages/edit.html.erb",
+    "app/views/site_logic/admin/pages/index.html.erb",
+    "app/views/site_logic/admin/pages/new.html.erb",
+    "app/views/site_logic/admin/pages/preview.html.erb",
+    "app/views/site_logic/admin/pages/show.html.erb",
+    "app/views/site_logic/admin/redirects/_form.html.erb",
+    "app/views/site_logic/admin/redirects/_index.html.erb",
+    "app/views/site_logic/admin/redirects/edit.html.erb",
+    "app/views/site_logic/admin/redirects/index.html.erb",
+    "app/views/site_logic/admin/redirects/new.html.erb",
+    "app/views/site_logic/admin/redirects/show.html.erb",
+    "app/views/site_logic/admin/sites/_form.html.erb",
+    "app/views/site_logic/admin/sites/edit.html.erb",
+    "app/views/site_logic/admin/sites/index.html.erb",
+    "app/views/site_logic/admin/sites/new.html.erb",
+    "app/views/site_logic/admin/sites/show.html.erb",
+    "app/views/site_logic/layouts/application.html.erb",
+    "app/views/site_logic/nav_items/_navigation.html.erb",
+    "app/views/site_logic/pages/show.html.erb",
+    "app/views/site_logic/shared/_nav_tabs.html.erb",
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
@@ -853,7 +853,6 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<site_logic>, [">= 0"])
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<carrierwave>, [">= 0"])
       s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
@@ -861,26 +860,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
       s.add_runtime_dependency(%q<rmagick>, [">= 0"])
-      s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
-      s.add_runtime_dependency(%q<carrierwave>, [">= 0"])
-      s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
-      s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
-      s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
-      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
-      s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
-      s.add_development_dependency(%q<capybara>, [">= 0"])
-      s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
-      s.add_development_dependency(%q<database_cleaner>, [">= 0"])
-      s.add_development_dependency(%q<faker>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<launchy>, [">= 0"])
-      s.add_development_dependency(%q<machinist_mongo>, [">= 0"])
-      s.add_development_dependency(%q<mocha>, [">= 0"])
-      s.add_development_dependency(%q<rspec-rails>, [">= 0"])
-      s.add_development_dependency(%q<spork>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_development_dependency(%q<capybara>, [">= 0"])
       s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
@@ -895,7 +874,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<spork>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
-      s.add_dependency(%q<site_logic>, [">= 0"])
       s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<carrierwave>, [">= 0"])
       s.add_dependency(%q<ckeditor>, [">= 0"])
@@ -903,26 +881,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.0.1"])
       s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<bson_ext>, [">= 0"])
-      s.add_dependency(%q<carrierwave>, [">= 0"])
-      s.add_dependency(%q<ckeditor>, [">= 0"])
-      s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
-      s.add_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_dependency(%q<rails>, [">= 3.0.1"])
-      s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<be_valid_asset>, [">= 0"])
-      s.add_dependency(%q<capybara>, [">= 0"])
-      s.add_dependency(%q<cucumber-rails>, [">= 0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
-      s.add_dependency(%q<database_cleaner>, [">= 0"])
-      s.add_dependency(%q<faker>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<launchy>, [">= 0"])
-      s.add_dependency(%q<machinist_mongo>, [">= 0"])
-      s.add_dependency(%q<mocha>, [">= 0"])
-      s.add_dependency(%q<rspec-rails>, [">= 0"])
-      s.add_dependency(%q<spork>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_dependency(%q<capybara>, [">= 0"])
       s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -938,7 +896,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
   else
-    s.add_dependency(%q<site_logic>, [">= 0"])
     s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<carrierwave>, [">= 0"])
     s.add_dependency(%q<ckeditor>, [">= 0"])
@@ -946,26 +903,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.0.1"])
     s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<bson_ext>, [">= 0"])
-    s.add_dependency(%q<carrierwave>, [">= 0"])
-    s.add_dependency(%q<ckeditor>, [">= 0"])
-    s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
-    s.add_dependency(%q<mongoid-tree>, [">= 0"])
-    s.add_dependency(%q<rails>, [">= 3.0.1"])
-    s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<be_valid_asset>, [">= 0"])
-    s.add_dependency(%q<capybara>, [">= 0"])
-    s.add_dependency(%q<cucumber-rails>, [">= 0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
-    s.add_dependency(%q<database_cleaner>, [">= 0"])
-    s.add_dependency(%q<faker>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<launchy>, [">= 0"])
-    s.add_dependency(%q<machinist_mongo>, [">= 0"])
-    s.add_dependency(%q<mocha>, [">= 0"])
-    s.add_dependency(%q<rspec-rails>, [">= 0"])
-    s.add_dependency(%q<spork>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 1.2.9"])
     s.add_dependency(%q<be_valid_asset>, [">= 0"])
     s.add_dependency(%q<capybara>, [">= 0"])
     s.add_dependency(%q<cucumber-rails>, [">= 0"])
