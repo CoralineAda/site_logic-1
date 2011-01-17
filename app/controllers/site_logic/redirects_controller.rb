@@ -1,4 +1,4 @@
-class RedirectsController < ApplicationController
+class SiteLogic::RedirectsController < SiteLogic::ApplicationController
 
   def show
     Rails.logger.info request.path

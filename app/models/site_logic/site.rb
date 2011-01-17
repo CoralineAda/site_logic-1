@@ -1,4 +1,4 @@
-class Site
+class SiteLogic::Site
 
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -30,9 +30,9 @@ class Site
   scope :inactive, :where => {:state => 'inactive'}
 
   # Relationships ==================================================================================
-  embeds_many :pages
-  embeds_many :nav_items
-  embeds_many :redirects
+  embeds_many :pages, :class_name => 'SiteLogic::Page'
+  embeds_many :nav_items, :class_name => 'SiteLogic::NavItem'
+  embeds_many :redirects, :class_name => 'SiteLogic::Redirect'
   
   # Behavior =======================================================================================
   attr_accessor :status
