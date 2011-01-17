@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   end
 
   constraints(RedirectConstraint.new) do
-    match ':source_url', :to => 'site_logic/redirects#show'
+    match ':source_url', :to => 'redirects#show'
   end
   
   constraints(SiteConstraint.new) do
-    root :to => "site_logic/pages#show"
-    match ':page_slug/', :to => 'site_logic/pages#show'
-    match ':page_slug(/:nested_slug)/', :to => 'site_logic/pages#show'
+    root :to => "pages#show"
+    match ':page_slug/', :to => 'pages#show'
+    match ':page_slug(/:nested_slug)/', :to => 'pages#show'
   end
   
   namespace :admin do
