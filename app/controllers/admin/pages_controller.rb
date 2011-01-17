@@ -1,4 +1,4 @@
-class SiteLogic::Admin::PagesController < SiteLogic::ApplicationController
+class Admin::PagesController < ApplicationController
   before_filter :authenticate_user! if Object.const_defined?('Devise')
   before_filter :scope_site
   before_filter :scope_page, :only => [:edit, :update, :destroy, :show]

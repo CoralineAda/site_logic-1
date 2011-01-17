@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe SiteLogic::RedirectsController do
+describe PagesController do
   render_views
 
   it 'should have tests' do

@@ -1,4 +1,4 @@
-class SiteLogic::Admin::SitesController < SiteLogic::ApplicationController
+class Admin::SitesController < ApplicationController
   before_filter :authenticate_user! if Object.const_defined?('Devise')
 
   def index

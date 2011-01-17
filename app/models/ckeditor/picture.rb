@@ -1,4 +1,4 @@
-class SiteLogic::Ckeditor::Picture < SiteLogic::Ckeditor::Asset
+class Ckeditor::Picture < Ckeditor::Asset
 
 	def url_content
 	  url(:content)

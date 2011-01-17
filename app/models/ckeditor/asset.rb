@@ -1,7 +1,7 @@
 require 'mime/types'
 require 'carrierwave/orm/mongoid'
 
-class SiteLogic::Ckeditor::Asset
+class Ckeditor::Asset
 
   include Mongoid::Document
 
@@ -15,7 +15,7 @@ class SiteLogic::Ckeditor::Asset
   field :guid
   field :locale, :default => 0, :type => Integer
 
-  mount_uploader :data, SiteLogic::ImageUploader
+  mount_uploader :data, ImageUploader
   
   before_validation :make_content_type
   before_create :make_dimensions

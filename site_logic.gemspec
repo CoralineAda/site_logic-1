@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "0.6.7"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2011-01-13}
+  s.date = %q{2011-01-05}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -23,53 +23,53 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "app/controllers/site_logic/admin/nav_items_controller.rb",
-    "app/controllers/site_logic/admin/pages_controller.rb",
-    "app/controllers/site_logic/admin/redirects_controller.rb",
-    "app/controllers/site_logic/admin/sites_controller.rb",
-    "app/controllers/site_logic/application_controller.rb",
-    "app/controllers/site_logic/pages_controller.rb",
-    "app/controllers/site_logic/redirects_controller.rb",
+    "app/controllers/admin/nav_items_controller.rb",
+    "app/controllers/admin/pages_controller.rb",
+    "app/controllers/admin/redirects_controller.rb",
+    "app/controllers/admin/sites_controller.rb",
+    "app/controllers/application_controller.rb",
+    "app/controllers/pages_controller.rb",
+    "app/controllers/redirects_controller.rb",
     "app/helpers/application_helper.rb",
     "app/helpers/layout_helper.rb",
     "app/helpers/remote_link_renderer.rb",
     "app/helpers/site_logic_helper.rb",
-    "app/models/site_logic/ckeditor/asset.rb",
-    "app/models/site_logic/ckeditor/attachment_file.rb",
-    "app/models/site_logic/ckeditor/picture.rb",
-    "app/models/site_logic/nav_item.rb",
-    "app/models/site_logic/page.rb",
-    "app/models/site_logic/redirect.rb",
-    "app/models/site_logic/site.rb",
-    "app/uploaders/site_logic/image_uploader.rb",
-    "app/views/site_logic/admin/nav_items/_form.html.erb",
-    "app/views/site_logic/admin/nav_items/_index.html.erb",
-    "app/views/site_logic/admin/nav_items/edit.html.erb",
-    "app/views/site_logic/admin/nav_items/index.html.erb",
-    "app/views/site_logic/admin/nav_items/new.html.erb",
-    "app/views/site_logic/admin/nav_items/show.html.erb",
-    "app/views/site_logic/admin/pages/_form.html.erb",
-    "app/views/site_logic/admin/pages/_index.html.erb",
-    "app/views/site_logic/admin/pages/edit.html.erb",
-    "app/views/site_logic/admin/pages/index.html.erb",
-    "app/views/site_logic/admin/pages/new.html.erb",
-    "app/views/site_logic/admin/pages/preview.html.erb",
-    "app/views/site_logic/admin/pages/show.html.erb",
-    "app/views/site_logic/admin/redirects/_form.html.erb",
-    "app/views/site_logic/admin/redirects/_index.html.erb",
-    "app/views/site_logic/admin/redirects/edit.html.erb",
-    "app/views/site_logic/admin/redirects/index.html.erb",
-    "app/views/site_logic/admin/redirects/new.html.erb",
-    "app/views/site_logic/admin/redirects/show.html.erb",
-    "app/views/site_logic/admin/sites/_form.html.erb",
-    "app/views/site_logic/admin/sites/edit.html.erb",
-    "app/views/site_logic/admin/sites/index.html.erb",
-    "app/views/site_logic/admin/sites/new.html.erb",
-    "app/views/site_logic/admin/sites/show.html.erb",
-    "app/views/site_logic/layouts/application.html.erb",
-    "app/views/site_logic/nav_items/_navigation.html.erb",
-    "app/views/site_logic/pages/show.html.erb",
-    "app/views/site_logic/shared/_nav_tabs.html.erb",
+    "app/models/ckeditor/asset.rb",
+    "app/models/ckeditor/attachment_file.rb",
+    "app/models/ckeditor/picture.rb",
+    "app/models/nav_item.rb",
+    "app/models/page.rb",
+    "app/models/redirect.rb",
+    "app/models/site.rb",
+    "app/uploaders/image_uploader.rb",
+    "app/views/admin/nav_items/_form.html.erb",
+    "app/views/admin/nav_items/_index.html.erb",
+    "app/views/admin/nav_items/edit.html.erb",
+    "app/views/admin/nav_items/index.html.erb",
+    "app/views/admin/nav_items/new.html.erb",
+    "app/views/admin/nav_items/show.html.erb",
+    "app/views/admin/pages/_form.html.erb",
+    "app/views/admin/pages/_index.html.erb",
+    "app/views/admin/pages/edit.html.erb",
+    "app/views/admin/pages/index.html.erb",
+    "app/views/admin/pages/new.html.erb",
+    "app/views/admin/pages/preview.html.erb",
+    "app/views/admin/pages/show.html.erb",
+    "app/views/admin/redirects/_form.html.erb",
+    "app/views/admin/redirects/_index.html.erb",
+    "app/views/admin/redirects/edit.html.erb",
+    "app/views/admin/redirects/index.html.erb",
+    "app/views/admin/redirects/new.html.erb",
+    "app/views/admin/redirects/show.html.erb",
+    "app/views/admin/sites/_form.html.erb",
+    "app/views/admin/sites/edit.html.erb",
+    "app/views/admin/sites/index.html.erb",
+    "app/views/admin/sites/new.html.erb",
+    "app/views/admin/sites/show.html.erb",
+    "app/views/layouts/application.html.erb",
+    "app/views/nav_items/_navigation.html.erb",
+    "app/views/pages/show.html.erb",
+    "app/views/shared/_nav_tabs.html.erb",
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
@@ -88,6 +88,8 @@ Gem::Specification.new do |s|
     "config/locales/en.yml",
     "config/mongoid.yml",
     "config/routes.rb",
+    "db/seeds.rb",
+    "doc/README_FOR_APP",
     "doc/TODO",
     "features/manage_sites.feature",
     "features/step_definitions/site_steps.rb",
@@ -98,6 +100,8 @@ Gem::Specification.new do |s|
     "lib/site_logic.rb",
     "lib/site_logic/engine.rb",
     "lib/site_logic/railtie.rb",
+    "log/production.log",
+    "log/server.log",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
     "misc/images/src/legend_bg.psd",
@@ -106,7 +110,6 @@ Gem::Specification.new do |s|
     "public/422.html",
     "public/500.html",
     "public/favicon.ico",
-    "public/images/icons/add.png",
     "public/images/icons/collapsed.gif",
     "public/images/icons/delete.png",
     "public/images/icons/drag.png",
@@ -128,28 +131,16 @@ Gem::Specification.new do |s|
     "public/images/icons/warning_white.png",
     "public/images/layout/arrow_asc.png",
     "public/images/layout/arrow_desc.png",
-    "public/images/layout/back.png",
     "public/images/layout/black_bar.png",
-    "public/images/layout/branding.png",
-    "public/images/layout/breadcrumb_bg.png",
     "public/images/layout/button_bg.png",
     "public/images/layout/content_left_bg.png",
     "public/images/layout/content_right_bg.png",
     "public/images/layout/footer_bg.png",
-    "public/images/layout/h1_bg.png",
     "public/images/layout/h2_bg.png",
     "public/images/layout/h2_bg_for_table.png",
     "public/images/layout/header_bg_grey.png",
     "public/images/layout/header_bg_purple.png",
     "public/images/layout/legend_bg.png",
-    "public/images/layout/menu_box_bg.png",
-    "public/images/layout/shadow_border.png",
-    "public/images/layout/shadow_border_2.png",
-    "public/images/layout/shadow_border_3.png",
-    "public/images/layout/shadow_border_4.png",
-    "public/images/layout/tab.png",
-    "public/images/layout/tab_active.png",
-    "public/images/layout/table_header.png",
     "public/images/layout/text_field_bg.jpg",
     "public/images/layout/text_field_error_bg.png",
     "public/images/layout/th_bg.png",
@@ -856,6 +847,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
       s.add_runtime_dependency(%q<rmagick>, [">= 0"])
+      s.add_runtime_dependency(%q<site_logic>, [">= 0"])
       s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_development_dependency(%q<capybara>, [">= 0"])
       s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
@@ -867,6 +859,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<machinist_mongo>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0"])
       s.add_development_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_development_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_development_dependency(%q<spork>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
@@ -877,6 +870,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.0.1"])
       s.add_dependency(%q<rmagick>, [">= 0"])
+      s.add_dependency(%q<site_logic>, [">= 0"])
       s.add_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_dependency(%q<capybara>, [">= 0"])
       s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -888,6 +882,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<machinist_mongo>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
       s.add_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<spork>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
@@ -899,6 +894,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.0.1"])
     s.add_dependency(%q<rmagick>, [">= 0"])
+    s.add_dependency(%q<site_logic>, [">= 0"])
     s.add_dependency(%q<be_valid_asset>, [">= 0"])
     s.add_dependency(%q<capybara>, [">= 0"])
     s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -910,6 +906,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<machinist_mongo>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
     s.add_dependency(%q<rspec-rails>, [">= 0"])
+    s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<spork>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end

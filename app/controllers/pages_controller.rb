@@ -1,4 +1,4 @@
-class SiteLogic::PagesController < SiteLogic::ApplicationController
+class PagesController < ApplicationController
 
   def show
     @site = Site.where(:domain => request.host).first

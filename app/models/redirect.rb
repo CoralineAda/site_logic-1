@@ -1,4 +1,4 @@
-class SiteLogic::Redirect
+class Redirect
 
   include Mongoid::Document
   include Mongoid::Timestamps

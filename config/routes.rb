@@ -1,9 +1,26 @@
 Rails.application.routes.draw do
-  constraints(SiteLogic::RedirectConstraint.new) do
+
+  class SiteConstraint
+    def initialize; end
+    def matches?(request)
+      ! Site.where(:domain => request.host).first.nil? && request.subdomain != 'admin'
+    end
+  end
+
+  class RedirectConstraint
+    def initialize; end
+    def matches?(request)
+      return false if request.subdomain == 'admin'
+      site = Site.where(:domain => request.domain).first
+      site && site.redirects.where(:source_url => "#{request.path}").first
+    end
+  end
+
+  constraints(RedirectConstraint.new) do
     match ':source_url', :to => 'site_logic/redirects#show'
   end
   
-  constraints(SiteLogic::SiteConstraint.new) do
+  constraints(SiteConstraint.new) do
     root :to => "site_logic/pages#show"
     match ':page_slug/', :to => 'site_logic/pages#show'
     match ':page_slug(/:nested_slug)/', :to => 'site_logic/pages#show'
@@ -19,4 +36,5 @@ Rails.application.routes.draw do
       resources :redirects
     end
   end
+  
 end

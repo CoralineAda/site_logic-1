@@ -1,4 +1,4 @@
-class SiteLogic::NavItem
+class NavItem
 
   include Mongoid::Document
   include Mongoid::Timestamps

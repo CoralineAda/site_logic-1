@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe SiteLogic::Admin::SitesController do
+describe Admin::SitesController do
   render_views
 
   before :all do

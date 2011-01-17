@@ -1,4 +1,4 @@
-class SiteLogic::Ckeditor::AttachmentFile < SiteLogic::Ckeditor::Asset
+class Ckeditor::AttachmentFile < Ckeditor::Asset
 
   def url(*args)
     if [:thumb, :content].include?(args.first)
