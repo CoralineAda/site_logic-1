@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
+source 'http://emeritus.camp.seologic.com:8808/'
 
 gem 'bson_ext'
 gem 'carrierwave'
-gem 'ckeditor', :git => 'git@github.com:Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
+gem 'ckeditor', :git => 'git://github.com/Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
 gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '>= 3.0.1'
