@@ -7,7 +7,6 @@ gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '>= 3.0.1'
 gem 'rmagick'
-gem 'site_logic', :path => '~/Documents/projects/site_logic'
 
 group :development, :test do
   gem 'be_valid_asset'
