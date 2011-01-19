@@ -10,7 +10,7 @@ class Admin::NavItemsController < ApplicationController
   def new
     kind = params[:kind] || 'Primary'
     if params[:parent_id]
-      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :kind => kind)
+      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :site => @site, :kind => kind)
     else
       @nav_item = @site.nav_items.new(:kind => kind)
     end

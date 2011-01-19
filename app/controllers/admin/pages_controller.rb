@@ -23,7 +23,8 @@ class Admin::PagesController < ApplicationController
   
   def create
     if params[:commit] == 'Preview'
-      render :action => 'preview', :layout => @page.site.layout
+      @page = @site.pages.new(params[:page])
+      render :action => 'preview', :layout => @site.layout
     else
       @page = @site.pages.create(params[:page])
       if @page.valid?
@@ -61,6 +62,7 @@ class Admin::PagesController < ApplicationController
   end
 
   def preview
+    @page = @site.pages.new(params[:page])
     render :layout => @page.site.layout
   end
   

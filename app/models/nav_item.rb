@@ -47,7 +47,7 @@ class NavItem
   end
   
   def parent
-    self.site.nav_items.where(:id => self.parent_id).first
+    self.site.nav_items.find(self.parent_id)
   end
   
   def root?
