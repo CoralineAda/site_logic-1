@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
     "app/controllers/pages_controller.rb",
     "app/controllers/redirects_controller.rb",
     "app/helpers/layout_helper.rb",
-    "app/helpers/site_logic_helper.rb",
     "app/models/ckeditor/asset.rb",
     "app/models/ckeditor/attachment_file.rb",
     "app/models/ckeditor/picture.rb",
@@ -71,23 +70,17 @@ Gem::Specification.new do |s|
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
-    "config/database.yml",
     "config/environment.rb",
     "config/environments/development.rb",
     "config/environments/production.rb",
     "config/environments/test.rb",
-    "config/initializers/backtrace_silencers.rb",
     "config/initializers/ckeditor.rb",
     "config/initializers/formats.rb",
-    "config/initializers/inflections.rb",
-    "config/initializers/mime_types.rb",
     "config/initializers/secret_token.rb",
     "config/initializers/session_store.rb",
     "config/locales/en.yml",
     "config/mongoid.yml",
     "config/routes.rb",
-    "db/seeds.rb",
-    "doc/README_FOR_APP",
     "doc/TODO",
     "features/manage_sites.feature",
     "features/step_definitions/site_steps.rb",
@@ -97,6 +90,7 @@ Gem::Specification.new do |s|
     "init.rb",
     "lib/site_logic.rb",
     "lib/site_logic/engine.rb",
+    "lib/site_logic/helper.rb",
     "lib/site_logic/railtie.rb",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
@@ -154,6 +148,7 @@ Gem::Specification.new do |s|
     "public/images/layout/text_field_error_bg.png",
     "public/images/layout/th_bg.png",
     "public/images/layout/th_bg_selected.png",
+    "public/index.html",
     "public/javascripts/application.js",
     "public/javascripts/ckeditor/.htaccess",
     "public/javascripts/ckeditor/CHANGES.html",
@@ -817,9 +812,7 @@ Gem::Specification.new do |s|
     "spec/models/site_spec.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb",
-    "tasks/site_logic.rake",
-    "test/performance/browsing_test.rb",
-    "test/test_helper.rb"
+    "tasks/site_logic.rake"
   ]
   s.homepage = %q{http://github.com/Bantik/site_logic}
   s.require_paths = ["lib"]
@@ -836,9 +829,7 @@ Gem::Specification.new do |s|
     "spec/models/page_spec.rb",
     "spec/models/redirect_spec.rb",
     "spec/models/site_spec.rb",
-    "spec/spec_helper.rb",
-    "test/performance/browsing_test.rb",
-    "test/test_helper.rb"
+    "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -852,8 +843,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
-      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
-      s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
+      s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
+      s.add_runtime_dependency(%q<scaffold_logic>, [">= 1.0.2"])
       s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_development_dependency(%q<capybara>, [">= 0"])
       s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
@@ -874,8 +865,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.0.1"])
-      s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<scaffold_logic>, [">= 0"])
+      s.add_dependency(%q<rmagick>, ["= 2.12.2"])
+      s.add_dependency(%q<scaffold_logic>, [">= 1.0.2"])
       s.add_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_dependency(%q<capybara>, [">= 0"])
       s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -897,8 +888,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.0.1"])
-    s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<scaffold_logic>, [">= 0"])
+    s.add_dependency(%q<rmagick>, ["= 2.12.2"])
+    s.add_dependency(%q<scaffold_logic>, [">= 1.0.2"])
     s.add_dependency(%q<be_valid_asset>, [">= 0"])
     s.add_dependency(%q<capybara>, [">= 0"])
     s.add_dependency(%q<cucumber-rails>, [">= 0"])
