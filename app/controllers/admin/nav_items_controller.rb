@@ -8,9 +8,14 @@ class Admin::NavItemsController < ApplicationController
   end
   
   def new
+    @roots = @site.nav_items.roots.sort{|a,b| a.link_text <=> b.link_text}
     kind = params[:kind] || 'Primary'
-    if params[:parent_id]
+    if params[:parent_id] && params[:nav_item]
+      @nav_item = @site.nav_items.new(params[:nav_item].merge(:parent_id => params[:parent_id], :site => @site, :kind => kind))
+    elsif params[:parent_id]
       @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :site => @site, :kind => kind)
+    elsif params[:nav_item]
+      @nav_item = @site.nav_items.new(params[:nav_item].merge(:kind => kind))
     else
       @nav_item = @site.nav_items.new(:kind => kind)
     end
@@ -72,6 +77,10 @@ class Admin::NavItemsController < ApplicationController
   
   def scope_nav_item
     @nav_item = @site.nav_items.find(params[:id])
+  end
+  
+  def auto_nav_item
+    
   end
   
 end

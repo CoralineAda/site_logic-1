@@ -36,6 +36,7 @@ class Page
   
   # Behavior =======================================================================================
   attr_accessor :desired_slug
+  attr_accessor :create_navigation_item
   has_slug :desired_slug
   
   # Callbacks ======================================================================================

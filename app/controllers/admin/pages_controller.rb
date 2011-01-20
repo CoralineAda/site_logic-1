@@ -30,7 +30,18 @@ class Admin::PagesController < ApplicationController
       if @page.valid?
         @page.publish! if params[:page][:state] == 'Published'
         flash[:notice] = "Successfully created the page."
-        redirect_to admin_site_pages_path(@site)
+        if params[:page][:create_navigation_item]
+          redirect_to new_admin_site_nav_item_path( 
+            @site,
+            :nav_item => {
+              :url => @page.humanize_path,
+              :link_text => @page.page_title,
+              :link_title => @page.window_title
+            }
+          )
+        else
+          redirect_to admin_site_pages_path(@site)
+        end
       else
         render :action => 'new'
       end

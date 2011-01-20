@@ -18,15 +18,18 @@
 
     <div class="form_column">
       <%= f.hidden_field :parent_id, :value => params[:parent_id] unless params[:parent_id].blank? -%>
-      <%= f.text_field :link_text -%>
-      <%= f.text_field :link_title -%>
+      <%= f.text_field :link_text, :help => 'The text that appears as part of the link.' -%>
+      <%= f.text_field :link_title, :help => 'The link title appears in the mouseover for the link.' -%>
+      <%= f.text_field :url, :label => 'URL' -%>
     </div>
     <div class="form_column">
-      <%= f.text_field :url, :label => 'URL' -%>
+      <%= f.select :parent_id, @roots.map{|r| ["#{r.link_text} (#{r.kind} Link)", r.id]}, :label => 'Parent Navigation Link', :include_blank => 'None' -%>
       <%- if @nav_item.parent_id -%>
         <%= f.hidden_field :kind, :value => @nav_item.parent.kind -%>    
       <%- else -%>
-        <%= f.select :kind, NavItem::KINDS, :label => 'Navigation Item Position' unless @nav_item.parent_id -%>
+        <div id="kind_select">        
+          <%= f.select :kind, NavItem::KINDS, :label => 'Navigation Item Kind' unless @nav_item.parent_id -%>
+        </div>
       <%- end -%>
     </div>
 
@@ -39,3 +42,18 @@
   </fieldset>
 
   <br style="clear: both;" />
+
+  <%- unless @nav_item.parent_id -%>
+    <script type="text/javascript">
+      Event.observe($('nav_item_parent_id'), 'change', function (){ 
+        if ($('nav_item_parent_id').value) {
+          $('kind_select').hide();
+          var kind = /.+\((.+) Link\)/;
+          var value = $('nav_item_parent_id').options[$('nav_item_parent_id').selectedIndex].text;
+          $('nav_item_kind').value = value.replace(kind, "$1");
+        } else {
+          $('kind_select').show();
+        }
+      });
+    </script>
+  <%- end -%>
