@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.0.4"
+  s.version = "1.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -98,7 +98,6 @@ Gem::Specification.new do |s|
     "lib/site_logic.rb",
     "lib/site_logic/engine.rb",
     "lib/site_logic/railtie.rb",
-    "lib/site_logic/tab_interface_helper.rb",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
     "misc/images/src/legend_bg.psd",
@@ -816,7 +815,6 @@ Gem::Specification.new do |s|
     "spec/models/page_spec.rb",
     "spec/models/redirect_spec.rb",
     "spec/models/site_spec.rb",
-    "spec/site_logic_spec.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb",
     "tasks/site_logic.rake",
@@ -838,7 +836,6 @@ Gem::Specification.new do |s|
     "spec/models/page_spec.rb",
     "spec/models/redirect_spec.rb",
     "spec/models/site_spec.rb",
-    "spec/site_logic_spec.rb",
     "spec/spec_helper.rb",
     "test/performance/browsing_test.rb",
     "test/test_helper.rb"
@@ -856,6 +853,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
       s.add_runtime_dependency(%q<rmagick>, [">= 0"])
+      s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_development_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_development_dependency(%q<capybara>, [">= 0"])
       s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
@@ -867,7 +865,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<machinist_mongo>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0"])
       s.add_development_dependency(%q<rspec-rails>, [">= 0"])
-      s.add_development_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_development_dependency(%q<spork>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
@@ -878,6 +875,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.0.1"])
       s.add_dependency(%q<rmagick>, [">= 0"])
+      s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<be_valid_asset>, [">= 0"])
       s.add_dependency(%q<capybara>, [">= 0"])
       s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -889,7 +887,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<machinist_mongo>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
       s.add_dependency(%q<rspec-rails>, [">= 0"])
-      s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<spork>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
@@ -901,6 +898,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.0.1"])
     s.add_dependency(%q<rmagick>, [">= 0"])
+    s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<be_valid_asset>, [">= 0"])
     s.add_dependency(%q<capybara>, [">= 0"])
     s.add_dependency(%q<cucumber-rails>, [">= 0"])
@@ -912,7 +910,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<machinist_mongo>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
     s.add_dependency(%q<rspec-rails>, [">= 0"])
-    s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<spork>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end
