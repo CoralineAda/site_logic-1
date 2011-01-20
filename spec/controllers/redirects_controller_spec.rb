@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe PagesController do
+describe RedirectsController do
   render_views
 
   it 'should have tests' do

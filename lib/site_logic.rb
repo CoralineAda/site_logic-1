@@ -8,7 +8,6 @@ module SiteLogic
     yield self
   end
 
-  # FIXME move to a gem!
   module Base
     
     @@sluggable_attribute = nil
