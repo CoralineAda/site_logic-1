@@ -2,6 +2,7 @@ module SiteLogic
 
   require 'mongoid'
   require 'site_logic/engine' if defined?(Rails)
+  require 'site_logic/helper'
   require 'site_logic/railtie' if defined?(Rails)
   
   def self.setup
