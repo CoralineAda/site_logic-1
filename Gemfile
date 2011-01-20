@@ -7,7 +7,7 @@ gem 'ckeditor', :git => 'git://github.com/Bantik/rails-ckeditor.git', :branch =>
 gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '>= 3.0.1'
-gem 'rmagick'
+gem 'rmagick', '2.12.2' # version compatible with heroku
 gem 'scaffold_logic', '>= 1.0.2'
 
 group :development, :test do
