@@ -3,6 +3,7 @@
 # to do so you may need to add this line to your ApplicationController
 #   helper :layout
 module LayoutHelper
+  include ScaffoldLogic::TabInterfaceHelper
 
   SELECT_PROMPT = 'Select...'
   SELECT_PROMPT_OPTION = "<option value=''>#{SELECT_PROMPT}</option>"

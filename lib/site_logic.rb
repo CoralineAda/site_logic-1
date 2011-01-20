@@ -3,7 +3,6 @@ module SiteLogic
   require 'mongoid'
   require 'site_logic/engine' if defined?(Rails)
   require 'site_logic/railtie' if defined?(Rails)
-  require 'site_logic/tab_interface_helper'
   
   def self.setup
     yield self
