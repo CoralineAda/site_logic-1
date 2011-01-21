@@ -22,13 +22,16 @@ class Admin::NavItemsController < ApplicationController
   end
   
   def create
+    params[:nav_item][:parent_id] = nil if params[:nav_item][:parent_id].blank?
     @nav_item = @site.nav_items.create(params[:nav_item])
     if @nav_item.valid?
       flash[:notice] = "Successfully created the navigation link."
-      if @nav_item.parent_id
-        redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
+      if params[:nav_item][:creating_page]
+        redirect_to admin_site_pages_path(@site.id.to_s)
+      elsif @nav_item.parent_id.blank?
+        redirect_to admin_site_nav_items_path(@site.id.to_s, :anchor => "#{@nav_item.kind.downcase}_nav")
       else
-        redirect_to admin_site_nav_items_path(@site, :anchor => "#{@nav_item.kind.downcase}_nav")
+        redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
       end
     else
       render :action => 'new'

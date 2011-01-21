@@ -37,7 +37,8 @@ class Admin::PagesController < ApplicationController
               :url => @page.humanize_path,
               :link_text => @page.page_title,
               :link_title => @page.window_title
-            }
+            },
+            :creating_page => true
           )
         else
           redirect_to admin_site_pages_path(@site)
