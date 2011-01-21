@@ -2,7 +2,6 @@ module LayoutHelper
   include ScaffoldLogic::FormHelper
   include ScaffoldLogic::Helper
   include ScaffoldLogic::TabInterfaceHelper
-  include SiteLogic::Helper
 
   def breadcrumbs
     unless controller?('home') && action?(/home|index/)
