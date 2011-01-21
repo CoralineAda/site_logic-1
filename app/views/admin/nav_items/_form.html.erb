@@ -24,7 +24,9 @@
       <%= f.text_field :url, :label => 'URL' -%>
     </div>
     <div class="form_column">
-      <%= f.select :parent_id, @roots.map{|r| ["#{r.link_text} (#{r.kind} Link)", r.id]}, :label => 'Parent Navigation Link', :include_blank => 'None' -%>
+      <%- if @nav_item.new_record? -%>
+        <%= f.select :parent_id, @root_links.map{|r| ["#{r.link_text} (#{r.kind} Link)", r.id]}, :label => 'Parent Navigation Link', :include_blank => 'None' -%>
+      <%- end -%>
       <%- if @nav_item.parent_id -%>
         <%= f.hidden_field :kind, :value => @nav_item.parent.kind -%>    
       <%- else -%>
