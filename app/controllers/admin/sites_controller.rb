@@ -4,7 +4,7 @@ class Admin::SitesController < ApplicationController
   def index
     @sites = Site.all
   end
-  
+
   def show
     params[:labels] = {
       :updated_at => 'Last Updated',
@@ -17,11 +17,11 @@ class Admin::SitesController < ApplicationController
     @redirects = @site.redirects
     @nav_items = @site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
-  
+
   def new
     @site = Site.new
   end
-  
+
   def create
     @site = Site.new(params[:site])
     if @site.save
@@ -32,11 +32,11 @@ class Admin::SitesController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @site = Site.find(params[:id])
   end
-  
+
   def update
     @site = Site.find(params[:id])
     if @site.update_attributes(params[:site])
@@ -48,7 +48,7 @@ class Admin::SitesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @site = Site.find(params[:id])
     @site.destroy

@@ -19,13 +19,13 @@ Rails.application.routes.draw do
   constraints(RedirectConstraint.new) do
     match ':source_url', :to => 'redirects#show'
   end
-  
+
   constraints(SiteConstraint.new) do
     root :to => "pages#show"
     match ':page_slug/', :to => 'pages#show'
     match ':page_slug(/:nested_slug)/', :to => 'pages#show'
   end
-  
+
   namespace :admin do
     match 'sites/:site_id/nav_items/reorder', :to => 'nav_items#reorder', :as => 'site_reorder_nav_items'
     resources :sites do
@@ -36,5 +36,5 @@ Rails.application.routes.draw do
       resources :redirects
     end
   end
-  
+
 end

@@ -13,17 +13,17 @@ describe Admin::SitesController do
     get :index
     response.should render_template(:index)
   end
-  
+
   it "show action should render show template" do
     get :show, :id => Site.first.id
     response.should render_template(:show)
   end
-  
+
   it "new action should render new template" do
     get :new
     response.should render_template(:new)
   end
-  
+
   it "create action should render new template when model is invalid" do
     Site.any_instance.stubs(:valid?).returns(false)
     post :create
@@ -36,12 +36,12 @@ describe Admin::SitesController do
     post :create, :site => {:state => nil}
     response.should redirect_to(admin_site_url(assigns[:site]))
   end
-  
+
   it "edit action should render edit template" do
     get :edit, :id => Site.first.id
     response.should render_template(:edit)
   end
-  
+
   it "update action should render edit template when model is invalid" do
     Site.any_instance.stubs(:valid?).returns(false)
     put :update, :id => Site.first.id
@@ -53,7 +53,7 @@ describe Admin::SitesController do
     put :update, :id => Site.first.id, :site => {:state => nil}
     response.should redirect_to(admin_site_url(assigns[:site]))
   end
-  
+
   it "destroy action should destroy model and redirect to index action" do
     site = Site.first
     delete :destroy, :id => site.id

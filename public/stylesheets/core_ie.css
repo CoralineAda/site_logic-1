@@ -9,7 +9,7 @@
   legend {
     display: none;
   }
-  
+
   .faux_legend {
     border: 1px solid #999999;
     padding: .5em;
@@ -23,7 +23,7 @@
     text-transform: uppercase;
     padding-left: 1em;
   }
-	
+
 /* @end */
 
 /* @group IE6 Workarounds */
@@ -32,7 +32,7 @@
 	*html body {
     	behavior:url("/stylesheets/csshover3.htc");
 	}
-	
+
 	* html fieldset.form_container {
 	  width: 92%;
 	  margin-top: 20px !important;
@@ -42,11 +42,11 @@
 	* html p {
 	margin-bottom: 1.5em;
 	}
-	
+
 	* html .faux_legend {
 	margin-top: -12px;
 	}
-	
+
 
 /* @end */
 

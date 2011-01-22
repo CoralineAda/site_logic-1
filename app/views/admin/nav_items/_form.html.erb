@@ -28,9 +28,9 @@
         <%= f.select :parent_id, @root_links.map{|r| ["#{r.link_text} (#{r.kind} Link)", r.id]}, :label => 'Parent Navigation Link', :include_blank => 'None' -%>
       <%- end -%>
       <%- if @nav_item.parent_id -%>
-        <%= f.hidden_field :kind, :value => @nav_item.parent.kind -%>    
+        <%= f.hidden_field :kind, :value => @nav_item.parent.kind -%>
       <%- else -%>
-        <div id="kind_select">        
+        <div id="kind_select">
           <%= f.select :kind, NavItem::KINDS, :label => 'Navigation Item Kind' unless @nav_item.parent_id -%>
         </div>
       <%- end -%>
@@ -48,7 +48,7 @@
 
   <%- unless @nav_item.parent_id -%>
     <script type="text/javascript">
-      Event.observe($('nav_item_parent_id'), 'change', function (){ 
+      Event.observe($('nav_item_parent_id'), 'change', function (){
         if ($('nav_item_parent_id').value) {
           $('kind_select').hide();
           var kind = /.+\((.+) Link\)/;

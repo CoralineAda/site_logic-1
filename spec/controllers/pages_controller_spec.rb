@@ -13,5 +13,5 @@ describe PagesController do
     get :show, :page_slug => '/bunnicula/'
     response.should render_template(:show)
   end
-  
+
 end

@@ -13,7 +13,7 @@ module NavigationHelpers
 
     when /the url "(.+)"/
       "#{$1}"
-      
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
@@ -22,7 +22,7 @@ module NavigationHelpers
 
     when /the list of sites/
       admin_sites_path
-      
+
     else
       begin
         page_name =~ /the (.*) page/

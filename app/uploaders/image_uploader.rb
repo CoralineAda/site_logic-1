@@ -35,7 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :content
   version :thumb
-  
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

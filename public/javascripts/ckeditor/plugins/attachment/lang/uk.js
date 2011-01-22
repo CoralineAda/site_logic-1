@@ -1,6 +1,6 @@
 CKEDITOR.plugins.setLang('attachment', 'uk',
 {
-  attachment : 
+  attachment :
   {
     title : "Вставити файл",
     url: "URL",

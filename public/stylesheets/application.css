@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://start.local:3000/stylesheets/application.css
 */
 
@@ -34,7 +34,7 @@
 	a:link {
   		color: #440000;
 	}
-	
+
 	a:visited {
   		color: #444444;
 	}
@@ -214,7 +214,7 @@
   		height: 1em;
   		width: 100%;
 	}
-	
+
 	ol.breadcrumbs li {
   		display: block;
   		float: left;
@@ -228,7 +228,7 @@
 		background: url(../images/layout/breadcrumb_bg.png) no-repeat right 3px;
 		text-transform: uppercase;
 	}
-	
+
 	ol.breadcrumbs a:link, ol.breadcrumbs a:visited {
 		display: block;
 		text-decoration: none;
@@ -397,11 +397,11 @@
 	th.sortable_header {
   		cursor: pointer;
 	}
-	
+
 	th.sortable_header:hover {
   		background: #444444;
 	}
-	
+
 	table h1 {
   		font-size: 1.1em;
   		background: none;
@@ -409,7 +409,7 @@
   		margin: 0px !important;
   		height: auto;
 	}
-	
+
 	td {
 		font-size: .8em;
 	}
@@ -501,7 +501,7 @@
       content: "\25B2";
       margin-left: 1em;
     }
-	
+
 	table.standard tr:hover td, table.results tr:hover td {
 		background-color: #cccccc !important;
 	}
@@ -558,11 +558,11 @@
 
 
 /* @group Components */
-	
+
 	.float_right {
   		float: right !important;
 	}
-	
+
 	.link_block {
 		clear: both;
   		height: 2.75em;
@@ -573,7 +573,7 @@
 		border: 1px solid #bbbbbb;
 		background: #ffffff url(../images/layout/shadow_border_4.png) repeat-x 0 2px;
 	}
-	
+
 	table .link_block {
 		height: 3.1em;
 		margin-top: -3px;
@@ -581,7 +581,7 @@
   		margin-right: -5px;
   		margin-bottom: -5px;
 	}
-	
+
 	a.back_button {
 		display: block;
   		text-decoration: none !important;
@@ -591,7 +591,7 @@
 		background: url(../images/layout/back.png) no-repeat 0 -1px;
 		text-transform: uppercase;
 	}
-	
+
 	input[type='submit'].link_button {
 		margin-top: 2px;
   		height: 28px !important;
@@ -602,11 +602,11 @@
   		border-right: 1px solid #bbbbbb;
   		color: #440000;
 	}
-	
+
 	a.link_button {
   		color: #440000 !important;
 	}
-	
+
 	.link_button {
   		display: block;
   		float: left;
@@ -615,31 +615,31 @@
 		padding-top: 1em;
   		padding-left: 1.25em;
   		padding-right: 1.5em;
-  		text-decoration: none !important;   		
+  		text-decoration: none !important;
   		font-weight: bold;
   		font-size: 10px;
   		text-transform: uppercase;
   		border-right: 1px solid #bbbbbb;
 	}
-	
+
 	.link_button:hover {
   		background-color: #cccccc;
   		margin-top: .1em;
   		height: 1.9em !important;
 	}
-	
+
 	.menu_box {
   		width: 45%;
   		height: 100px;
   		float: left;
 	}
-	
+
 	.no_bg {
 		margin-top: 0em;
   		background-color: #ffffff;
   		border: none !important;
 	}
-	
+
 	div.jump_links {
 		position: absolute;
 		right: 25px;
@@ -652,13 +652,13 @@
 		color: #444444;
 		text-decoration: none;
 	}
-	
+
 	.jump_links ul {
 		display: inline;
 		float: right;
 		list-style-type: none;
 	}
-	
+
 	.jump_links ul li {
 	    float: left;
 	    margin-left: .25em;
@@ -671,7 +671,7 @@
 	    background: url(../images/layout/tab.png) no-repeat;
 	    font-size: 9px;
 	}
-	
+
 	.jump_links ul li.active {
 		background: url(../images/layout/tab_active.png) no-repeat;
 		margin-top: 2px;

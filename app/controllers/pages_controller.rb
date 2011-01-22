@@ -16,5 +16,5 @@ class PagesController < ApplicationController
       redirect_to '/404'
     end
   end
-  
+
 end

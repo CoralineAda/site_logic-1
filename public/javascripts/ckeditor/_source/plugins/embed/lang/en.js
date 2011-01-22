@@ -1,6 +1,6 @@
 CKEDITOR.plugins.setLang('embed', 'en',
 {
-  embed : 
+  embed :
   {
     title : "Paste embed",
     button : "Paste embed",

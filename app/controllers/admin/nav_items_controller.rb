@@ -6,7 +6,7 @@ class Admin::NavItemsController < ApplicationController
   def index
     @primary_nav_items = @root_links.primary.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
-  
+
   def new
     @roots = @site.nav_items.roots.sort{|a,b| a.link_text <=> b.link_text}
     kind = params[:kind] || 'Primary'
@@ -20,7 +20,7 @@ class Admin::NavItemsController < ApplicationController
       @nav_item = @site.nav_items.new(:kind => kind)
     end
   end
-  
+
   def create
     params[:nav_item][:parent_id] = nil if params[:nav_item][:parent_id].blank?
     @nav_item = @site.nav_items.create(params[:nav_item])
@@ -37,13 +37,13 @@ class Admin::NavItemsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def show
   end
-  
+
   def edit
   end
-  
+
   def update
     if @nav_item.update_attributes(params[:nav_item])
       flash[:notice] = "Successfully updated the navigation link."
@@ -52,7 +52,7 @@ class Admin::NavItemsController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @nav_item.destroy
     flash[:notice] = "Successfully destroyed the navigation link."
@@ -73,18 +73,18 @@ class Admin::NavItemsController < ApplicationController
 	end
 
   private
-  
+
   def scope_site
     @site = Site.find(params[:site_id])
     @root_links = @site.nav_items.roots
   end
-  
+
   def scope_nav_item
     @nav_item = @site.nav_items.find(params[:id])
   end
-  
+
   def auto_nav_item
-    
+
   end
-  
+
 end

@@ -11,7 +11,7 @@
       <th><%= image_tag '/images/icons/move_white.png' -%></th>
     </tr>
   </thead>
-  
+
   <tbody id="content_list_<%= navitem_type -%>">
   <%- nav_items.sort{|a,b| a.position.to_i <=> b.position.to_i}.each do |nav_item| -%>
     <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= nav_item.id -%>">

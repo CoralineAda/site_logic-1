@@ -1,6 +1,6 @@
 CKEDITOR.plugins.setLang('embed', 'ru',
 {
-  embed : 
+  embed :
   {
     title : "Вставить embed",
     button : "Вставить embed",

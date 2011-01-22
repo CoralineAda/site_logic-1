@@ -11,7 +11,7 @@ function uploadStart(file) {
 		//progress.toggleCancel(true, this);
 	}
 	catch (ex) {}
-	
+
 	return true;
 }
 
@@ -21,7 +21,7 @@ function fileQueued(file) {
 		progress.setStatus("Preparing...");
 		progress.setProgress(0);
 		progress.toggleCancel(true, this);
-		
+
 		var e = document.getElementById('divFileProgressContainer');
     e.style.display = '';
 	} catch (ex) {
@@ -71,7 +71,7 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 		if (numFilesSelected > 0) {
 			//document.getElementById(this.customSettings.cancelButtonId).disabled = false;
 		}
-		
+
 		this.startUpload();
 	} catch (ex) {
 		this.debug(ex);
@@ -105,7 +105,7 @@ function uploadSuccess(file, serverData) {
 		progress.toggleCancel(false);
 
 		progress.createThumbnail(serverData);
-				
+
 	} catch (ex) {
 		this.debug(ex);
 	}

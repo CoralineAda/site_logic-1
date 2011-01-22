@@ -5,11 +5,11 @@ class Admin::RedirectsController < ApplicationController
 
   def index
   end
-  
+
   def new
     @redirect = @site.redirects.new
   end
-  
+
   def create
     @redirect = @site.redirects.create(params[:redirect])
     if @redirect.valid?
@@ -19,13 +19,13 @@ class Admin::RedirectsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def show
   end
-  
+
   def edit
   end
-  
+
   def update
     if @redirect.update_attributes(params[:redirect])
       flash[:notice] = "Successfully updated the redirect."
@@ -34,7 +34,7 @@ class Admin::RedirectsController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @redirect.destroy
     flash[:notice] = "Successfully destroyed the redirect."
@@ -52,14 +52,14 @@ class Admin::RedirectsController < ApplicationController
 	end
 
   private
-  
+
   def scope_site
     @site = Site.find(params[:site_id])
     @redirects = @site.redirects
   end
-  
+
   def scope_redirect
     @redirect = @site.redirects.find(params[:id])
   end
-  
+
 end

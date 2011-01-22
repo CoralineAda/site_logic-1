@@ -228,20 +228,20 @@ td.FCKFileSize
 
 #xCover
 {
-	position: absolute; 
-	top: 0px; 
-	left: 0px; 
-	width: 100%; 
-	height: 100%; 
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
 	filter: alpha(opacity=50); /* IE */
 	opacity: 0.50; /* Safari, Opera and Mozilla */
 }
 
 #xDialog
 {
-	position: absolute; 
-	top: 80px; 
-	left: 120px; 
+	position: absolute;
+	top: 80px;
+	left: 120px;
 	text-align:center;
 	padding:5px;
 	overflow: auto;	/* FF bug : cursor disappears */
@@ -266,7 +266,7 @@ td.FCKFileSize
 }
 
 
-.progressBar 
+.progressBar
 {
 	margin-top:0.2em;
 	height: 0.8em;
@@ -276,7 +276,7 @@ td.FCKFileSize
 	border-radius: 5px;
 }
 
-.speed 
+.speed
 {
 	width: 5em;
 	text-align: right;
@@ -284,7 +284,7 @@ td.FCKFileSize
 	display:inline-block;
 	white-space: pre;
 }
-.uploadinfo 
+.uploadinfo
 {
 	width: 8em;
 	text-align: right;
@@ -292,7 +292,7 @@ td.FCKFileSize
 	display:inline-block;
 	white-space: pre;
 }
-.progressBarContainer 
+.progressBarContainer
 {
 	width: 200px;
 	display:inline-block;

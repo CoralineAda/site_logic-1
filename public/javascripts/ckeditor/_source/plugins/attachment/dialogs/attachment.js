@@ -94,7 +94,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	      
 	      return { filename : filename, className : "attach_" + extname };
 	    }
-	
+
 			return {
 				title : editor.lang.attachment.title,
 			  minWidth : 420,
@@ -211,7 +211,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
             
             if (element.getAttribute('title') )
               element.setHtml(element.getAttribute('title'));
-            
+
 				    // Make the element display as an anchor if a name has been set.
 				    if ( element.getAttribute( 'name' ) )
 					    element.addClass( 'cke_anchor' );

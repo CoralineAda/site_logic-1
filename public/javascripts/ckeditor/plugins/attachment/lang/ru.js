@@ -1,6 +1,6 @@
 CKEDITOR.plugins.setLang('attachment', 'ru',
 {
-  attachment : 
+  attachment :
   {
     title : "Включить вложения",
     url: "URL",

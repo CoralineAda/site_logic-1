@@ -8,7 +8,7 @@ var FileThumb = new Class({
       this.element = $(element);
       this.init();
     },
-    
+
     init: function(){
       this.element.getElements('div.FCKThumb').addEvents({
           'mouseover': function(){
@@ -30,14 +30,14 @@ var ToolBar = new Class({
     initialize: function(element){
       this.container = $(element);
       this.buttons = new Array();
-      
+
       this.table = null;
     },
-    
+
     clear: function(){
       this.buttons = new Array();
     },
-    
+
     init: function(){
       this.table = document.createElement('table');
       this.table.appendChild(document.createElement("TBODY"));
@@ -45,31 +45,31 @@ var ToolBar = new Class({
       this.table.setAttribute('cellspacing', 0);
       this.table.setAttribute('cellpadding', 0);
       this.table.className = "TB_Toolbar";
-      
+
       var row = this.table.tBodies[0].insertRow(0);
       var cell = row.insertCell(row.cells.length);
-      
+
       div = document.createElement('div');
       div.className = 'TB_Start';
       div.innerHTML = "&nbsp;"
       cell.appendChild(div);
-      
+
       this.init_buttons(row);
-      
+
       this.container.appendChild(this.table);
     },
-    
+
     init_buttons: function(row){
-      
+
       for(var i = 0; i < this.buttons.length; i++)
       {
-        var cell = row.insertCell(row.cells.length);  
+        var cell = row.insertCell(row.cells.length);
         this.buttons[i].init();
         cell.appendChild(this.buttons[i].element);
       }
-      
+
     }
-    
+
 });
 
 var Button = new Class({
@@ -77,44 +77,44 @@ var Button = new Class({
     this.title = title;
     this.text = text;
     this.image = image;
-    
+
     this.callback = function(){};
     this.element = null;
   },
-  
+
   init: function(){
     this.element = document.createElement('div');
     this.element.title = this.title;
     this.element.className = "TB_Button";
-    
+
     table = document.createElement('table');
     table.appendChild(document.createElement("TBODY"));
     table.border = 0;
     table.setAttribute('cellspacing', 0);
     table.setAttribute('cellpadding', 0);
-    
+
     var row = table.tBodies[0].insertRow(0);
     var cell = row.insertCell(row.cells.length);
-    
+
     image = document.createElement('img');
     image.src = '/javascripts/ckeditor/images/' + this.image;
     image.className = 'TB_Button_Image';
-    
+
     cell.appendChild(image);
-    
+
     var cell = row.insertCell(row.cells.length);
     cell.className = 'TB_Button_Text';
     cell.innerHTML = this.text;
     row.appendChild(cell);
-    
+
     var cell = row.insertCell(row.cells.length);
     image = document.createElement('img');
     image.src = '/javascripts/ckeditor/images/spacer.gif';
     image.className = 'TB_Button_Padding';
     cell.appendChild(image);
-    
+
     this.element.appendChild(table);
-    
+
     this.element.addEvents({
           'mouseover': function(){
               this.className = "TB_Button_Off_Over"
@@ -216,27 +216,27 @@ FileProgress.prototype.createThumbnail = function(serverData) {
   var object = JSON.decode(serverData);
   var container = $('container');
   var asset = (typeof(object.asset) == 'undefined') ? object : object.asset;
-  
+
   var image_src = null;
   var image_alt = null;
   var file_size = null;
   var file_name = null;
   var file_date = null;
-  
+
   if (typeof asset == 'undefined')
     return;
-  
+
   image_alt = asset.url;
   file_size = asset.size;
   file_name = asset.filename;
   file_date = asset.format_created_at;
-  
+
   image_src = asset.url_thumb;
   image_alt = asset.url_content;
-  
+
   var div = new Element('div');
   div.className = 'FCKThumb';
-  
+
   var table = document.createElement('TABLE');
   table.appendChild(document.createElement("TBODY"));
   table.border = 0;
@@ -244,31 +244,31 @@ FileProgress.prototype.createThumbnail = function(serverData) {
   table.setAttribute('cellpadding', 0);
   table.setAttribute('width', 100);
   table.setAttribute('height', 100);
-  
+
   var row = table.tBodies[0].insertRow(0);
   var cell = row.insertCell(row.cells.length);
   cell.setAttribute('align', 'center');
   cell.setAttribute('valign', 'middle');
-  
+
   cell.innerHTML = "<img src='" + image_src + "' alt='" + image_alt + "' title='" + file_name + "' class='image' onerror=\"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'\" />"
-  
+
   var div_name = document.createElement('DIV');
   div_name.className = "FCKFileName";
   div_name.innerHTML = file_name;
-  
+
   var div_date = document.createElement('DIV');
   div_date.className = "FCKFileDate";
   div_date.innerHTML = file_date;
-  
+
   var div_size = document.createElement('DIV');
   div_size.className = "FCKFileSize";
   div_size.innerHTML = file_size;
-  
+
   div.appendChild(table);
   div.appendChild(div_name);
   div.appendChild(div_date);
   div.appendChild(div_size);
-  
+
   //container.appendChild(div);
   div.inject(container, 'top');
   var f = new FileThumb('qu');

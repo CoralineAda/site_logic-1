@@ -6,17 +6,17 @@ class Page
 
   # Attributes =====================================================================================
 
-  field :slug  
-  field :sitemap, :type => Boolean  
-  field :noindex, :type => Boolean  
-  field :meta_description  
-  field :meta_keywords  
-  field :page_title  
-  field :window_title  
-  field :content  
+  field :slug
+  field :sitemap, :type => Boolean
+  field :noindex, :type => Boolean
+  field :meta_description
+  field :meta_keywords
+  field :page_title
+  field :window_title
+  field :content
   field :state
   field :publication_date, :type => DateTime
-  
+
   # Indices ========================================================================================
   index :slug, :unique => false
   index :state, :unique => false
@@ -30,15 +30,15 @@ class Page
   scope :noindex,     :where => {:noindex => true}
   scope :indexed,     :where => {:noindex => false}
   scope :for_sitemap, :where => {:sitemap => true}
-  
+
   # Relationships ==================================================================================
   embedded_in :site, :inverse_of => :pages
-  
+
   # Behavior =======================================================================================
   attr_accessor :desired_slug
   attr_accessor :create_navigation_item
   has_slug :desired_slug
-  
+
   # Callbacks ======================================================================================
 
   # Validations ====================================================================================
@@ -57,11 +57,11 @@ class Page
 #       end
     end
   end
-  
+
   validates :desired_slug, :desired_slug_presence_and_uniqueness => true
   validates_presence_of :page_title
   validates_presence_of :content
-  
+
   # Class methods ==================================================================================
 
   # Instance methods ===============================================================================
@@ -77,29 +77,29 @@ class Page
       "/#{self.slug}/".gsub(/\/\//,'/').gsub(/\/\//,'/')
     end
   end
-    
+
   def publish!
     self.update_attributes(:state => 'published', :publication_date => Time.zone.now)
   end
-  
+
   def published?
     self.state == 'published'
   end
-  
+
   def unpublish!
     self.update_attributes(:state => 'draft', :publication_date => nil)
   end
-  
+
   def sitemap
     self[:sitemap] || true
   end
-  
+
   def status
     self.state ? self.state.capitalize : 'Draft'
   end
-  
+
   def window_title
     self[:window_title] || self.page_title
   end
-  
+
 end

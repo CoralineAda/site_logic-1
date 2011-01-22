@@ -4,7 +4,7 @@ Given /^I have sites named (.+)$/ do |names|
   end
 end
 
-Given /^I have no sites$/ do 
+Given /^I have no sites$/ do
   Site.delete_all
 end
 

@@ -8,11 +8,11 @@ describe Page do
   end
 
   describe "initialization" do
-  
+
     it "should be invalid without required values" do
       @site.pages.new.valid?.should be_false
     end
-    
+
     it "should be valid with required values" do
       @site.pages.new(
         :page_title   => 'Home',
@@ -20,7 +20,7 @@ describe Page do
         :content      => 'Welcome home.'
       ).should be_valid
     end
-    
+
     it "should not allow duplicate slugs" do
       @site.pages.create(
         :page_title   => 'Foo',
@@ -33,16 +33,16 @@ describe Page do
         :content      => 'Welcome to bar.'
       ).should_not be_valid
     end
-    
+
   end
-  
+
   describe 'publishing lifecycle' do
 
     it 'defaults a new page to draft status' do
       page = @site.pages.new
       page.draft?.should be_true
     end
-    
+
     it 'publishes a page, setting the publication date' do
       page = @site.pages.create(
         :page_title   => 'Stiff',
@@ -54,7 +54,7 @@ describe Page do
       page.draft?.should be_false
       page.publication_date.should_not be_nil
     end
-    
+
     it 'unpublishes a page, clearing the publication date' do
       page = @site.pages.create(
         :page_title   => 'Stuff',
@@ -67,11 +67,11 @@ describe Page do
       page.draft?.should be_true
       page.publication_date.should be_nil
     end
-    
+
   end
 
   describe 'slug' do
-  
+
     it 'is generated based on the desired_slug' do
       page = @site.pages.create(
         :page_title   => 'Snakes',
@@ -80,7 +80,7 @@ describe Page do
       )
       page.slug.should == 'snakes-and-stuff'
     end
-    
+
     it 'truncates extra hyphens' do
       page = @site.pages.create(
         :page_title   => 'Spiders',
@@ -89,7 +89,7 @@ describe Page do
       )
       page.slug.should == 'spiders-and-stuff'
     end
-    
+
     it 'truncates trailing hyphens' do
       page = @site.pages.create(
         :page_title   => 'Sinews',
@@ -98,7 +98,7 @@ describe Page do
       )
       page.slug.should == 'sinews-really'
     end
-    
+
   end
-  
+
 end

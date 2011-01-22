@@ -6,25 +6,25 @@ class Site
 
   # Attributes =====================================================================================
 
-  field :domain  
-  field :name  
+  field :domain
+  field :name
   field :layout
-  field :state  
-  field :redirect_to  
-  field :google_profile_id  
-  field :google_webmaster_code  
-  field :yahoo_webmaster_code  
-  field :bing_webmaster_code  
-  field :netinsert_code  
+  field :state
+  field :redirect_to
+  field :google_profile_id
+  field :google_webmaster_code
+  field :yahoo_webmaster_code
+  field :bing_webmaster_code
+  field :netinsert_code
   field :activation_date, :type => DateTime
-  
+
   # Indices ========================================================================================
   index :domain, :unique => true
   index :name, :unique => true
-  
+
   # Constants ======================================================================================
   STATES = ['inactive', 'active']
-  
+
   # Scopes ===================================================================================
   scope :active,   :where => {:state => 'active'}
   scope :inactive, :where => {:state => 'inactive'}
@@ -33,10 +33,10 @@ class Site
   embeds_many :pages
   embeds_many :nav_items
   embeds_many :redirects
-  
+
   # Behavior =======================================================================================
   attr_accessor :status
-  
+
   # Callbacks ======================================================================================
 
   # Validations ====================================================================================
@@ -52,17 +52,17 @@ class Site
     files = Dir.glob("#{Rails.root.to_s}/app/views/layouts/*.html.erb")
     files.map{|f| f.gsub(/.+layouts\/(.+)\.html.erb/, '\1')}
   end
-  
+
   # Instance methods ===============================================================================
 
   def active?
     self.state == "active"
   end
-  
+
   def activate!
     self.update_attributes(:state => 'active', :activation_date => Time.zone.now)
   end
-  
+
   def deactivate!
     self.update_attributes(:state => 'inactive', :activation_date => nil)
   end
@@ -70,11 +70,11 @@ class Site
   def footer_navigation
     self.nav_items.roots.footer.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
-  
+
   def home_page
     self.pages.where(:slug => '/').first
   end
-  
+
   def inactive?
     self.state != "active"
   end
@@ -82,17 +82,17 @@ class Site
   def primary_navigation
     self.nav_items.roots.primary.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
-  
+
   def secondary_navigation
     self.nav_items.roots.secondary.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
-  
+
   def state
     self[:state] || 'inactive'
   end
-  
+
   def status
     self.state.capitalize
   end
-  
+
 end
