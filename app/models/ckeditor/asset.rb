@@ -4,7 +4,8 @@ require 'carrierwave/orm/mongoid'
 class Ckeditor::Asset
 
   include Mongoid::Document
-
+  include Mongoid::Timestamps
+  
   field :data
   field :data_file_name
   field :data_content_type
