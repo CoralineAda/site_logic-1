@@ -66,7 +66,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.14)
+    culerity (0.2.15)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
