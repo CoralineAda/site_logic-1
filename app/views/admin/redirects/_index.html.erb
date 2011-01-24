@@ -29,9 +29,11 @@
       </tr>
     <%- end -%>
       <tr>
-        <td colspan="4" class="link_block">
-          <%= link_to 'New Redirect', new_admin_site_redirect_path(@site), :class => 'link_button' -%>
-          <%= link_to 'Import Redirects', '#', :class => 'link_button' -%>
+        <td colspan="3">
+          <div class="link_block">
+            <%= link_to 'New Redirect', new_admin_site_redirect_path(@site), :class => 'link_button' -%>
+            <%= link_to 'Import Redirects', '#', :class => 'link_button' -%>
+          </div>
         </td>
       </tr>
     </tbody>
