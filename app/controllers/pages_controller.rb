@@ -7,6 +7,9 @@ class PagesController < ApplicationController
     elsif params[:page_slug]
       @page = @site.pages.published.where(:slug => params[:page_slug]).first
       @page = @site.pages.published.where(:slug => "/#{params[:page_slug]}/").first unless @page
+    elsif params[:path]
+      @page = @site.pages.published.where(:slug => params[:path]).first
+      @page = @site.pages.published.where(:slug => "/#{params[:path]}/").first unless @page
     else
       @page = @site.home_page
     end
