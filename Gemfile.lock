@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Bantik/rails-ckeditor.git
-  revision: 1a8e108dd146a817db37b484615d429c386704e5
+  revision: 1a8e108
   branch: rails3_mongoid
   specs:
     ckeditor (3.4.3.pre)
