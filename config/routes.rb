@@ -11,11 +11,20 @@ Rails.application.routes.draw do
     def initialize; end
     def matches?(request)
       return false if request.subdomain == 'admin'
-      site = Site.where(:domain => request.domain).first
+      site = Site.where(:domain => request.host).first
       site && site.redirects.where(:source_url => "#{request.path}").first
     end
   end
 
+  class PageConstraint
+    def initialize; end
+    def matches?(request)
+      return false if request.subdomain == 'admin'
+      site = Site.where(:domain => request.host).first
+      site && site.pages.where(:slug => "#{request.path}/").first
+    end
+  end
+  
   constraints(RedirectConstraint.new) do
     match ':source_url', :to => 'redirects#show'
   end
@@ -23,7 +32,9 @@ Rails.application.routes.draw do
   constraints(SiteConstraint.new) do
     root :to => "pages#show"
     match ':page_slug/', :to => 'pages#show'
-    match ':page_slug(/:nested_slug)/', :to => 'pages#show'
+    match ':page_slug', :to => 'pages#show'
+    match ':page_slug(/:nested_slug\/.+/)', :to => 'pages#show'
+    match "*path" => 'pages#show', :constraints => PageConstraint.new
   end
 
   namespace :admin do
