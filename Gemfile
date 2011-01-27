@@ -10,17 +10,18 @@ gem 'rails', '>= 3.0.1'
 gem 'rmagick', '2.12.2' # version compatible with heroku
 gem 'scaffold_logic', '>= 1.0.3'
 
-group :development, :test do
+group :development do
+  gem 'jeweler'
+end
+
+group :test do
   gem 'be_valid_asset'
   gem 'capybara'
   gem 'cucumber-rails'
-  gem 'cucumber'
   gem 'database_cleaner'
   gem 'faker'
-  gem 'jeweler'
   gem 'launchy'
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'mocha'
   gem 'rspec-rails'
-  gem 'spork'
 end
