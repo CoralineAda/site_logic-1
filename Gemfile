@@ -18,10 +18,9 @@ group :test do
   gem 'be_valid_asset'
   gem 'capybara'
   gem 'cucumber-rails'
-  gem 'database_cleaner'
   gem 'faker'
-  gem 'launchy'
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'mocha'
+  gem 'nokogiri'
   gem 'rspec-rails'
 end
