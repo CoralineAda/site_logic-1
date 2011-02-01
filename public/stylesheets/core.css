@@ -11,7 +11,7 @@
 	}
 
 	ul {
-		list-style: bullet;
+		list-style: disc;
 		margin-top: 1em;
 	}
 
@@ -258,7 +258,7 @@
 	}
 
 	ul.bulleted {
-		list-style-type: bullet;
+		list-style-type: disc;
 	}
 
 	.inactive {
@@ -805,7 +805,7 @@
 		border: 1px solid #888888;
 	}
 
-  # FIXME: this is a duplicate definition with slightly different values -RM
+  /* FIXME: this is a duplicate definition with slightly different values -RM */
 	table.results th {
 		vertical-align: middle;
 		text-align: left;
