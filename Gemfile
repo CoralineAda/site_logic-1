@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-source 'http://emeritus.camp.seologic.com:8808/'
+source 'http://jose.seologic.com:8808/'
 
 gem 'bson_ext'
 gem 'carrierwave'
