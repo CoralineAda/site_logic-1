@@ -9,12 +9,13 @@
 #   cap deploy:new
 
 # Global Variables =================================================================================
-role :app, 'emeritus.camp.seologic.com'
+default_run_options[:pty] = true
+role :app, 'jose.seologic.com'
 set :deploy_to, '/home/containers/rails/system/site_logic'
 set :repository, 'git@github.com:Bantik/site_logic.git'
 set :scm, :git
 set :use_sudo, false
-set :user, 'emerituscamp'
+set :user, 'cnewton'
 
 namespace :deploy do
   desc "Clone a new gem's repository on the gem server."
