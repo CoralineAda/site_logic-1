@@ -2,12 +2,21 @@
 
 <%= tabset do -%>
   <%= tab_tag(:id => 'primary_nav', :label => 'Main Navigation', :state => 'active') %>
+  <%= tab_tag(:id => 'dropdown_nav', :label => 'Dropdown Navigation') %>
   <%= tab_tag(:id => 'secondary_nav', :label => 'Secondary Navigation') %>
   <%= tab_tag(:id => 'footer_nav', :label => 'Footer Navigation') %>
 <%- end -%>
 
 <%= tab_body :id => 'primary_nav', :display => 'block' do -%>
   <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.primary.roots, :navitem_type => 'primary'} -%>
+  <br style="clear: both;" />
+  <div class="link_block">
+    <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>
+  </div>
+<%- end -%>
+
+<%= tab_body :id => 'dropdown_nav', :display => 'none' do -%>
+  <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.dropdown, :navitem_type => 'dropdown'} -%>
   <br style="clear: both;" />
   <div class="link_block">
     <%= link_to 'New Navigation Link', new_admin_site_nav_item_path(@site), :class => 'link_button' -%>

@@ -17,6 +17,7 @@ class NavItem
 
   # Scopes =========================================================================================
   scope :roots,     :where => {:parent_id => nil}
+  scope :dropdown,  :where => {:kind => 'Dropdown'}
   scope :primary,   :where => {:kind => 'Main'}
   scope :secondary, :where => {:kind => 'Secondary'}
   scope :footer,    :where => {:kind => 'Footer'}
@@ -30,7 +31,7 @@ class NavItem
 
   # Constants ======================================================================================
 
-  KINDS = ["Main", "Secondary", "Footer"]
+  KINDS = ["Main", "Dropdown", "Secondary", "Footer"]
 
   # Callbacks ======================================================================================
 
@@ -44,7 +45,7 @@ class NavItem
   # Instance methods ===============================================================================
 
   def children
-    self.site.nav_items.where(:parent_id => self.id).sort{|a,b| a.position.to_i <=> b.position.to_i}
+    self.site.nav_items.primary.select{|ni| ni.parent_id == self.id.to_s}.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
 
   def parent
@@ -55,6 +56,10 @@ class NavItem
     self.parent_id.nil?
   end
 
+  def dropdown_nav_items
+    self.site.nav_items.dropdown.select{|ni| ni.parent_id == self.id.to_s}.sort{|a,b| a.position.to_i <=> b.position.to_i}
+  end
+  
   def siblings
     self.parent.children.reject{|c| c == self}
   end
