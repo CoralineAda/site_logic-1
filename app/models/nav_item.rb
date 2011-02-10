@@ -45,7 +45,7 @@ class NavItem
   # Instance methods ===============================================================================
 
   def children
-    self.site.nav_items.primary.select{|ni| ni.parent_id == self.id.to_s}.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    self.site.nav_items.select{|ni| ni.parent_id == self.id.to_s && ni.kind != 'Dropdown'}.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
 
   def parent
