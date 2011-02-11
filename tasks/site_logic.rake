@@ -4,6 +4,7 @@ namespace :site_logic do
   task :install do
     dir = Gem.searcher.find('site_logic').full_gem_path
     system "rsync -ruv #{dir}/config/initializers/site_logic.rb config/initializers/"
+    system "rsync -ruv #{dir}/public/javascripts/link_obfuscator.js public/javascripts/"
     puts
     puts "========================================================================================="
     puts "SiteLogic installation complete."

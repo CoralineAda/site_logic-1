@@ -11,6 +11,7 @@ class NavItem
   field :url
   field :parent_id
   field :position, :type => Integer
+  field :obfuscate, :type => Boolean
   field :kind
 
   # Indices ========================================================================================
@@ -48,6 +49,14 @@ class NavItem
     self.site.nav_items.select{|ni| ni.parent_id == self.id.to_s && ni.kind != 'Dropdown'}.sort{|a,b| a.position.to_i <=> b.position.to_i}
   end
 
+  def decoded_url
+    self[:url]
+  end
+  
+  def encoded_url
+    self[:url].gsub("/","#").tr("A-Ma-mN-Zn-z","N-Zn-zA-Ma-m")
+  end
+  
   def parent
     self.site.nav_items.find(self.parent_id)
   end
@@ -66,6 +75,10 @@ class NavItem
 
   def sub_nav_item?
     self.parent_id
+  end
+  
+  def url
+    @url = self.obfuscate? ? encoded_url : self[:url]
   end
 
 end
