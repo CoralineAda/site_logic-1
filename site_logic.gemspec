@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.4.0"
+  s.version = "1.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2011-02-11}
+  s.date = %q{2011-02-14}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -91,7 +91,9 @@ Gem::Specification.new do |s|
     "features/support/paths.rb",
     "init.rb",
     "lib/site_logic.rb",
+    "lib/site_logic/base.rb",
     "lib/site_logic/engine.rb",
+    "lib/site_logic/navigation.rb",
     "lib/site_logic/railtie.rb",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
