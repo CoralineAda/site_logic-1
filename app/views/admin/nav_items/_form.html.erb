@@ -31,10 +31,10 @@
       <div id="parent_select">
         <%- if params[:parent_id] -%>
           <%= f.hidden_field :parent_id, :value => @nav_item.parent_id -%>
-          <%= f.hidden_field :kind, :value => @nav_item.parent.kind == "Dropdown" ? "Main" : @nav_item.parent.kind -%>
-        <%- elsif @nav_item.new_record? || @nav_item.kind == "Secondary" || @nav_item.kind == "Dropdown" -%>
+          <%= f.hidden_field :kind, :value => @nav_item.parent.kind == "Main" : @nav_item.parent.kind -%>
+        <%- elsif @nav_item.new_record? || @nav_item.kind == "Secondary" -%>
           <%= f.select :parent_id, @root_links.map{|r| ["#{r.link_text} (#{r.kind} Link)", r.id]}, :label => 'Parent Navigation Link', :include_blank => 'None' -%>
-          <%- if @nav_item.parent_id && @nav_item.kind != "Dropdown" -%>
+          <%- if @nav_item.parent_id -%>
             <%= f.hidden_field :parent_id, :value => @nav_item.parent_id -%>
             <%= f.hidden_field :kind, :value => @nav_item.parent.kind -%>
           <%- end -%>

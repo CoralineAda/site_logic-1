@@ -28,7 +28,7 @@ class Admin::NavItemsController < ApplicationController
       flash[:notice] = "Successfully created the navigation link."
       if params[:nav_item][:creating_page]
         redirect_to admin_site_pages_path(@site.id.to_s)
-      elsif @nav_item.parent_id.blank? || @nav_item.kind == "Dropdown"
+      elsif @nav_item.parent_id.blank?
         redirect_to admin_site_nav_items_path(@site.id.to_s, :anchor => "#{@nav_item.kind.downcase}_nav")
       else
         redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
