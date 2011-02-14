@@ -282,6 +282,13 @@
 
 /* @group Forms */
 
+  .instructions {
+    display: block;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
+    padding: 1em;
+  }
+  
 	.faux_legend {
 		background: url(../images/layout/legend_bg.png) no-repeat 0 0px;
 		margin-top: -28px;
