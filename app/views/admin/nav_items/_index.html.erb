@@ -17,7 +17,7 @@
     <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= nav_item.id -%>">
       <td><%= link_to nav_item.link_text, admin_site_nav_item_path(@site, nav_item) -%></td>
       <td><%= nav_item.link_title -%></td>
-      <td><%= nav_item.url -%></td>
+      <td><%= nav_item.decoded_url -%></td>
       <td class="crud_links">
         <%= link_to image_tag('/images/icons/delete.png'), admin_site_nav_item_path(@site, nav_item), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
       </td>

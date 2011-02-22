@@ -5,9 +5,10 @@
   <div class="form_column">
     <%= faux_field 'Link Text', @nav_item.link_text %>
     <%= faux_field 'Link Description', @nav_item.link_title %>
+    <%= faux_field 'Parent Navigation Link', @nav_item.parent.link_text if @nav_item.parent_id %>
   </div>
   <div class="form_column">
-    <%= faux_field 'URL', @nav_item.url %>
+    <%= faux_field 'URL', @nav_item.decoded_url %>
     <%= faux_field 'Position', "#{@nav_item.kind} Navigation" %>
   </div>
   <br style="clear: both;" />

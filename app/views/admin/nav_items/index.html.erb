@@ -6,7 +6,7 @@
   <%= tab_tag(:id => 'footer_nav', :label => 'Footer Navigation') %>
 <%- end -%>
 
-<%= tab_body :id => 'primary_nav', :display => 'block' do -%>
+<%= tab_body :id => 'primary_nav', :label => SiteLogic.primary_nav.label, :help => SiteLogic.primary_nav.description, :display => 'block' do -%>
   <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.primary.roots, :navitem_type => 'primary'} -%>
   <br style="clear: both;" />
   <div class="link_block">
@@ -14,7 +14,7 @@
   </div>
 <%- end -%>
 
-<%= tab_body :id => 'secondary_nav', :display => 'none' do -%>
+<%= tab_body :id => 'secondary_nav', :label => SiteLogic.secondary_nav.label, :help => SiteLogic.secondary_nav.description, :display => 'none' do -%>
   <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.secondary.roots, :navitem_type => 'secondary'} -%>
   <br style="clear: both;" />
   <div class="link_block">
@@ -22,7 +22,7 @@
   </div>
 <%- end -%>
 
-<%= tab_body :id => 'footer_nav', :display => 'none' do -%>
+<%= tab_body :id => 'footer_nav', :label => SiteLogic.footer_nav.label, :help => SiteLogic.footer_nav.description, :display => 'none' do -%>
   <%= render :partial => 'index', :locals => {:nav_items => @site.nav_items.footer.roots, :navitem_type => 'footer'} -%>
   <br style="clear: both;" />
   <div class="link_block">
