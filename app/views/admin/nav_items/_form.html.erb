@@ -25,13 +25,13 @@
       <%= f.check_box :obfuscate, :label => 'Visibility', :inline_label => 'Hide from search engine spiders' -%>
     </div>
     <div class="form_column">
-      <div id="kind_select">        
+      <div id="kind_select">
         <%= f.select :kind, NavItem::KINDS, :label => 'Navigation Item Kind', :include_blank => 'Select...' unless @nav_item.parent_id -%>
       </div>
       <div id="parent_select">
         <%- if params[:parent_id] -%>
           <%= f.hidden_field :parent_id, :value => @nav_item.parent_id -%>
-          <%= f.hidden_field :kind, :value => @nav_item.parent.kind == "Main" : @nav_item.parent.kind -%>
+          <%= f.hidden_field :kind, :value => @nav_item.parent.kind -%>
         <%- elsif @nav_item.new_record? || @nav_item.kind == "Secondary" -%>
           <%= f.select :parent_id, @root_links.map{|r| ["#{r.link_text} (#{r.kind} Link)", r.id]}, :label => 'Parent Navigation Link', :include_blank => 'None' -%>
           <%- if @nav_item.parent_id -%>
@@ -54,7 +54,7 @@
 
   <%- unless @nav_item.parent_id -%>
     <script type="text/javascript">
-      Event.observe($('nav_item_kind'), 'change', function (){ 
+      Event.observe($('nav_item_kind'), 'change', function (){
         if (($('nav_item_kind').value == 'Main') || ($('nav_item_kind').value == 'Footer')) {
           $('parent_select').hide();
         } else {
