@@ -24,7 +24,7 @@ namespace :deploy do
   end
 
   task :install do
-    run "cd #{deploy_to}; bundle; sudo rake install"
+    run "cd #{deploy_to}; rm -f Gemfile.lock; sudo bundle; sudo rake install"
   end
 
   # disable default behavior
