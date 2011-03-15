@@ -2,7 +2,7 @@ class Admin::PagesController < ApplicationController
   before_filter :authenticate_user! if Object.const_defined?('Devise')
   before_filter :scope_site
   before_filter :scope_page, :only => [:edit, :update, :destroy, :show]
-  
+
   def index
     params[:labels] = {
       :humanize_path => 'URL',
@@ -15,14 +15,14 @@ class Admin::PagesController < ApplicationController
     @pages = @site.pages.sort{|a,b| a.send(params[:by]) <=> b.send(params[:by])}
     @pages.reverse! if params[:dir] == 'DESC'
   end
-  
+
   def show
   end
-  
+
   def new
     @page = @site.pages.new
   end
-  
+
   def create
     if params[:commit] == 'Preview'
       @page = @site.pages.new(params[:page])
@@ -33,7 +33,7 @@ class Admin::PagesController < ApplicationController
         @page.publish! if params[:page][:state] == 'Published'
         flash[:notice] = "Successfully created the page."
         if params[:page][:create_navigation_item] == "true"
-          redirect_to new_admin_site_nav_item_path( 
+          redirect_to new_admin_site_nav_item_path(
             @site,
             :nav_item => {
               :url => @page.humanize_path,
@@ -50,12 +50,13 @@ class Admin::PagesController < ApplicationController
       end
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if params[:commit] == 'Preview'
+      @page = @site.pages.new(params[:page])
       render :action => 'preview', :layout => @page.site.layout
     else
       if @page.update_attributes(params[:page])
@@ -68,7 +69,7 @@ class Admin::PagesController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @page.destroy
     flash[:notice] = "Successfully destroyed the page."
@@ -79,15 +80,15 @@ class Admin::PagesController < ApplicationController
     @page = @site.pages.new(params[:page])
     render :layout => @page.site.layout
   end
-  
+
   private
-  
+
   def scope_site
     @site = Site.find(params[:site_id])
   end
-  
+
   def scope_page
     @page = @site.pages.find(params[:id])
   end
-  
+
 end
