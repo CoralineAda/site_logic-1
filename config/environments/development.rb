@@ -22,5 +22,7 @@ SiteLogic::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-end
 
+  # Custom settings
+  config.feature_results_path = "#{Rails.root}/tmp/feature_results.txt"
+end
