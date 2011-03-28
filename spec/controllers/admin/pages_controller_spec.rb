@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe Admin::PagesController do
-  render_views
-
   before :all do
     Site.destroy_all
     @site = Site.make
@@ -49,7 +47,7 @@ describe Admin::PagesController do
   it "destroy action should destroy model and redirect to index action" do
     delete :destroy, :id => @page.id, :site_id => @site.id.to_s
     response.should redirect_to(admin_site_pages_url(@site))
-    Page.where(:id => @page.id).first.should be_nil
+    @site.pages.include?(@page.id).should be_false
   end
 
 end
