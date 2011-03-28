@@ -11,17 +11,11 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
-    when /the url "(.+)"/
-      "#{$1}"
-
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
-    when /the list of sites/
-      admin_sites_path
 
     else
       begin
