@@ -49,7 +49,6 @@ Feature: Manage Sites
     And I follow "Edit"
     And I fill in "site_name" with "Another Site"
     And I press "Save"
-    Then show me the page
     Then I should see "About This Site"
     And I should see "Another Site"
 
@@ -61,7 +60,7 @@ Feature: Manage Sites
     Then the div element with the id redirect_field should not be visible
     And I press "Save"
     Then I should see "Active"
-    And I should see "Activation Date"
+    And I should see "Live Date"
 
   Scenario: Deactivate a Site
     Given I have sites named IHD
@@ -71,4 +70,4 @@ Feature: Manage Sites
     Then the div element with the id redirect_field should be visible
     And I press "Save"
     Then I should see "Inactive"
-    And I should not see "Activation Date"
+    And I should not see "Live Date"
