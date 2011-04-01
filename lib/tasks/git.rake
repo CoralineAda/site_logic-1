@@ -3,7 +3,7 @@ task :push => :environment do
   OFF, GREEN, RED, YELLOW = "\e[0m", "\e[32m", "\e[31m", "\e[33m"
 
   # run cucumber with integration profile
-  Rake::Task['cucumber:integration'].invoke rescue 0
+  system 'cucumber --profile integration' rescue 0
 
   # read results
   results = open(Rails.application.config.feature_results_path).read
