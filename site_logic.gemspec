@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.5.3"
+  s.version = "1.5.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2011-03-15}
+  s.date = %q{2011-03-31}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -71,6 +71,7 @@ Gem::Specification.new do |s|
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
+    "config/cucumber.yml",
     "config/deploy.rb",
     "config/environment.rb",
     "config/environments/development.rb",
@@ -85,9 +86,11 @@ Gem::Specification.new do |s|
     "config/routes.rb",
     "doc/TODO",
     "features/manage_sites.feature",
+    "features/step_definitions/general_steps.rb",
     "features/step_definitions/site_steps.rb",
     "features/step_definitions/web_steps.rb",
     "features/support/env.rb",
+    "features/support/hooks.rb",
     "features/support/paths.rb",
     "init.rb",
     "lib/site_logic.rb",
@@ -95,6 +98,9 @@ Gem::Specification.new do |s|
     "lib/site_logic/engine.rb",
     "lib/site_logic/navigation.rb",
     "lib/site_logic/railtie.rb",
+    "lib/tasks/cucumber.rake",
+    "lib/tasks/cucumber_custom.rake",
+    "lib/tasks/git.rake",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
     "misc/images/src/legend_bg.psd",
@@ -802,6 +808,7 @@ Gem::Specification.new do |s|
     "public/stylesheets/core.css",
     "public/stylesheets/core_ie.css",
     "public/stylesheets/csshover3.htc",
+    "script/cucumber",
     "script/rails",
     "site_logic.gemspec",
     "spec/blueprints.rb",
