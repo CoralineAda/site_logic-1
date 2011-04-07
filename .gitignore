@@ -16,6 +16,7 @@ tmtags
 ## PROJECT::GENERAL
 coverage
 Gemfile.lock
+git.rake
 log
 pkg
 rdoc
