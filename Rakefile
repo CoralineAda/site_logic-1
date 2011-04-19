@@ -1,3 +1,4 @@
+require 'metric_fu'
 require 'rubygems'
 require 'rake'
 require File.expand_path('../config/application', __FILE__)
