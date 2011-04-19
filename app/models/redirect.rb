@@ -33,7 +33,7 @@ class Redirect
   # Instance methods ===============================================================================
 
   def source_url=(url)
-    self[:source_url] = url.gsub(/^http:\/\/.+\.#{self.site.domain}/,'')
+    self[:source_url] = url.gsub(/^http:\/\/.+\.#{self.site.try(:domain)}/,'')
   end
 
 end
