@@ -34,6 +34,14 @@ describe Page do
       ).should_not be_valid
     end
 
+    it 'defaults its sitemap inclusion' do
+      @site.pages.new.sitemap.should be_true
+    end
+
+    it 'defaults its state to Draft' do
+      @site.pages.new.status.should == 'Draft'
+    end
+
   end
 
   describe 'publishing lifecycle' do
@@ -97,6 +105,30 @@ describe Page do
         :content      => 'Random stuff.'
       )
       page.slug.should == 'sinews-really'
+    end
+
+  end
+
+  describe 'humanizes its path' do
+
+    it 'defaulting to root' do
+      Page.new(:slug => nil).humanize_path.should == '/'
+    end
+
+    it 'handling no slashes' do
+      Page.new(:slug => 'foo').humanize_path.should == '/foo/'
+    end
+
+    it 'handling leading slash' do
+      Page.new(:slug => '/foo').humanize_path.should == '/foo/'
+    end
+
+    it 'handling trailing slash' do
+      Page.new(:slug => 'foo/').humanize_path.should == '/foo/'
+    end
+
+    it 'handling all kindsa slash action' do
+      Page.new(:slug => '/foo/').humanize_path.should == '/foo/'
     end
 
   end

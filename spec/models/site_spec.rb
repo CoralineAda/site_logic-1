@@ -20,6 +20,10 @@ describe Site do
       ).should be_valid
     end
 
+    it 'defaults its state to Inactive' do
+      Site.new.status.should == 'Inactive'
+    end
+
   end
 
   describe 'lifecycle' do
@@ -39,6 +43,11 @@ describe Site do
       @site.activation_date.should be_nil
     end
 
+  end
+
+  it 'finds layout files on the filesystem' do
+    Site.layouts.include?('application').should be_true
+    Site.layouts.count.should == 1
   end
 
 end

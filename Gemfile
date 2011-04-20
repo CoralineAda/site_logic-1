@@ -26,5 +26,6 @@ group :test do
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'mocha'
   gem 'nokogiri'
+  gem 'rcov'
   gem 'rspec-rails'
 end
