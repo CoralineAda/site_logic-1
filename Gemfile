@@ -24,7 +24,7 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'machinist_mongo', :require => 'machinist/mongoid'
-  gem 'metric_fu', '2.1.0'
+  gem 'metric_fu'
   gem 'mocha'
   gem 'nokogiri'
   gem 'rcov'
