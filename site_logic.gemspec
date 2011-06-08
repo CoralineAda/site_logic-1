@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.5.4"
+  s.version = "1.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2011-03-31}
+  s.date = %q{2011-06-08}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -79,6 +79,7 @@ Gem::Specification.new do |s|
     "config/environments/test.rb",
     "config/initializers/ckeditor.rb",
     "config/initializers/formats.rb",
+    "config/initializers/metric_fu.rb",
     "config/initializers/secret_token.rb",
     "config/initializers/session_store.rb",
     "config/locales/en.yml",
@@ -99,8 +100,7 @@ Gem::Specification.new do |s|
     "lib/site_logic/navigation.rb",
     "lib/site_logic/railtie.rb",
     "lib/tasks/cucumber.rake",
-    "lib/tasks/cucumber_custom.rake",
-    "lib/tasks/git.rake",
+    "lib/tasks/rcov.rake",
     "misc/images/src/black_bar.psd",
     "misc/images/src/branding.psd",
     "misc/images/src/legend_bg.psd",
@@ -816,7 +816,6 @@ Gem::Specification.new do |s|
     "spec/controllers/admin/redirects_controller_spec.rb",
     "spec/controllers/admin/sites_controller_spec.rb",
     "spec/controllers/pages_controller_spec.rb",
-    "spec/controllers/redirects_controller_spec.rb",
     "spec/models/nav_item_spec.rb",
     "spec/models/page_spec.rb",
     "spec/models/redirect_spec.rb",
@@ -829,19 +828,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.4.2}
   s.summary = %q{An engine for search-engine-optimized content management.}
-  s.test_files = [
-    "spec/blueprints.rb",
-    "spec/controllers/admin/pages_controller_spec.rb",
-    "spec/controllers/admin/redirects_controller_spec.rb",
-    "spec/controllers/admin/sites_controller_spec.rb",
-    "spec/controllers/pages_controller_spec.rb",
-    "spec/controllers/redirects_controller_spec.rb",
-    "spec/models/nav_item_spec.rb",
-    "spec/models/page_spec.rb",
-    "spec/models/redirect_spec.rb",
-    "spec/models/site_spec.rb",
-    "spec/spec_helper.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -855,6 +841,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rails>, [">= 3.0.1"])
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+      s.add_runtime_dependency(%q<SystemTimer>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
@@ -866,6 +853,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rails>, [">= 3.0.1"])
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+      s.add_dependency(%q<SystemTimer>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
@@ -878,6 +866,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rails>, [">= 3.0.1"])
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
     s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+    s.add_dependency(%q<SystemTimer>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end
