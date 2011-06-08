@@ -51,11 +51,15 @@ class NavItem
   def decoded_url
     self[:url]
   end
-  
+
   def encoded_url
     self[:url].gsub("/","#").tr("A-Ma-mN-Zn-z","N-Zn-zA-Ma-m")
   end
-  
+
+  def omit_from_sitemap?
+    self.decoded_url == '/' || self.decoded_url.include?('site-map')
+  end
+
   def parent
     self.site.nav_items.find(self.parent_id)
   end
@@ -71,7 +75,7 @@ class NavItem
   def sub_nav_item?
     self.parent_id
   end
-  
+
   def url
     @url = self.obfuscate? ? encoded_url : self[:url]
   end
