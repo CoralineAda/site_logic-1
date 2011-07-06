@@ -12,7 +12,7 @@
 default_run_options[:pty] = true
 role :app, 'jose.seologic.com'
 set :deploy_to, '/home/containers/rails/system/site_logic'
-set :repository, 'git@github.com:Bantik/site_logic.git'
+set :repository, 'git@github.com:ivanoblomov/site_logic.git'
 set :scm, :git
 set :use_sudo, false
 set :user, 'cnewton'

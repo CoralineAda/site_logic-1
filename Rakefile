@@ -12,7 +12,7 @@ begin
     gem.summary = %Q{An engine for search-engine-optimized content management.}
     gem.description = %Q{An engine for search-engine-optimized content management.}
     gem.email = "corey@seologic.com"
-    gem.homepage = "http://github.com/Bantik/site_logic"
+    gem.homepage = "http://github.com/ivanoblomov/site_logic"
     gem.authors = ["Bantik"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
