@@ -18,7 +18,6 @@ end
 group :test do
   gem 'be_valid_asset'
   gem 'capybara'
-  gem 'cucumber', '0.8.5'
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'faker'
