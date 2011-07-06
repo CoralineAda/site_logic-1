@@ -20,7 +20,7 @@
       <%= f.hidden_field :parent_id, :value => params[:parent_id] unless params[:parent_id].blank? -%>
       <%= f.hidden_field :creating_page, :value => params[:creating_page] unless params[:creating_page].blank? -%>
       <%= f.text_field :link_text, :help => 'The text that appears as part of the link.' -%>
-      <%= f.text_field :link_title, :label => 'Link Description', :help => 'This description appears in the mouseover for the link.' -%>
+      <%= f.text_field :link_title, :help => 'This description appears in the mouseover for the link.' -%>
       <%= f.text_field :url, :value => @nav_item.decoded_url, :label => 'URL' -%>
       <%= f.check_box :obfuscate, :label => 'Visibility', :inline_label => 'Hide from search engine spiders' -%>
     </div>
