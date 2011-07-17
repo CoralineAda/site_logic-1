@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.6.5"
+  s.version = "1.6.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Bantik"]
-  s.date = %q{2011-07-06}
+  s.authors = [%q{Bantik}]
+  s.date = %q{2011-07-17}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -824,8 +824,8 @@ Gem::Specification.new do |s|
     "tasks/site_logic.rake"
   ]
   s.homepage = %q{http://github.com/ivanoblomov/site_logic}
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.2}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
   s.summary = %q{An engine for search-engine-optimized content management.}
 
   if s.respond_to? :specification_version then
