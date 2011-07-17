@@ -1,7 +1,7 @@
+<table class="standard">
 <%- if @pages.empty? -%>
-  <p><em>No pages have been created yet.</em></p>
+  <tr><th>No pages have been created yet.</th></tr>
 <%- else -%>
-  <table class="standard">
     <tr>
       <th style="width: 25%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'humanize_path', params) -%></th>
       <th style="width: 25%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'page_title', params) -%></th>
@@ -25,13 +25,12 @@
       </td>
     </tr>
   <%- end -%>
-    <tr>
-      <td colspan="6">
-        <div class="link_block">
-          <%= link_to 'New Page...', new_admin_site_page_path(@site), :class => 'link_button' -%>
-        </div>
-      </td>
-    </tr>
-
-  </table>
 <%- end -%>
+  <tr>
+    <td colspan="6">
+      <div class="link_block">
+        <%= link_to 'New Page...', new_admin_site_page_path(@site), :class => 'link_button' -%>
+      </div>
+    </td>
+  </tr>
+</table>
