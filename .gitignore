@@ -24,3 +24,4 @@ rdoc
 tmp
 
 ## PROJECT::SPECIFIC
+*.gem
