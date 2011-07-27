@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe PagesController do
-  render_views
-
   before :all do
     Site.destroy_all
     @site = Site.make
