@@ -6,8 +6,7 @@ module LayoutHelper
   def breadcrumbs
     unless controller?('home') && action?(/home|index/)
       html = [ link_to('Home', root_path) ]
-#      html << link_to( 'Foo', foo_path ) if controller?('FoosController')
-      (html * ' &gt; ').html_safe
+      html.html_safe
     end
   end
 

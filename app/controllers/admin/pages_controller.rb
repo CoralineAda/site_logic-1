@@ -11,9 +11,10 @@ class Admin::PagesController < ApplicationController
       :window_title  => 'Title Tag',
       :page_title    => 'Page Header'
     }
-    params[:by] ||= 'humanize_path'; params[:dir] ||= 'ASC'
-    @pages = @site.pages.sort{|a,b| a.send(params[:by]) <=> b.send(params[:by])}
-    @pages.reverse! if params[:dir] == 'DESC'
+    params[:by] ||= 'humanize_path'
+    params[:dir] ||= 'asc'
+    @pages = @site.pages.sort_by{ |p| p.send(params[:by]).to_s }
+    @pages.reverse! if params[:dir] == 'desc'
   end
 
   def show

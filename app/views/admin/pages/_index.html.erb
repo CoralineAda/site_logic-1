@@ -1,22 +1,25 @@
 <table class="standard">
-<%- if @pages.empty? -%>
-  <tr><th>No pages have been created yet.</th></tr>
+  <tr>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'humanize_path', params) -%></th>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'page_title', params) -%></th>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'window_title', params) -%></th>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'state', params) -%></th>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'noindex', params) -%></th>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'sitemap', params) -%></th>
+    <th><%= sort_link("admin/sites/#{@site.id}/pages", 'updated_at', params) -%></th>
+    <th> </th>
+  </tr>
+<%- if @pages.blank? -%>
+  <tr><th colspan="8">No pages found.</th></tr>
 <%- else -%>
-    <tr>
-      <th style="width: 25%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'humanize_path', params) -%></th>
-      <th style="width: 25%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'page_title', params) -%></th>
-      <th style="width: 20%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'window_title', params) -%></th>
-      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'state', params) -%></th>
-      <th style="width: 10%;"><%= sort_link("admin/sites/#{@site.id}/pages", 'updated_at', params) -%></th>
-      <th> </th>
-    </tr>
-
   <%- @pages.each do |page| -%>
     <tr class="<%= cycle('odd', 'even') -%>">
       <td><%= link_to page.humanize_path, admin_site_page_path(@site, page) -%></td>
       <td><%= page.page_title -%></td>
       <td><%= page.window_title -%></td>
       <td><%= page.status -%></td>
+      <td><%= page.noindex ? '√' : '' -%></td>
+      <td><%= page.sitemap ? '√' : '' -%></td>
       <td><%= page.updated_at.to_s(:concise) -%></td>
       <td class="crud_links">
         <%= link_to image_tag('/images/icons/view.png'), admin_site_page_path(@site, page) -%>
@@ -26,11 +29,7 @@
     </tr>
   <%- end -%>
 <%- end -%>
-  <tr>
-    <td colspan="6">
-      <div class="link_block">
-        <%= link_to 'New Page...', new_admin_site_page_path(@site), :class => 'link_button' -%>
-      </div>
-    </td>
-  </tr>
-</table>
+</table><br />
+<div class="attached link_block">
+  <%= link_to 'New Page...', new_admin_site_page_path(@site), :class => 'link_button' -%>
+</div>

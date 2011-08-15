@@ -11,11 +11,12 @@ class Admin::SitesController < ApplicationController
       :humanize_path => 'URL'
     }
     @site = Site.find(params[:id])
-    params[:by] ||= 'humanize_path'; params[:dir] ||= 'ASC'
-    @pages = @site.pages.sort{|a,b| a.send(params[:by]) <=> b.send(params[:by])}
-    @pages.reverse! if params[:dir] == 'DESC'
+    params[:by] ||= 'humanize_path'
+    params[:dir] ||= 'asc'
+    @pages = @site.pages.sort_by{ |p| p.send(params[:by]).to_s }
+    @pages.reverse! if params[:dir] == 'desc'
     @redirects = @site.redirects
-    @nav_items = @site.nav_items.roots.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    @nav_items = @site.nav_items.roots.sort_by{ |ni| ni.position.to_i }
   end
 
   def new
