@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 source 'http://jose.seologic.com:8808/'
 
 gem 'bson_ext'
-gem 'carrierwave'
+gem 'carrierwave', '< 0.5.7'
 gem 'ckeditor', :git => 'git://github.com/Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
 gem 'mongoid', '>= 2.0.0.beta.17'
 gem 'mongoid-tree', :require => 'mongoid/tree'
