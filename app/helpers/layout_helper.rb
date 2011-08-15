@@ -6,7 +6,7 @@ module LayoutHelper
   def breadcrumbs
     unless controller?('home') && action?(/home|index/)
       html = [ link_to('Home', root_path) ]
-      html.html_safe
+      html * ''
     end
   end
 
