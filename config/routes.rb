@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   class SiteConstraint
     def initialize; end
     def matches?(request)
-      request.subdomain != 'admin' && Site.exists?(:conditions => {:domain => request.host})
+      !! request.path =~ /admin/ && Site.exists?(:conditions => {:domain => request.host})
     end
   end
 
