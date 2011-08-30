@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  class SiteConstraint
-    def initialize; end
-    def matches?(request)
-      !! request.path =~ /admin/ && Site.exists?(:conditions => {:domain => request.host})
-    end
-  end
-
   class RedirectConstraint
     def initialize; end
     def matches?(request)
@@ -19,7 +12,7 @@ Rails.application.routes.draw do
     get ':source_url', :to => 'redirects#show'
   end
 
-  constraints(SiteConstraint.new) do
+  scope :constraints => lambda{ |r| ! r.path.include?('admin') && Site.exists?(:conditions => {:domain => r.host}) } do
     root :to => 'pages#show', :via => 'get'
     get '*path' => 'pages#show'
   end
