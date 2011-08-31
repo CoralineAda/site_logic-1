@@ -1,16 +1,14 @@
 module SiteLogic
-
-  require 'mongoid'
   require 'site_logic/engine' if defined?(Rails)
   require 'site_logic/railtie' if defined?(Rails)
   require 'site_logic/base'
   require 'site_logic/navigation'
-  
+
   mattr_accessor :navigation_options
   mattr_accessor :primary_nav
   mattr_accessor :secondary_nav
   mattr_accessor :footer_nav
-  
+
   def self.setup
     yield self
   end
@@ -31,7 +29,7 @@ module SiteLogic
       }
     }
   end
-  
+
   def self.primary_nav
     primary_nav ||= Navigation.new(
       :kind => :primary,
@@ -55,5 +53,4 @@ module SiteLogic
       :description => self.navigation_options[:footer][:description]
     )
   end
-  
 end

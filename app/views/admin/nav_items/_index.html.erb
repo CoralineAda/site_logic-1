@@ -29,7 +29,7 @@
   </tbody>
 </table>
 
-<%= sortable_element "content_list_#{navitem_type}", :update => nil, :url => admin_site_reorder_nav_items_path(@site, :kind => navitem_type), :method => :put, :tag => 'tr' -%>
+<%= sortable_element "content_list_#{navitem_type}", :update => nil, :url => admin_site_reorder_nav_items_path(@site, :kind => navitem_type), :method => :put, :tag => 'tr' unless Rails.env.test? -%>
 
 <%- else -%>
   <p><em>No <%= navitem_type -%> navigation items have been created yet.</em></p>

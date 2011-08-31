@@ -29,12 +29,6 @@
       <%- flash.each do |name, msg| -%>
         <%- if name == :notice -%>
           <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name}", :style => "display:none;" -%>
-           <script type="text/javascript">
-            $('washout').toggle();
-            $('flash_notice').toggle();
-            <%= visual_effect(:fade, 'flash_notice', :duration => 1.0, :delay => 1.0).html_safe -%>
-            <%= visual_effect(:fade, 'washout', :duration => 1.0, :delay => 1.0).html_safe -%>
-          </script>
         <%- else -%>
           <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name}" -%>
         <%- end -%>
