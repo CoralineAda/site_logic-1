@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.6.9"
+  s.version = "1.6.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2011-08-30}
+  s.date = %q{2011-08-31}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -76,7 +76,6 @@ Gem::Specification.new do |s|
     "config/environments/development.rb",
     "config/environments/production.rb",
     "config/environments/test.rb",
-    "config/initializers/ckeditor.rb",
     "config/initializers/formats.rb",
     "config/initializers/metric_fu.rb",
     "config/initializers/secret_token.rb",
@@ -100,10 +99,6 @@ Gem::Specification.new do |s|
     "lib/site_logic/railtie.rb",
     "lib/tasks/cucumber.rake",
     "lib/tasks/rcov.rake",
-    "misc/images/src/black_bar.psd",
-    "misc/images/src/branding.psd",
-    "misc/images/src/legend_bg.psd",
-    "misc/images/src/menu_icons.psd",
     "public/404.html",
     "public/422.html",
     "public/500.html",
@@ -157,7 +152,6 @@ Gem::Specification.new do |s|
     "public/images/layout/th_bg.png",
     "public/images/layout/th_bg_selected.png",
     "public/index.html",
-    "public/javascripts/application.js",
     "public/javascripts/ckeditor/.htaccess",
     "public/javascripts/ckeditor/CHANGES.html",
     "public/javascripts/ckeditor/INSTALL.html",
@@ -833,7 +827,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
-      s.add_runtime_dependency(%q<carrierwave>, ["< 0.5.7"])
+      s.add_runtime_dependency(%q<carrierwave-mongoid>, [">= 0"])
       s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
@@ -845,7 +839,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
       s.add_dependency(%q<bson_ext>, [">= 0"])
-      s.add_dependency(%q<carrierwave>, ["< 0.5.7"])
+      s.add_dependency(%q<carrierwave-mongoid>, [">= 0"])
       s.add_dependency(%q<ckeditor>, [">= 0"])
       s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
@@ -858,7 +852,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<bson_ext>, [">= 0"])
-    s.add_dependency(%q<carrierwave>, ["< 0.5.7"])
+    s.add_dependency(%q<carrierwave-mongoid>, [">= 0"])
     s.add_dependency(%q<ckeditor>, [">= 0"])
     s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
