@@ -10,6 +10,7 @@ gem 'rails', '>= 3.0.1'
 gem 'rmagick', '2.12.2' # version compatible with heroku
 gem 'scaffold_logic', '>= 1.0.3'
 gem 'SystemTimer'
+gem 'tanker'
 
 group :development do
   gem 'jeweler'

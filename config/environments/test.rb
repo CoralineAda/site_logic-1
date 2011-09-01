@@ -32,4 +32,8 @@ SiteLogic::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # tanker gem
+  config.index_tank_url = 'http://:PctyyJitroN8iv@82wog.api.indextank.com'
+  config.tanker_pagination_backend = :kaminari
 end

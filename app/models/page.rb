@@ -1,11 +1,20 @@
 class Page
-
   include Mongoid::Document
   include Mongoid::Timestamps
   include SiteLogic::Base
+  include Tanker
 
-  # Attributes =====================================================================================
+  # Constants ======================================================================================
+  STATES = ['draft', 'published']
 
+  # Scopes =========================================================================================
+  scope :drafts,      :where => {:state => 'draft'}
+  scope :for_sitemap, :where => {:sitemap => true}
+  scope :indexed,     :where => {:noindex => false}
+  scope :noindex,     :where => {:noindex => true}
+  scope :published,   :where => {:state => 'published'}
+
+  # Mongoid ========================================================================================
   field :slug
   field :sitemap, :type => Boolean
   field :noindex, :type => Boolean
@@ -17,44 +26,34 @@ class Page
   field :state
   field :publication_date, :type => DateTime
 
-  # Indices ========================================================================================
   index :slug, :unique => false
   index :state, :unique => false
 
-  # Constants ======================================================================================
-  STATES = ['draft', 'published']
-
-  # Scopes ===================================================================================
-  scope :drafts,      :where => {:state => 'draft'}
-  scope :published,   :where => {:state => 'published'}
-  scope :noindex,     :where => {:noindex => true}
-  scope :indexed,     :where => {:noindex => false}
-  scope :for_sitemap, :where => {:sitemap => true}
-
-  # Relationships ==================================================================================
   embedded_in :site, :inverse_of => :pages
 
   # Behavior =======================================================================================
-  attr_accessor :desired_slug
   attr_accessor :create_navigation_item
+  attr_accessor :desired_slug
   has_slug :desired_slug
 
-  # Callbacks ======================================================================================
+  # Tanker =========================================================================================
+  tankit 'idx' do
+    indexes :content
+    indexes :meta_description
+    indexes :meta_keywords
+    indexes :page_title
+  end
+
+  after_destroy :delete_tank_indexes
+  after_save :update_tank_indexes
 
   # Validations ====================================================================================
-
   class DesiredSlugPresenceAndUniquenessValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
       return unless object.desired_slug
       if object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
-        object.errors[attribute] << (options[:message] || "must be unique.")
+        object.errors[attribute] << (options[:message] || 'must be unique.')
       end
-
-#       if object.desired_slug.nil? && object.slug.nil?
-#         object.errors[attribute] << (options[:message] || "cannot be blank.")
-#       elsif object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
-#         object.errors[attribute] << (options[:message] || "must be unique.")
-#       end
     end
   end
 
@@ -62,24 +61,17 @@ class Page
   validates_presence_of :page_title
   validates_presence_of :content
 
-  # Class methods ==================================================================================
-
   # Instance methods ===============================================================================
-
   def draft?
     self.state == 'draft' || self.state.nil?
   end
 
   def humanize_path
-    if self.slug == ''
-      "/"
-    else
-      "/#{self.slug}/".gsub(/\/\//,'/').gsub(/\/\//,'/')
-    end
+    self.slug == '' ? '/' : "/#{self.slug}/".gsub(/\/\//,'/').gsub(/\/\//,'/')
   end
 
   def publish!
-    self.update_attributes(:state => 'published', :publication_date => Time.zone.now)
+    self.update_attributes :state => 'published', :publication_date => Time.zone.now
   end
 
   def published?
@@ -87,7 +79,7 @@ class Page
   end
 
   def unpublish!
-    self.update_attributes(:state => 'draft', :publication_date => nil)
+    self.update_attributes :state => 'draft', :publication_date => nil
   end
 
   def sitemap
@@ -101,5 +93,4 @@ class Page
   def window_title
     self[:window_title] || self.page_title
   end
-
 end
