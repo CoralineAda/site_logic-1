@@ -67,6 +67,10 @@ class Page
   end
 
   def humanize_path
+    self.path
+  end
+
+  def path
     self.slug == '' ? '/' : "/#{self.slug}/".gsub(/\/\//,'/').gsub(/\/\//,'/')
   end
 
@@ -80,6 +84,14 @@ class Page
 
   def unpublish!
     self.update_attributes :state => 'draft', :publication_date => nil
+  end
+
+  def search_description
+    self.meta_description.blank? ? self.content.gsub(/<\/?[^>]*>/, '')[0..199].html_safe : self.meta_description
+  end
+
+  def search_title
+    self.window_title
   end
 
   def sitemap
