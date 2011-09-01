@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{site_logic}
-  s.version = "1.6.10"
+  s.version = "1.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = %q{2011-08-31}
+  s.date = %q{2011-09-01}
   s.description = %q{An engine for search-engine-optimized content management.}
   s.email = %q{corey@seologic.com}
   s.extra_rdoc_files = [
@@ -835,6 +835,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 1.0.3"])
       s.add_runtime_dependency(%q<SystemTimer>, [">= 0"])
+      s.add_runtime_dependency(%q<tanker>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
@@ -847,6 +848,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
       s.add_dependency(%q<SystemTimer>, [">= 0"])
+      s.add_dependency(%q<tanker>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
@@ -860,6 +862,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
     s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
     s.add_dependency(%q<SystemTimer>, [">= 0"])
+    s.add_dependency(%q<tanker>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end
