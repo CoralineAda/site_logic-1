@@ -10,7 +10,7 @@
     <th> </th>
   </tr>
 <%- if @pages.blank? -%>
-  <tr><th colspan="8">No pages found.</th></tr>
+  <tr><td colspan="8">No pages found.</td></tr>
 <%- else -%>
   <%- @pages.each do |page| -%>
     <tr class="<%= cycle('odd', 'even') -%>">
