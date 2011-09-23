@@ -34,11 +34,7 @@
     <br style="clear: both;" />
     <div class="link_block">
       <%= f.submit 'Save', :class => 'link_button' -%>
-      <%- if Site.count == 1 -%>
-        <%= link_to 'Cancel', admin_site_path(@site), :class => 'link_button' -%>
-      <%- else -%>
-        <%= link_to 'Cancel', admin_sites_path, :class => 'link_button' -%>
-      <%- end -%>
+      <%= link_to 'Cancel', admin_sites_path, :class => 'link_button' -%>
     </div>
   </fieldset>
 
