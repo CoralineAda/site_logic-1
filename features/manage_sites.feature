@@ -24,7 +24,7 @@ Feature: Manage Sites
   Scenario: Delete Site
     Given I have sites named IHD
     When I go to the admin_sites page
-    And I follow "Delete" within "[@class='crud_links']"
+    And I press "" within "[@class='crud_links']"
     Then I should not see "IHD"
 
   Scenario: View Site
