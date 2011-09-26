@@ -1,5 +1,5 @@
 <%- if ! nav_items.blank? -%>
-<p>To reorder the navigation links, drag and drop the rows below using the drag icon on the right hand side of the table.</p>
+<p>To reorder a link, drag it using the drag icon on the far right.</p>
 
 <table class="standard">
   <thead>
@@ -21,7 +21,7 @@
       <td class="crud_links">
         <%= link_to image_tag('/images/icons/delete.png'), admin_site_nav_item_path(@site, nav_item), :method => :delete, :confirm => 'Are you sure? This action cannot be undone.' -%>
       </td>
-      <td style="width: 19px; cursor: move; " id="content_<%= nav_item.id -%>">
+      <td style="width: 19px; cursor: move">
         <img src="/images/icons/drag.png" alt="Move" width="19" height="19" class="move_icon" />
       </td>
     </tr>
