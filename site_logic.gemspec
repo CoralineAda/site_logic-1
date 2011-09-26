@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.8.0"
+  s.version = "1.9.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2011-09-23"
+  s.date = "2011-09-26"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
   s.extra_rdoc_files = [
@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
     "app/uploaders/image_uploader.rb",
     "app/views/admin/nav_items/_form.html.erb",
     "app/views/admin/nav_items/_index.html.erb",
+    "app/views/admin/nav_items/_tabs.html.erb",
     "app/views/admin/nav_items/edit.html.erb",
     "app/views/admin/nav_items/index.html.erb",
     "app/views/admin/nav_items/new.html.erb",
