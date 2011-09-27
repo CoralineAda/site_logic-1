@@ -1,19 +1,17 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Page do
-
   before :all do
     Site.destroy_all
     @site = Site.make
   end
 
-  describe "initialization" do
-
-    it "should be invalid without required values" do
+  describe 'initialization' do
+    it 'should be invalid without required values' do
       @site.pages.new.valid?.should be_false
     end
 
-    it "should be valid with required values" do
+    it 'should be valid with required values' do
       @site.pages.new(
         :page_title   => 'Home',
         :desired_slug => 'home',
@@ -21,7 +19,7 @@ describe Page do
       ).should be_valid
     end
 
-    it "should not allow duplicate slugs" do
+    it 'should not allow duplicate slugs' do
       @site.pages.create(
         :page_title   => 'Foo',
         :slug         => 'foo',
@@ -41,11 +39,9 @@ describe Page do
     it 'defaults its state to Draft' do
       @site.pages.new.status.should == 'Draft'
     end
-
   end
 
   describe 'publishing lifecycle' do
-
     it 'defaults a new page to draft status' do
       page = @site.pages.new
       page.draft?.should be_true
@@ -75,11 +71,9 @@ describe Page do
       page.draft?.should be_true
       page.publication_date.should be_nil
     end
-
   end
 
   describe 'slug' do
-
     it 'is generated based on the desired_slug' do
       page = @site.pages.create(
         :page_title   => 'Snakes',
@@ -106,31 +100,27 @@ describe Page do
       )
       page.slug.should == 'sinews-really'
     end
-
   end
 
-  describe 'humanizes its path' do
-
+  describe 'normalizes its path' do
     it 'defaulting to root' do
-      Page.new(:slug => nil).humanize_path.should == '/'
+      Page.new(:slug => nil).path.should == '/'
     end
 
     it 'handling no slashes' do
-      Page.new(:slug => 'foo').humanize_path.should == '/foo/'
+      Page.new(:slug => 'foo').path.should == '/foo'
     end
 
     it 'handling leading slash' do
-      Page.new(:slug => '/foo').humanize_path.should == '/foo/'
+      Page.new(:slug => '/foo').path.should == '/foo'
     end
 
     it 'handling trailing slash' do
-      Page.new(:slug => 'foo/').humanize_path.should == '/foo/'
+      Page.new(:slug => 'foo/').path.should == '/foo/'
     end
 
     it 'handling all kindsa slash action' do
-      Page.new(:slug => '/foo/').humanize_path.should == '/foo/'
+      Page.new(:slug => '/foo/').path.should == '/foo/'
     end
-
   end
-
 end

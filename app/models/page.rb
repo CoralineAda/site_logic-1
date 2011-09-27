@@ -71,7 +71,7 @@ class Page
   end
 
   def path
-    self.slug == '' ? '/' : "/#{self.slug}/".gsub(/\/\//,'/').gsub(/\/\//,'/')
+    self.slug == '' ? '/' : "/#{self.slug}".gsub(/\/\//,'/').gsub(/\/\//,'/')
   end
 
   def publish!
