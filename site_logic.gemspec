@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.1"
+  s.version = "1.9.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2011-09-27"
+  s.date = "2011-09-28"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
   s.extra_rdoc_files = [
