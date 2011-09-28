@@ -1,13 +1,11 @@
 class PagesController < ApplicationController
-
   def show
     @site = Site.where(:domain => request.host).first || Site.first
 
-    if @page = @site.pages.published.select{ |p| p.slug =~ /#{params[:path]}/i }.first || @site.home_page
+    if @page = @site.pages.published.select{ |p| p.slug =~ /#{params[:path]}/i }.first
       render :layout => @site.layout
     else
-      redirect_to '/404'
+      raise Mongoid::Errors::DocumentNotFound.new Page, params[:path]
     end
   end
-
 end
