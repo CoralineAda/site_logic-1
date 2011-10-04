@@ -66,12 +66,17 @@ class Page
     self.state == 'draft' || self.state.nil?
   end
 
+  # @deprecated Please use {#path} instead
   def humanize_path
+    warn "[DEPRECATION] `humanize_path` is deprecated.  Please use `path` instead."
     self.path
   end
 
+  # Returns this page's path.
+  #
+  # @return [String] the path for this page
   def path
-    self.slug == '' ? '/' : "/#{self.slug}".gsub(/\/\//,'/').gsub(/\/\//,'/')
+    self.slug == '' ? '/' : "/#{self.slug}".gsub('//', '/')
   end
 
   def publish!
