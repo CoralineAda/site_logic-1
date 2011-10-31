@@ -1,13 +1,17 @@
 module SiteLogic
-  require 'site_logic/engine' if defined?(Rails)
-  require 'site_logic/railtie' if defined?(Rails)
   require 'site_logic/base'
   require 'site_logic/navigation'
+  require 'site_logic/railtie' if defined?(Rails)
 
   mattr_accessor :navigation_options
   mattr_accessor :primary_nav
   mattr_accessor :secondary_nav
   mattr_accessor :footer_nav
+
+  module SiteLogic
+    class Engine < Rails::Engine
+    end
+  end
 
   def self.setup
     yield self

@@ -1,5 +1,3 @@
-require 'site_logic'
-require 'rails'
 module SiteLogic
   class Railtie < Rails::Railtie
     rake_tasks do
