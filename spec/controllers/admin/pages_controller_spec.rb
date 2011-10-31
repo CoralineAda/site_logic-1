@@ -4,7 +4,7 @@ describe Admin::PagesController do
   before :all do
     Site.destroy_all
     @site = Site.make
-    @page = @site.pages.create(:page_title => 'Vampire Bunnies', :desired_slug => 'bunnicula', :content => 'Scary monsters.')
+    @page = @site.pages.create :page_title => 'Vampire Bunnies', :content => 'Scary monsters.'
   end
 
   it "show action should render show template" do
@@ -40,7 +40,7 @@ describe Admin::PagesController do
   end
 
   it "update action should redirect when model is valid" do
-    put :update, :id => @page.id, :site_id => @site.id.to_s, :page => {:desired_slug => 'foozball'}
+    put :update, :id => @page.id, :site_id => @site.id.to_s, :page => {:page_title => 'foozball'}
     response.should redirect_to(admin_site_pages_url(@site))
   end
 

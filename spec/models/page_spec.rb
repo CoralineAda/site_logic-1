@@ -12,11 +12,12 @@ describe Page do
     end
 
     it 'should be valid with required values' do
-      @site.pages.new(
+      page = @site.pages.new(
         :page_title   => 'Home',
-        :desired_slug => 'home',
         :content      => 'Welcome home.'
-      ).should be_valid
+      )
+      page.send :set_slug
+      page.should be_valid
     end
 
     it 'should not allow duplicate slugs' do
@@ -27,7 +28,6 @@ describe Page do
       )
       @site.pages.create(
         :page_title   => 'Bar',
-        :desired_slug => 'foo',
         :content      => 'Welcome to bar.'
       ).should_not be_valid
     end
@@ -50,7 +50,6 @@ describe Page do
     it 'publishes a page, setting the publication date' do
       page = @site.pages.create(
         :page_title   => 'Stiff',
-        :desired_slug => 'corpse',
         :content      => 'Dead stuff.'
       )
       page.publish!
@@ -62,7 +61,6 @@ describe Page do
     it 'unpublishes a page, clearing the publication date' do
       page = @site.pages.create(
         :page_title   => 'Stuff',
-        :desired_slug => 'detritus',
         :content      => 'Random stuff.'
       )
       page.publish!
@@ -74,31 +72,31 @@ describe Page do
   end
 
   describe 'slug' do
-    it 'is generated based on the desired_slug' do
-      page = @site.pages.create(
+    it 'is generated based on the title' do
+      page = @site.pages.new(
         :page_title   => 'Snakes',
-        :desired_slug => 'snakes and stuff',
         :content      => 'Random stuff.'
       )
-      page.slug.should == 'snakes-and-stuff'
+      page.send :set_slug
+      page.slug.should == 'snakes'
     end
 
     it 'truncates extra hyphens' do
-      page = @site.pages.create(
+      page = @site.pages.new(
         :page_title   => 'Spiders',
-        :desired_slug => 'spiders!! and stuff',
         :content      => 'Random stuff.'
       )
-      page.slug.should == 'spiders-and-stuff'
+      page.send :set_slug
+      page.slug.should == 'spiders'
     end
 
     it 'truncates trailing hyphens' do
-      page = @site.pages.create(
+      page = @site.pages.new(
         :page_title   => 'Sinews',
-        :desired_slug => 'sinews? really?',
         :content      => 'Random stuff.'
       )
-      page.slug.should == 'sinews-really'
+      page.send :set_slug
+      page.slug.should == 'sinews'
     end
   end
 

@@ -1,7 +1,7 @@
 class Page
+  include LuckySneaks::StringExtensions
   include Mongoid::Document
   include Mongoid::Timestamps
-  include SiteLogic::Base
   include Tanker
 
   # Constants ======================================================================================
@@ -33,8 +33,9 @@ class Page
 
   # Behavior =======================================================================================
   attr_accessor :create_navigation_item
-  attr_accessor :desired_slug
-  has_slug :desired_slug
+  before_save :set_slug
+  validates_presence_of :content, :page_title
+  validates_uniqueness_of :slug
 
   # Tanker =========================================================================================
   tankit 'idx' do
@@ -46,20 +47,6 @@ class Page
 
   after_destroy :delete_tank_indexes
   after_save :update_tank_indexes
-
-  # Validations ====================================================================================
-  class DesiredSlugPresenceAndUniquenessValidator < ActiveModel::EachValidator
-    def validate_each(object, attribute, value)
-      return unless object.desired_slug
-      if object.site && object.site.pages.map{|p| p.slug unless p == object}.include?(object.desired_slug)
-        object.errors[attribute] << (options[:message] || 'must be unique.')
-      end
-    end
-  end
-
-  validates :desired_slug, :desired_slug_presence_and_uniqueness => true
-  validates_presence_of :page_title
-  validates_presence_of :content
 
   # Instance methods ===============================================================================
   def draft?
@@ -109,5 +96,11 @@ class Page
 
   def window_title
     self[:window_title] || self.page_title
+  end
+
+  private
+
+  def set_slug
+    self.slug = (self.window_title || self.page_title).to_s.to_url if self.slug.blank?
   end
 end

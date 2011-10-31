@@ -1,5 +1,4 @@
 module SiteLogic
-  require 'site_logic/base'
   require 'site_logic/navigation'
   require 'site_logic/railtie' if defined?(Rails)
 

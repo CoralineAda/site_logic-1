@@ -1,11 +1,11 @@
 class NavItem
-
   include Mongoid::Document
   include Mongoid::Timestamps
-  include SiteLogic::Base
 
-  # Attributes =====================================================================================
+  # Constants ======================================================================================
+  KINDS = ['Main', 'Secondary', 'Footer']
 
+  # Mongoid ========================================================================================
   field :link_title
   field :link_text
   field :url
@@ -13,39 +13,24 @@ class NavItem
   field :position, :type => Integer
   field :obfuscate, :type => Boolean
   field :kind
-
-  # Indices ========================================================================================
-
-  # Scopes =========================================================================================
+  embedded_in :site, :inverse_of => :nav_items
   scope :roots,     :where => {:parent_id => nil}
   scope :primary,   :where => {:kind => 'Main'}
   scope :secondary, :where => {:kind => 'Secondary'}
   scope :footer,    :where => {:kind => 'Footer'}
 
-  # Relationships ==================================================================================
-  embedded_in :site, :inverse_of => :nav_items
-
   # Behavior =======================================================================================
   attr_accessor :status
   attr_accessor :creating_page
-
-  # Constants ======================================================================================
-
-  KINDS = ["Main", "Secondary", "Footer"]
-
-  # Callbacks ======================================================================================
 
   # Validations ====================================================================================
   validates_presence_of :link_text
   validates_presence_of :link_title
   validates_presence_of :url
 
-  # Class methods ==================================================================================
-
   # Instance methods ===============================================================================
-
   def children
-    self.site.nav_items.select{|ni| ni.parent_id == self.id.to_s}.sort{|a,b| a.position.to_i <=> b.position.to_i}
+    self.site.nav_items.select{|ni| ni.parent_id == self.id.to_s}.sort_by{|ni| ni.position.to_i}
   end
 
   def decoded_url
@@ -53,7 +38,7 @@ class NavItem
   end
 
   def encoded_url
-    self[:url].gsub("/","#").tr("A-Ma-mN-Zn-z","N-Zn-zA-Ma-m")
+    self[:url].gsub('/', '#').tr('A-Ma-mN-Zn-z', 'N-Zn-zA-Ma-m')
   end
 
   def omit_from_sitemap?
@@ -61,7 +46,7 @@ class NavItem
   end
 
   def parent
-    self.site.nav_items.find(self.parent_id)
+    self.site.nav_items.find self.parent_id
   end
 
   def root?
@@ -79,5 +64,4 @@ class NavItem
   def url
     @url = self.obfuscate? ? encoded_url : self[:url]
   end
-
 end

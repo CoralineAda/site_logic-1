@@ -21,7 +21,7 @@
     <div class="form_column">
       <%= f.text_field :page_title, :label => 'Page Header', :help => 'This title will appear on the page before any content, and is used by search engines to identify the main idea of the page.' -%>
       <%= f.text_field :window_title, :label => 'Title Tag', :help => 'This title appears at the top of the browser window and is used by search engine spiders to uniquely identify a given page.' -%>
-      <%= f.text_field :desired_slug, :help => "The permalink forms part of the URL for this page. For example, entering my-page will create the URL 'http://www.#{@site.domain}/my-page/'.", :label => 'Permalink', :value => @page.slug || '/'-%>
+      <%= f.text_field :slug, :help => "The slug forms part of the URL for this page. For example, entering my-page will create the URL 'http://www.#{@site.domain}/my-page/'." -%>
       <%= f.select :state, Page::STATES.map{|s| s.capitalize}, :selected => @page.status, :label => 'Status', :help => 'Content may either be in a published or draft state. Draft content can be previewed but will not appear on the public-facing web site.' -%>
     </div>
     <div class="form_column">

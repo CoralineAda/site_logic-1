@@ -4,8 +4,8 @@ describe Admin::RedirectsController do
   before :all do
     Site.destroy_all
     @site = Site.make
-    @page = @site.pages.create(:page_title => 'Vampire Bunnies', :desired_slug => 'bunnicula', :content => 'Scary monsters.')
-    @redirect = @site.redirects.create(:source_url => 'foo', :destination_url => 'bar')
+    @page = @site.pages.create :page_title => 'Vampire Bunnies', :content => 'Scary monsters.'
+    @redirect = @site.redirects.create :source_url => 'foo', :destination_url => 'bar'
   end
 
   it "index action should render index template" do
