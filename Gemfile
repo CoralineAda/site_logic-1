@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-source 'http://jose.seologic.com:8808/'
 
 gem 'bson_ext'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
