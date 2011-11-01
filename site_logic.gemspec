@@ -5,22 +5,17 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.2"
+  s.version = "1.9.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2011-09-28"
+  s.date = "2011-11-01"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
-  s.extra_rdoc_files = [
-    "README.rdoc"
-  ]
   s.files = [
     ".document",
     ".rspec",
-    "Capfile",
     "Gemfile",
-    "README.rdoc",
     "Rakefile",
     "VERSION",
     "app/controllers/admin/nav_items_controller.rb",
@@ -72,7 +67,6 @@ Gem::Specification.new do |s|
     "config/application.rb",
     "config/boot.rb",
     "config/cucumber.yml",
-    "config/deploy.rb",
     "config/environment.rb",
     "config/environments/development.rb",
     "config/environments/production.rb",
@@ -81,7 +75,6 @@ Gem::Specification.new do |s|
     "config/initializers/metric_fu.rb",
     "config/initializers/secret_token.rb",
     "config/initializers/session_store.rb",
-    "config/locales/en.yml",
     "config/mongoid.yml",
     "config/routes.rb",
     "doc/TODO",
@@ -94,15 +87,10 @@ Gem::Specification.new do |s|
     "features/support/paths.rb",
     "init.rb",
     "lib/site_logic.rb",
-    "lib/site_logic/base.rb",
-    "lib/site_logic/engine.rb",
     "lib/site_logic/navigation.rb",
     "lib/site_logic/railtie.rb",
     "lib/tasks/cucumber.rake",
     "lib/tasks/rcov.rake",
-    "public/404.html",
-    "public/422.html",
-    "public/500.html",
     "public/favicon.ico",
     "public/images/icons/add.png",
     "public/images/icons/collapsed.gif",
@@ -793,10 +781,8 @@ Gem::Specification.new do |s|
     "public/javascripts/controls.js",
     "public/javascripts/dragdrop.js",
     "public/javascripts/effects.js",
-    "public/javascripts/link_obfuscator.js",
     "public/javascripts/prototype.js",
     "public/javascripts/rails.js",
-    "public/robots.txt",
     "public/stylesheets/.gitkeep",
     "public/stylesheets/application.css",
     "public/stylesheets/core.css",
@@ -835,6 +821,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rails>, ["= 3.0.10"])
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+      s.add_runtime_dependency(%q<stringex>, [">= 0"])
       s.add_runtime_dependency(%q<SystemTimer>, [">= 0"])
       s.add_runtime_dependency(%q<tanker>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
@@ -848,6 +835,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rails>, ["= 3.0.10"])
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+      s.add_dependency(%q<stringex>, [">= 0"])
       s.add_dependency(%q<SystemTimer>, [">= 0"])
       s.add_dependency(%q<tanker>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
@@ -862,6 +850,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rails>, ["= 3.0.10"])
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
     s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+    s.add_dependency(%q<stringex>, [">= 0"])
     s.add_dependency(%q<SystemTimer>, [">= 0"])
     s.add_dependency(%q<tanker>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
