@@ -55,7 +55,7 @@ class Site
   end
 
   def footer_navigation
-    self.nav_items.roots.footer.sort{|a| a.position.to_i}
+    self.nav_items.roots.footer.sort_by{|a| a.position.to_i}
   end
 
   def home_page
