@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.3"
+  s.version = "1.9.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2011-11-01"
+  s.date = "2011-11-02"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
   s.files = [
@@ -90,7 +90,6 @@ Gem::Specification.new do |s|
     "lib/site_logic/navigation.rb",
     "lib/site_logic/railtie.rb",
     "lib/tasks/cucumber.rake",
-    "lib/tasks/rcov.rake",
     "public/favicon.ico",
     "public/images/icons/add.png",
     "public/images/icons/collapsed.gif",
