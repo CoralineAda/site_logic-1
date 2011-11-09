@@ -66,6 +66,11 @@ class Site
     ! self.active?
   end
 
+  def normalize_slugs
+    self.pages.leading_slash.map{ |p| p.strip_leading_slash; p.save }
+    self.pages.trailing_slash.map{ |p| p.strip_trailing_slash; p.save }
+  end
+
   def primary_navigation
     self.nav_items.roots.primary.sort_by{|a| a.position.to_i}
   end

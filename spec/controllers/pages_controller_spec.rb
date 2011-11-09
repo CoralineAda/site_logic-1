@@ -8,7 +8,7 @@ describe PagesController do
   end
 
   it 'show action should render show template' do
-    get :show, :page_slug => '/bunnicula/'
+    get :show, :path => 'vampire-bunnies'
     response.should render_template(:show)
   end
 end

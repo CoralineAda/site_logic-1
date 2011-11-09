@@ -8,11 +8,14 @@ class Page
   STATES = ['draft', 'published']
 
   # Scopes =========================================================================================
+  scope :by_slug, lambda{ |slug| {:where => {:slug => slug}} }
   scope :drafts,      :where => {:state => 'draft'}
   scope :for_sitemap, :where => {:sitemap => true}
   scope :indexed,     :where => {:noindex => false}
+  scope :leading_slash, :where => {:slug => %r{^\/}}
   scope :noindex,     :where => {:noindex => true}
   scope :published,   :where => {:state => 'published'}
+  scope :trailing_slash, :where => {:slug => %r{\/$}}
 
   # Mongoid ========================================================================================
   field :slug
@@ -46,7 +49,7 @@ class Page
   end
 
   after_destroy :delete_tank_indexes
-  after_save :update_tank_indexes
+  after_save :update_tank_indexes unless Rails.application.config.tanker_disabled
 
   # Instance methods ===============================================================================
   def draft?
@@ -74,6 +77,10 @@ class Page
     self.state == 'published'
   end
 
+  def root?
+    self.slug == '/'
+  end
+
   def unpublish!
     self.update_attributes :state => 'draft', :publication_date => nil
   end
@@ -94,6 +101,14 @@ class Page
     self.state ? self.state.capitalize : 'Draft'
   end
 
+  def strip_leading_slash
+    self.slug = self.slug[1..-1] if self.slug.try(:first) == '/' && ! root?
+  end
+
+  def strip_trailing_slash
+    self.slug = self.slug[0..-2] if self.slug.try(:last) == '/' && ! root?
+  end
+
   def window_title
     self[:window_title] || self.page_title
   end
@@ -101,6 +116,8 @@ class Page
   private
 
   def set_slug
-    self.slug = (self.window_title || self.page_title).to_s.to_url if self.slug.blank?
+    self.slug = self.window_title.to_s.to_url if self.slug.blank?
+    self.strip_leading_slash
+    self.strip_trailing_slash
   end
 end

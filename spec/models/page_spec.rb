@@ -71,32 +71,73 @@ describe Page do
     end
   end
 
-  describe 'slug' do
-    it 'is generated based on the title' do
-      page = @site.pages.new(
-        :page_title   => 'Snakes',
-        :content      => 'Random stuff.'
-      )
-      page.send :set_slug
-      page.slug.should == 'snakes'
+  describe '#strip_leading_slash' do
+    context 'with leading slashes' do
+      before do
+        @page = Page.new :slug => '/leading-slash'
+        @page.strip_leading_slash
+      end
+
+      subject { @page.slug }
+
+      it { should == 'leading-slash' }
     end
 
-    it 'truncates extra hyphens' do
-      page = @site.pages.new(
-        :page_title   => 'Spiders',
-        :content      => 'Random stuff.'
-      )
-      page.send :set_slug
-      page.slug.should == 'spiders'
+    context 'with trailing slashes' do
+      before do
+        @page = Page.new :slug => 'trailing-slash/'
+        @page.strip_leading_slash
+      end
+
+      subject { @page.slug }
+
+      it { should == 'trailing-slash/' }
     end
 
-    it 'truncates trailing hyphens' do
-      page = @site.pages.new(
-        :page_title   => 'Sinews',
-        :content      => 'Random stuff.'
-      )
-      page.send :set_slug
-      page.slug.should == 'sinews'
+    context 'with slashes in the middle' do
+      before do
+        @page = Page.new :slug => 'middle/slash'
+        @page.strip_leading_slash
+      end
+
+      subject { @page.slug }
+
+      it { should == 'middle/slash' }
+    end
+  end
+
+  describe '#strip_trailing_slash' do
+    context 'with leading slashes' do
+      before do
+        @page = Page.new :slug => '/leading-slash'
+        @page.strip_trailing_slash
+      end
+
+      subject { @page.slug }
+
+      it { should == '/leading-slash' }
+    end
+
+    context 'with trailing slashes' do
+      before do
+        @page = Page.new :slug => 'trailing-slash/'
+        @page.strip_trailing_slash
+      end
+
+      subject { @page.slug }
+
+      it { should == 'trailing-slash' }
+    end
+
+    context 'with slashes in the middle' do
+      before do
+        @page = Page.new :slug => 'middle/slash'
+        @page.strip_trailing_slash
+      end
+
+      subject { @page.slug }
+
+      it { should == 'middle/slash' }
     end
   end
 
