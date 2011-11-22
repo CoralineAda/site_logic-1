@@ -20,13 +20,8 @@ class NavItem
   scope :footer,    :where => {:kind => 'Footer'}
 
   # Behavior =======================================================================================
-  attr_accessor :status
-  attr_accessor :creating_page
-
-  # Validations ====================================================================================
-  validates_presence_of :link_text
-  validates_presence_of :link_title
-  validates_presence_of :url
+  attr_accessor :status, :creating_page
+  validates_presence_of :kind, :link_text, :link_title, :url
 
   # Instance methods ===============================================================================
   def children
