@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.5"
+  s.version = "1.9.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2011-11-09"
+  s.date = "2011-11-30"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
   s.files = [
@@ -168,13 +168,12 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<carrierwave-mongoid>, [">= 0"])
       s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
-      s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
+      s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, ["= 3.0.10"])
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 1.0.3"])
       s.add_runtime_dependency(%q<stringex>, [">= 0"])
-      s.add_runtime_dependency(%q<SystemTimer>, [">= 0"])
       s.add_runtime_dependency(%q<tanker>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
@@ -182,13 +181,12 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<carrierwave-mongoid>, [">= 0"])
       s.add_dependency(%q<ckeditor>, [">= 0"])
-      s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
+      s.add_dependency(%q<mini_magick>, [">= 0"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
       s.add_dependency(%q<rails>, ["= 3.0.10"])
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
       s.add_dependency(%q<stringex>, [">= 0"])
-      s.add_dependency(%q<SystemTimer>, [">= 0"])
       s.add_dependency(%q<tanker>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
@@ -197,13 +195,12 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<carrierwave-mongoid>, [">= 0"])
     s.add_dependency(%q<ckeditor>, [">= 0"])
-    s.add_dependency(%q<mongoid>, [">= 2.0.0.beta.17"])
+    s.add_dependency(%q<mini_magick>, [">= 0"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
     s.add_dependency(%q<rails>, ["= 3.0.10"])
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
     s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
     s.add_dependency(%q<stringex>, [">= 0"])
-    s.add_dependency(%q<SystemTimer>, [">= 0"])
     s.add_dependency(%q<tanker>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
