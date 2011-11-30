@@ -48,7 +48,7 @@ class Page
     indexes :page_title
   end
 
-  after_destroy :delete_tank_indexes
+  after_destroy :delete_tank_indexes unless Rails.application.config.tanker_disabled
   after_save :update_tank_indexes unless Rails.application.config.tanker_disabled
 
   # Instance methods ===============================================================================

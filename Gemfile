@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'bson_ext'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'ckeditor'
 gem 'mini_magick'
