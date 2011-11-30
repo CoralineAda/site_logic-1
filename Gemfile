@@ -1,14 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'bson_ext'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'ckeditor', :git => 'git://github.com/Bantik/rails-ckeditor.git', :branch => 'rails3_mongoid'
+gem 'ckeditor'
+gem 'mini_magick'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'rails', '3.0.10'
-gem 'rmagick', '2.12.2' # version compatible with heroku
+gem 'rmagick', '2.12.2'# version compatible with heroku
 gem 'scaffold_logic', '>= 1.0.3'
 gem 'stringex'
-gem 'SystemTimer'
 gem 'tanker'
 
 group :development do
@@ -22,8 +21,6 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'machinist_mongo', :require => 'machinist/mongoid'
-  gem 'metric_fu'
   gem 'mocha'
-  gem 'nokogiri'
   gem 'rspec-rails'
 end

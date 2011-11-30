@@ -1,4 +1,4 @@
-if Rails.env.test?
+if Rails.env.test? && Object.const_defined?('MetricFu')
   require 'metric_fu'
 
   MetricFu::Configuration.run do |config|
