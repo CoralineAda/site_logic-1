@@ -9,12 +9,12 @@ class Page
 
   # Scopes =========================================================================================
   scope :by_slug, lambda{ |slug| {:where => {:slug => slug}} }
-  scope :drafts,      :where => {:state => 'draft'}
+  scope :drafts,      :where => {:state => /draft/i}
   scope :for_sitemap, :where => {:sitemap => true}
   scope :indexed,     :where => {:noindex => false}
   scope :leading_slash, :where => {:slug => %r{^\/}}
   scope :noindex,     :where => {:noindex => true}
-  scope :published,   :where => {:state => 'published'}
+  scope :published,   :where => {:state => /published/i}
   scope :trailing_slash, :where => {:slug => %r{\/$}}
 
   # Mongoid ========================================================================================
