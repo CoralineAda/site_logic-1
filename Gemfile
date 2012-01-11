@@ -5,9 +5,9 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'ckeditor'
 gem 'mini_magick'
 gem 'mongoid-tree', :require => 'mongoid/tree'
-gem 'rails', '3.0.10'
+gem 'rails', '~> 3.1'
 gem 'rmagick', '2.12.2'# version compatible with heroku
-gem 'scaffold_logic', '>= 1.0.3'
+gem 'scaffold_logic'
 gem 'stringex'
 gem 'tanker'
 
