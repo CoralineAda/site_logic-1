@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.8"
+  s.version = "1.9.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2012-01-05"
+  s.date = "2012-01-12"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
   s.files = [
@@ -169,9 +169,9 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
       s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_runtime_dependency(%q<rails>, ["= 3.0.10"])
+      s.add_runtime_dependency(%q<rails>, ["~> 3.1"])
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
-      s.add_runtime_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+      s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_runtime_dependency(%q<stringex>, [">= 0"])
       s.add_runtime_dependency(%q<tanker>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
@@ -182,9 +182,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<ckeditor>, [">= 0"])
       s.add_dependency(%q<mini_magick>, [">= 0"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_dependency(%q<rails>, ["= 3.0.10"])
+      s.add_dependency(%q<rails>, ["~> 3.1"])
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
-      s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+      s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<stringex>, [">= 0"])
       s.add_dependency(%q<tanker>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
@@ -196,9 +196,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<ckeditor>, [">= 0"])
     s.add_dependency(%q<mini_magick>, [">= 0"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
-    s.add_dependency(%q<rails>, ["= 3.0.10"])
+    s.add_dependency(%q<rails>, ["~> 3.1"])
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
-    s.add_dependency(%q<scaffold_logic>, [">= 1.0.3"])
+    s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<stringex>, [">= 0"])
     s.add_dependency(%q<tanker>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
