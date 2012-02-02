@@ -2,7 +2,7 @@ class Page
   include LuckySneaks::StringExtensions
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Tanker
+  include Tanker if defined? Tanker
 
   # Constants ======================================================================================
   STATES = ['draft', 'published']
@@ -46,7 +46,7 @@ class Page
     indexes :meta_description
     indexes :meta_keywords
     indexes :page_title
-  end
+  end if defined? Tanker
 
   after_destroy :delete_tank_indexes unless Rails.application.config.tanker_disabled
   after_save :update_tank_indexes unless Rails.application.config.tanker_disabled

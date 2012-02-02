@@ -2,14 +2,12 @@ source 'http://rubygems.org'
 
 gem 'bson_ext'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'ckeditor'
 gem 'mini_magick'
 gem 'mongoid-tree', :require => 'mongoid/tree'
-gem 'rails', '~> 3.1'
+gem 'rails', '~> 3.0.0'
 gem 'rmagick', '2.12.2'# version compatible with heroku
 gem 'scaffold_logic'
 gem 'stringex'
-gem 'tanker'
 
 group :development do
   gem 'jeweler'
