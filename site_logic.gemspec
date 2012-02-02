@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.9"
+  s.version = "1.9.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
-  s.date = "2012-01-12"
+  s.date = "2012-02-02"
   s.description = "An engine for search-engine-optimized content management."
   s.email = "corey@seologic.com"
   s.files = [
@@ -157,7 +157,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/ivanoblomov/site_logic"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.10"
   s.summary = "An engine for search-engine-optimized content management."
 
   if s.respond_to? :specification_version then
@@ -166,41 +166,35 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<carrierwave-mongoid>, [">= 0"])
-      s.add_runtime_dependency(%q<ckeditor>, [">= 0"])
       s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_runtime_dependency(%q<rails>, ["~> 3.1"])
+      s.add_runtime_dependency(%q<rails>, ["~> 3.0.0"])
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_runtime_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_runtime_dependency(%q<stringex>, [">= 0"])
-      s.add_runtime_dependency(%q<tanker>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
       s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<carrierwave-mongoid>, [">= 0"])
-      s.add_dependency(%q<ckeditor>, [">= 0"])
       s.add_dependency(%q<mini_magick>, [">= 0"])
       s.add_dependency(%q<mongoid-tree>, [">= 0"])
-      s.add_dependency(%q<rails>, ["~> 3.1"])
+      s.add_dependency(%q<rails>, ["~> 3.0.0"])
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
       s.add_dependency(%q<scaffold_logic>, [">= 0"])
       s.add_dependency(%q<stringex>, [">= 0"])
-      s.add_dependency(%q<tanker>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
   else
     s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<carrierwave-mongoid>, [">= 0"])
-    s.add_dependency(%q<ckeditor>, [">= 0"])
     s.add_dependency(%q<mini_magick>, [">= 0"])
     s.add_dependency(%q<mongoid-tree>, [">= 0"])
-    s.add_dependency(%q<rails>, ["~> 3.1"])
+    s.add_dependency(%q<rails>, ["~> 3.0.0"])
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
     s.add_dependency(%q<scaffold_logic>, [">= 0"])
     s.add_dependency(%q<stringex>, [">= 0"])
-    s.add_dependency(%q<tanker>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end
