@@ -1,5 +1,4 @@
 class Page
-  include LuckySneaks::StringExtensions
   include Mongoid::Document
   include Mongoid::Timestamps
   include Tanker if defined? Tanker
