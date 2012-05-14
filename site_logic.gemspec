@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "site_logic"
-  s.version = "1.9.12"
+  s.version = "1.9.13"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bantik"]
@@ -170,7 +170,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<mongoid-tree>, ["~> 0.7.0"])
       s.add_runtime_dependency(%q<rails>, ["~> 3.0.12"])
       s.add_runtime_dependency(%q<rmagick>, ["= 2.12.2"])
-      s.add_runtime_dependency(%q<scaffold_logic>, ["~> 1.7.9"])
+      s.add_runtime_dependency(%q<scaffold_logic>, ["~> 2.0"])
       s.add_runtime_dependency(%q<stringex>, ["~> 1.3.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
@@ -181,7 +181,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mongoid-tree>, ["~> 0.7.0"])
       s.add_dependency(%q<rails>, ["~> 3.0.12"])
       s.add_dependency(%q<rmagick>, ["= 2.12.2"])
-      s.add_dependency(%q<scaffold_logic>, ["~> 1.7.9"])
+      s.add_dependency(%q<scaffold_logic>, ["~> 2.0"])
       s.add_dependency(%q<stringex>, ["~> 1.3.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
@@ -193,7 +193,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mongoid-tree>, ["~> 0.7.0"])
     s.add_dependency(%q<rails>, ["~> 3.0.12"])
     s.add_dependency(%q<rmagick>, ["= 2.12.2"])
-    s.add_dependency(%q<scaffold_logic>, ["~> 1.7.9"])
+    s.add_dependency(%q<scaffold_logic>, ["~> 2.0"])
     s.add_dependency(%q<stringex>, ["~> 1.3.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
