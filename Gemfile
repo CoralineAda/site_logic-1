@@ -6,7 +6,7 @@ gem 'mini_magick', '~> 3.4'
 gem 'mongoid-tree', '~> 0.7.0', :require => 'mongoid/tree'
 gem 'rails', '~> 3.0.12'
 gem 'rmagick', '2.12.2'# version compatible with heroku
-gem 'scaffold_logic', '~> 1.7.9'
+gem 'scaffold_logic', '~> 2.0'
 gem 'stringex', '~> 1.3.0'
 
 group :development do
