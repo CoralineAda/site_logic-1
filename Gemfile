@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'bson_ext', '~> 1.5.2'
 gem 'carrierwave-mongoid', '~> 0.1.3', :require => 'carrierwave/mongoid'
 gem 'mini_magick', '~> 3.4'
-gem 'mongoid-tree', '~> 0.6.2', :require => 'mongoid/tree'
+gem 'mongoid-tree', '~> 0.7.0', :require => 'mongoid/tree'
 gem 'rails', '~> 3.0.12'
 gem 'rmagick', '2.12.2'# version compatible with heroku
 gem 'scaffold_logic', '~> 1.7.9'
