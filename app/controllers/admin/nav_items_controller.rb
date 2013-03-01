@@ -60,10 +60,7 @@ class Admin::NavItemsController < ApplicationController
   end
 
 	def reorder
-		order = params[:content_list_primary] if params[:kind] == 'primary'
-		order = params[:content_list_secondary] if params[:kind] == 'secondary'
-		order = params[:content_list_footer] if params[:kind] == 'footer'
-		order = params[:content_list_children] if params[:kind] == 'children'
+		order = params[:"content_list_#{params[:kind]}"]
 		order.each_with_index do |id, sort_order|
 		  item = @site.nav_items.find(id)
 			item.update_attributes(:position => sort_order + 1)
