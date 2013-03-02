@@ -14,16 +14,10 @@ class Admin::NavItemsController < ApplicationController
 
   def create
     clear_blank_parent
-    @nav_item = @site.nav_items.create(params[:nav_item])
+    @nav_item = @site.nav_items.create params[:nav_item]
     if @nav_item.valid?
       flash[:notice] = "Successfully created the navigation link."
-      if creating_page_request?
-        redirect_to admin_site_pages_path(@site.id.to_s)
-      elsif @nav_item.root?
-        redirect_to admin_site_nav_items_path(@site.id.to_s, :anchor => "#{@nav_item.kind.downcase}_nav")
-      else
-        redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
-      end
+      redirect_to path_from_request
     else
       render :action => 'new'
     end
@@ -74,20 +68,40 @@ class Admin::NavItemsController < ApplicationController
     !! params[:nav_item]
   end
 
+  def new_child_nav_item kind
+    @site.nav_items.new params[:nav_item].merge(:parent_id => params[:parent_id], :site => @site, :kind => kind)
+  end
+
   def new_nav_item_from_request kind
     if parent_request? && nav_item_request?
-      @nav_item = @site.nav_items.new(params[:nav_item].merge(:parent_id => params[:parent_id], :site => @site, :kind => kind))
+      @nav_item = new_child_nav_item kind
     elsif parent_request?
-      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :site => @site, :kind => kind)
-    elsif nav_item_request?
-      @nav_item = @site.nav_items.new(params[:nav_item].merge(:kind => kind))
-    else
-      @nav_item = @site.nav_items.new(:kind => kind)
+      @nav_item = new_parent_nav_item kind
+    else nav_item_request?
+      @nav_item = new_nav_item kind
     end
+  end
+
+  def new_nav_item kind
+    @site.nav_items.new (params[:nav_item] || {}).merge(:kind => kind)
+  end
+
+  def new_parent_nav_item kind
+    @site.nav_items.new :parent_id => params[:parent_id], :site => @site, :kind => kind
   end
 
   def parent_request?
     !! params[:parent_id]
+  end
+
+  def path_from_request
+    if creating_page_request?
+      admin_site_pages_path @site.id.to_s
+    elsif @nav_item.root?
+      admin_site_nav_items_path @site.id.to_s, :anchor => "#{@nav_item.kind.downcase}_nav"
+    else
+      admin_site_nav_item_path @site.id.to_s, @nav_item.parent_id
+    end
   end
 
   def scope_site
