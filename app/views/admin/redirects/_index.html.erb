@@ -1,4 +1,4 @@
-<%- if @redirects.blank? -%>
+<%- if @site.redirects.blank? -%>
   <div class="form_container">
     <p><em>No redirects have been created yet.</em></p>
     <div class="link_block">
@@ -17,7 +17,7 @@
     </thead>
 
     <tbody>
-    <%- @redirects.each do |redirect| -%>
+    <%- @site.redirects.each do |redirect| -%>
       <tr class="<%= cycle('odd', 'even') -%>" id="content_<%= redirect.id -%>">
         <td><%= link_to redirect.source_url, admin_site_redirect_path(@site, redirect) -%></td>
         <td><%= redirect.destination_url -%></td>

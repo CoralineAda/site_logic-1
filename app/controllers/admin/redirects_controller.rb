@@ -55,7 +55,6 @@ class Admin::RedirectsController < ApplicationController
 
   def scope_site
     @site = Site.find(params[:site_id])
-    @redirects = @site.redirects
   end
 
   def scope_redirect

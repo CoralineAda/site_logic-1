@@ -1,5 +1,6 @@
 class Admin::SitesController < ApplicationController
   before_filter :authenticate_user! if Object.const_defined?('Devise')
+  before_filter :find_site, :only => [:destroy, :edit, :show, :update]
 
   def index
     @sites = Site.all
@@ -10,12 +11,10 @@ class Admin::SitesController < ApplicationController
       :updated_at => 'Last Updated',
       :humanize_path => 'URL'
     }
-    @site = Site.find(params[:id])
     params[:by] ||= 'humanize_path'
     params[:dir] ||= 'asc'
-    @pages = @site.pages.sort_by{ |p| p.send(params[:by]).to_s }
+    @pages = @site.sorted_pages(params[:by])
     @pages.reverse! if params[:dir] == 'desc'
-    @redirects = @site.redirects
     @nav_items = @site.nav_items.roots.sort_by{ |ni| ni.position.to_i }
   end
 
@@ -35,11 +34,9 @@ class Admin::SitesController < ApplicationController
   end
 
   def edit
-    @site = Site.find(params[:id])
   end
 
   def update
-    @site = Site.find(params[:id])
     if @site.update_attributes(params[:site])
       @site.activate! if params[:site][:state] == 'Active'
       @site.deactivate! if params[:site][:state] == 'Inactive'
@@ -51,10 +48,14 @@ class Admin::SitesController < ApplicationController
   end
 
   def destroy
-    @site = Site.find(params[:id])
     @site.destroy
     flash[:notice] = "Successfully destroyed site."
     redirect_to admin_sites_url
   end
 
+  private
+
+  def find_site
+    @site = Site.find params[:id]
+  end
 end

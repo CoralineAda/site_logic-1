@@ -79,6 +79,10 @@ class Site
     self.nav_items.roots.secondary.sort_by{|a| a.position.to_i}
   end
 
+  def sorted_pages field
+    pages.sort_by{ |p| p.send(field).to_s }
+  end
+
   def state
     self[:state] || 'inactive'
   end
