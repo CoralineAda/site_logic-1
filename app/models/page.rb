@@ -101,11 +101,11 @@ class Page
   end
 
   def strip_leading_slash
-    self.slug = self.slug[1..-1] if self.slug.try(:first) == '/' && ! root?
+    self.slug = self.slug[1..-1] if leading_slash?
   end
 
   def strip_trailing_slash
-    self.slug = self.slug[0..-2] if self.slug.try(:last) == '/' && ! root?
+    self.slug = self.slug[0..-2] if trailing_slash?
   end
 
   def window_title
@@ -114,9 +114,17 @@ class Page
 
   private
 
+  def leading_slash?
+    self.slug.try(:first) == '/' && ! root?
+  end
+
   def set_slug
     self.slug = self.window_title.to_s.to_url if self.slug.blank?
     self.strip_leading_slash
     self.strip_trailing_slash
+  end
+
+  def trailing_slash?
+    self.slug.try(:last) == '/' && ! root?
   end
 end

@@ -34,26 +34,24 @@ module SiteLogic
   end
 
   def self.primary_nav
-    primary_nav ||= Navigation.new(
-      :kind => :primary,
-      :label => self.navigation_options[:primary][:label],
-      :description => self.navigation_options[:primary][:description]
-    )
+    primary_nav ||= new_navigation_with_kind(:primary)
   end
 
   def self.secondary_nav
-    secondary_nav ||= Navigation.new(
-      :kind => :primary,
-      :label => self.navigation_options[:secondary][:label],
-      :description => self.navigation_options[:secondary][:description]
-    )
+    secondary_nav ||= new_navigation_with_kind(:secondary)
   end
 
   def self.footer_nav
-    footer_nav ||= Navigation.new(
-      :kind => :primary,
-      :label => self.navigation_options[:footer][:label],
-      :description => self.navigation_options[:footer][:description]
+    footer_nav ||= new_navigation_with_kind(:footer)
+  end
+
+  private
+
+  def self.new_navigation_with_kind kind
+    Navigation.new(
+      :kind => kind,
+      :label => self.navigation_options[kind][:label],
+      :description => self.navigation_options[kind][:description]
     )
   end
 end
