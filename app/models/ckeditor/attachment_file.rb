@@ -1,5 +1,4 @@
 class Ckeditor::AttachmentFile < Ckeditor::Asset
-
   def url(*args)
     if [:thumb, :content].include?(args.first)
       send("url_#{args.first}")

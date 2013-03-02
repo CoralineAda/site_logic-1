@@ -1,5 +1,4 @@
-class Ckeditor::Picture < Ckeditor::Asset
-
+class Ckeditor::Picture < Ckeditor::AttachmentFile
 	def url_content
 	  url(:content)
 	end
@@ -7,11 +6,4 @@ class Ckeditor::Picture < Ckeditor::Asset
 	def url_thumb
 	  url(:thumb)
 	end
-
-	def to_json(options = {})
-	  options[:methods] ||= []
-	  options[:methods] << :url_content
-	  options[:methods] << :url_thumb
-	  super options
-  end
 end
