@@ -8,27 +8,18 @@ class Admin::NavItemsController < ApplicationController
   end
 
   def new
-    @roots = @site.nav_items.roots.sort{|a,b| a.link_text <=> b.link_text}
-    kind = params[:kind] || 'Primary'
-    if params[:parent_id] && params[:nav_item]
-      @nav_item = @site.nav_items.new(params[:nav_item].merge(:parent_id => params[:parent_id], :site => @site, :kind => kind))
-    elsif params[:parent_id]
-      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :site => @site, :kind => kind)
-    elsif params[:nav_item]
-      @nav_item = @site.nav_items.new(params[:nav_item].merge(:kind => kind))
-    else
-      @nav_item = @site.nav_items.new(:kind => kind)
-    end
+    @roots = @site.sorted_root_nav_items
+    new_nav_item_from_request params[:kind] || 'Primary'
   end
 
   def create
-    params[:nav_item][:parent_id] = nil if params[:nav_item][:parent_id].blank?
+    clear_blank_parent
     @nav_item = @site.nav_items.create(params[:nav_item])
     if @nav_item.valid?
       flash[:notice] = "Successfully created the navigation link."
-      if params[:nav_item][:creating_page]
+      if creating_page_request?
         redirect_to admin_site_pages_path(@site.id.to_s)
-      elsif @nav_item.parent_id.blank?
+      elsif @nav_item.root?
         redirect_to admin_site_nav_items_path(@site.id.to_s, :anchor => "#{@nav_item.kind.downcase}_nav")
       else
         redirect_to admin_site_nav_item_path(@site.id.to_s, @nav_item.parent_id)
@@ -71,6 +62,34 @@ class Admin::NavItemsController < ApplicationController
 
   private
 
+  def clear_blank_parent
+    params[:nav_item][:parent_id] = nil if params[:nav_item][:parent_id].blank?
+  end
+
+  def creating_page_request?
+    !! params[:nav_item][:creating_page]
+  end
+
+  def nav_item_request?
+    !! params[:nav_item]
+  end
+
+  def new_nav_item_from_request kind
+    if parent_request? && nav_item_request?
+      @nav_item = @site.nav_items.new(params[:nav_item].merge(:parent_id => params[:parent_id], :site => @site, :kind => kind))
+    elsif parent_request?
+      @nav_item = @site.nav_items.new(:parent_id => params[:parent_id], :site => @site, :kind => kind)
+    elsif nav_item_request?
+      @nav_item = @site.nav_items.new(params[:nav_item].merge(:kind => kind))
+    else
+      @nav_item = @site.nav_items.new(:kind => kind)
+    end
+  end
+
+  def parent_request?
+    !! params[:parent_id]
+  end
+
   def scope_site
     @site = Site.find(params[:site_id])
     @root_links = @site.nav_items.roots
@@ -79,9 +98,4 @@ class Admin::NavItemsController < ApplicationController
   def scope_nav_item
     @nav_item = @site.nav_items.find(params[:id])
   end
-
-  def auto_nav_item
-
-  end
-
 end

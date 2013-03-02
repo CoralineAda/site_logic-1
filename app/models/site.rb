@@ -83,6 +83,10 @@ class Site
     pages.sort_by{ |p| p.send(field).to_s }
   end
 
+  def sorted_root_nav_items
+    self.nav_items.roots.sort{|a,b| a.link_text <=> b.link_text}
+  end
+
   def state
     self[:state] || 'inactive'
   end
