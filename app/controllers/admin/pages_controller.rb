@@ -24,15 +24,15 @@ class Admin::PagesController < ApplicationController
   end
 
   def create
-    if params[:commit] == 'Preview'
+    if preview_request?
       @page = @site.pages.new params[:page]
       render :action => 'preview', :layout => @site.layout
     else
       @page = @site.pages.create params[:page]
       if @page.valid?
-        @page.publish! if params[:page][:state] == 'Published'
+        @page.publish! if publish_request?
         flash[:notice] = 'Successfully created the page.'
-        if params[:page][:create_navigation_item] == 'true'
+        if create_nav_item_request?
           redirect_to new_admin_site_nav_item_path(
             @site,
             :nav_item => {
@@ -55,13 +55,13 @@ class Admin::PagesController < ApplicationController
   end
 
   def update
-    if params[:commit] == 'Preview'
+    if preview_request?
       @page = @site.pages.new params[:page]
       render :action => 'preview', :layout => @page.site.layout
     else
       if @page.update_attributes params[:page]
-        @page.publish! if params[:page][:state] == 'Published'
-        @page.unpublish! if params[:page][:state] == 'Draft'
+        @page.publish! if publish_request?
+        @page.unpublish! if draft_request?
         flash[:notice] = 'Successfully updated the page.'
         redirect_after_write
       else
@@ -82,6 +82,22 @@ class Admin::PagesController < ApplicationController
   end
 
   private
+
+  def create_nav_item_request?
+    params[:page][:create_navigation_item] == 'true'
+  end
+
+  def draft_request?
+    params[:page][:state] == 'Draft'
+  end
+
+  def preview_request?
+    params[:commit] == 'Preview'
+  end
+
+  def publish_request?
+    params[:page][:state] == 'Published'
+  end
 
   def redirect_after_write
     redirect_to Site.count > 1 ? admin_site_path(@site) : admin_site_pages_path(@site)
